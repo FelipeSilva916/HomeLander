@@ -18,6 +18,18 @@ module.exports = (sequelize, DataTypes) => {
 
     static associate(models) {
       // define association here
+      User.hasMany(models.Favorite, {
+        foreignKey: "userId"
+      });
+      User.hasMany(models.Review, {
+        foreignKey: "userId"
+      });
+      User.hasMany(models.Campsite, {
+        foreignKey: "userId"
+      });
+      User.hasMany(models.CampsiteImage, {
+        foreignKey: "userId"
+      });
     }
     static async login({ credential, password }) {
       const { Op } = require("sequelize");
