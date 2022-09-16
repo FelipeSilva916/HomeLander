@@ -2,15 +2,6 @@
 
 module.exports = {
   async up(queryInterface, Sequelize) {
-    /**
-     * Add seed commands here.
-     *
-     * Example:
-     * await queryInterface.bulkInsert('People', [{
-     *   name: 'John Doe',
-     *   isBetaMember: false
-     * }], {});
-     */
     await queryInterface.bulkInsert("Campsites", [
       {
         id: 1,
@@ -46,16 +37,20 @@ module.exports = {
         longitude: 110.5893,
         name: "Grand Teton National Park",
         previewImage: "https://homelander.s3.us-west-1.amazonaws.com/teton1.jpg"
+      },
+      {
+        id: 5,
+        userId: 2,
+        latitude: 36.6374,
+        longitude: -117.5739,
+        name: "Death Valley",
+        previewImage:
+          "https://homelander.s3.us-west-1.amazonaws.com/deathValley3.jpg"
       }
     ]);
   },
 
   async down(queryInterface, Sequelize) {
-    /**
-     * Add commands to revert seed here.
-     *
-     * Example:
-     * await queryInterface.bulkDelete('People', null, {});
-     */
+    await queryInterface.bulkDelete("Campsites", null, {});
   }
 };
