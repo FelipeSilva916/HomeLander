@@ -8,9 +8,6 @@ module.exports = {
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      id: {
-        type: Sequelize.INTEGER
-      },
       userId: {
         type: Sequelize.INTEGER,
         references: { model: "Users" },
@@ -27,19 +24,16 @@ module.exports = {
       rating: {
         type: Sequelize.INTEGER
       },
-      createdAt: {
-        type: Sequelize.DATE
-      },
-      updatedAt: {
-        type: Sequelize.DATE
-      },
+
       createdAt: {
         allowNull: false,
-        type: Sequelize.DATE
+        type: Sequelize.DATE,
+        defaultValue: Sequelize.literal("CURRENT_TIMESTAMP")
       },
       updatedAt: {
         allowNull: false,
-        type: Sequelize.DATE
+        type: Sequelize.DATE,
+        defaultValue: Sequelize.literal("CURRENT_TIMESTAMP")
       }
     });
   },
