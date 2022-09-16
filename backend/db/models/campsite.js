@@ -25,7 +25,12 @@ module.exports = (sequelize, DataTypes) => {
   }
   Campsite.init(
     {
-      id: DataTypes.INTEGER,
+      id: {
+        type: DataTypes.INTEGER,
+        allowNull: false,
+        primaryKey: true,
+        autoIncrement: true
+      },
       userId: DataTypes.INTEGER,
       latitude: DataTypes.FLOAT,
       longitude: DataTypes.FLOAT,

@@ -19,7 +19,12 @@ module.exports = (sequelize, DataTypes) => {
   }
   CampsiteImage.init(
     {
-      id: DataTypes.INTEGER,
+      id: {
+        type: DataTypes.INTEGER,
+        allowNull: false,
+        primaryKey: true,
+        autoIncrement: true
+      },
       userId: DataTypes.INTEGER,
       campsiteId: DataTypes.INTEGER,
       imageUrl: DataTypes.STRING
