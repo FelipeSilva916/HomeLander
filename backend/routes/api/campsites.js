@@ -1,6 +1,6 @@
 const express = require("express");
 const router = express.Router();
-const { Campsite } = require("../../db/models");
+const { Campsite, Review, CampsiteImage } = require("../../db/models");
 const { requireAuth } = require("../../utils/auth");
 const { validateCampsite } = require("../../utils/validation");
 
@@ -29,7 +29,18 @@ router.get("/", async (req, res) => {
 
 //========= GET /api/campsites/:id - Get a single campsite =========//
 router.get("/:id", async (req, res) => {
-  const campsite = await Campsite.findByPk(req.params.id);
+  const campsiteId = req.params.id;
+  const campsite = await Campsite.findByPk(campsiteId, {
+    include: [
+      {
+        model: Review
+      },
+      {
+        model: CampsiteImage
+      }
+    ]
+  });
+
   res.json(campsite);
 });
 
