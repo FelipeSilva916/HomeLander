@@ -37,8 +37,9 @@ router.get("/:id", async (req, res) => {
 router.put("/:id", requireAuth, validateCampsite, async (req, res) => {
   const { user } = req;
   const { latitude, longitude, name, previewImage, description } = req.body;
+  const songId = req.params.id;
 
-  const campsite = await Campsite.findByPk(req.params.id);
+  const campsite = await Campsite.findByPk(songId);
 
   if (!campsite) {
     const error = new Error("Campsite couldn't be found");
@@ -55,6 +56,28 @@ router.put("/:id", requireAuth, validateCampsite, async (req, res) => {
       description
     });
     res.json(campsite);
+  } else {
+    const error = new Error("Unauthorized");
+    error.status = 403;
+    throw error;
+  }
+});
+
+//========= DELETE /api/campsites/:id - Delete a single campsite =========//
+router.delete("/:id", requireAuth, async (req, res) => {
+  const { user } = req;
+  const campsiteId = req.params.id;
+  const campsite = await Campsite.findByPk(campsiteId);
+
+  if (!campsite) {
+    const error = new Error("Campsite couldn't be found");
+    error.status = 404;
+    throw error;
+  }
+
+  if (campsite.userId === user.id) {
+    await campsite.destroy();
+    res.json({ message: "Campsite deleted", statusCode: 200 });
   } else {
     const error = new Error("Unauthorized");
     error.status = 403;
