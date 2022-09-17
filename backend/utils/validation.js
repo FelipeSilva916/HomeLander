@@ -1,5 +1,6 @@
 const { validationResult } = require("express-validator");
 const { check } = require("express-validator");
+const { Campsite, Review } = require("../db/models");
 
 // middleware for formatting errors from express-validator middleware
 // (to customize, see express-validator's documentation)
@@ -43,7 +44,43 @@ const validateCampsite = [
   handleValidationErrors
 ];
 
+// === Validate a review creation === //
+const validateReview = [
+  check("body")
+    .exists({ checkFalsy: true })
+    .withMessage("Please provide a body for your review.")
+    .isLength({ max: 500 })
+    .withMessage("Review must not be more than 500 characters long."),
+  check("rating")
+    .exists({ checkFalsy: true })
+    .withMessage("Please provide a rating for your review.")
+    .isInt({ min: 1, max: 5 })
+    .withMessage("Rating must be between 1 and 5."),
+  handleValidationErrors
+];
+
+// User already create a review for this campsite
+const validateReviewUnique = async (req, res, next) => {
+  const { user } = req;
+  const { siteId } = req.params;
+  console.log(siteId);
+  const review = await Review.findOne({
+    where: {
+      userId: user.id,
+      campsiteId: siteId
+    }
+  });
+  if (review) {
+    const error = new Error("You have already reviewed this campsite");
+    error.status = 400;
+    throw error;
+  }
+  next();
+};
+
 module.exports = {
   handleValidationErrors,
-  validateCampsite
+  validateCampsite,
+  validateReview,
+  validateReviewUnique
 };
