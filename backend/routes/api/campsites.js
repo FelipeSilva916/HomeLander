@@ -37,7 +37,15 @@ router.get("/:id", async (req, res) => {
 router.put("/:id", requireAuth, validateCampsite, async (req, res) => {
   const { user } = req;
   const { latitude, longitude, name, previewImage, description } = req.body;
+
   const campsite = await Campsite.findByPk(req.params.id);
+
+  if (!campsite) {
+    const error = new Error("Campsite couldn't be found");
+    error.status = 404;
+    throw error;
+  }
+
   if (campsite.userId === user.id) {
     await campsite.update({
       latitude,
