@@ -2,9 +2,10 @@ const express = require("express");
 const router = express.Router();
 const { Campsite } = require("../../db/models");
 const { requireAuth } = require("../../utils/auth");
+const { validateCampsite } = require("../../utils/validation");
 
 // ======== POST /api/campsites - Create a new campsite ========//
-router.post("/", requireAuth, async (req, res, next) => {
+router.post("/", requireAuth, validateCampsite, async (req, res) => {
   const { user } = req;
   const { latitude, longitude, name, previewImage, description } = req.body;
   console.log(user);
