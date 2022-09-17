@@ -11,7 +11,7 @@ module.exports = (sequelize, DataTypes) => {
       Favorite.belongsTo(models.User, {
         foreignKey: "userId"
       });
-      Favorite.hasMany(models.Campsite, {
+      Favorite.belongsTo(models.Campsite, {
         foreignKey: "campsiteId"
       });
     }

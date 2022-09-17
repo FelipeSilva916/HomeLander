@@ -18,7 +18,7 @@ module.exports = (sequelize, DataTypes) => {
       Campsite.hasMany(models.CampsiteImage, {
         foreignKey: "campsiteId"
       });
-      Campsite.belongsTo(models.Favorite, {
+      Campsite.hasMany(models.Favorite, {
         foreignKey: "campsiteId"
       });
     }
