@@ -44,6 +44,8 @@ router.get("/:id", async (req, res) => {
   res.json(campsite);
 });
 
+// ========= GET /api/my/campsites - Get all campsites for a user =========//
+
 //========= PUT /api/campsites/:id - Update a single campsite =========//
 router.put("/:id", requireAuth, validateCampsite, async (req, res) => {
   const { user } = req;
