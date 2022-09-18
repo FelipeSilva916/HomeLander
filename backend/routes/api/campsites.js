@@ -30,6 +30,7 @@ router.get("/", async (req, res) => {
 //========= GET /api/campsites/:id - Get a single campsite, include average rating =========//
 router.get("/:id", async (req, res) => {
   const campsiteId = req.params.id;
+
   const campsite = await Campsite.findByPk(campsiteId, {
     include: [
       {
@@ -41,7 +42,15 @@ router.get("/:id", async (req, res) => {
     ]
   });
 
-  res.json(campsite);
+  if (!campsite) {
+    const error = new Error("Campsite couldn't be found");
+    error.status = 404;
+    throw error;
+  }
+
+  const averageRating = campsite.Reviews.reduce((acc, review) => {
+    return acc + review.rating;
+  }, 0);
 });
 
 //========= PUT /api/campsites/:id - Update a single campsite =========//
