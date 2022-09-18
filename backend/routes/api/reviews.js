@@ -21,7 +21,7 @@ router.get("/:siteId", async (req, res) => {
 
 module.exports = router;
 
-// ======== POST /api/reviews/:siteId - Create a new review ========//
+// ======== POST /api/reviews/:siteId - Create a new review for a specific campsite ========//
 router.post(
   "/:siteId",
   requireAuth,
@@ -41,6 +41,25 @@ router.post(
     res.status(201);
   }
 );
+
+// ======== DELETE /api/reviews/:siteId - Delete a review by campsite ID ========//
+router.delete("/:siteId", requireAuth, async (req, res) => {
+  const { user } = req;
+  const campsiteId = req.params.siteId;
+  const review = await Review.findOne({
+    where: {
+      userId: user.id,
+      campsiteId
+    }
+  });
+  if (!review) {
+    const error = new Error("Review couldn't be found");
+    error.status = 404;
+    throw error;
+  }
+  await review.destroy();
+  res.json({ message: "Review deleted", statusCode: 200 });
+});
 
 // ======== PUT /api/reviews/:id - Update a review ========//
 router.put("/:siteId", requireAuth, async (req, res) => {
