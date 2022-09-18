@@ -47,7 +47,7 @@ router.delete("/:siteId", requireAuth, async (req, res) => {
   res.json({ message: "Review deleted", statusCode: 200 });
 });
 
-// ======== PUT /api/reviews/:id - Update a review from current user ========//
+// ======== PUT /api/reviews/:siteId - Update a review from current user ========//
 router.put("/:siteId", requireAuth, async (req, res) => {
   const { user } = req;
   const { rating, body } = req.body;

@@ -8,17 +8,6 @@ const {
 } = require("../../db/models");
 const { requireAuth } = require("../../utils/auth");
 
-// ======== GET /api/favorites/:userId - Get all favorites for a user ========//
-router.get("/:userId", async (req, res) => {
-  const userId = req.params.userId;
-  const favorites = await Favorite.findAll({
-    where: {
-      userId
-    }
-  });
-  res.json(favorites);
-});
-
 // ======== POST /api/favorites/:siteId - Add current campsite to favorites ========//
 router.post("/:siteId", requireAuth, async (req, res) => {
   const { user } = req;
@@ -55,6 +44,17 @@ router.delete("/:siteId", requireAuth, async (req, res) => {
   }
   await favorite.destroy();
   res.json({ message: "Favorite deleted", statusCode: 200 });
+});
+
+// ======== GET /api/favorites/:userId - Get all favorites for a user ========//
+router.get("/:userId", async (req, res) => {
+  const userId = req.params.userId;
+  const favorites = await Favorite.findAll({
+    where: {
+      userId
+    }
+  });
+  res.json(favorites);
 });
 
 module.exports = router;
