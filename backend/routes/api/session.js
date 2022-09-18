@@ -19,7 +19,7 @@ const validateLogin = [
 ];
 
 // =============  Log in =================//
-router.post("/", validateLogin, async (req, res, next) => {
+router.post("/login", validateLogin, async (req, res, next) => {
   const { credential, password } = req.body;
 
   const user = await User.login({ credential, password });
@@ -42,7 +42,7 @@ router.post("/", validateLogin, async (req, res, next) => {
 //
 
 // Log out
-router.delete("/", (_req, res) => {
+router.delete("/logout", (_req, res) => {
   res.clearCookie("token");
   return res.json({ message: "success" });
 });
