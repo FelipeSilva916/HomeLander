@@ -27,7 +27,7 @@ router.get("/", async (req, res) => {
   res.json(campsites);
 });
 
-//========= GET /api/campsites/:id - Get a single campsite =========//
+//========= GET /api/campsites/:id - Get a single campsite, include average rating =========//
 router.get("/:id", async (req, res) => {
   const campsiteId = req.params.id;
   const campsite = await Campsite.findByPk(campsiteId, {

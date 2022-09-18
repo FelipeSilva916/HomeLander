@@ -64,3 +64,9 @@ router.put("/:siteId", requireAuth, async (req, res) => {
     throw error;
   }
 });
+
+// ======== GET /api/reviews - Get all reviews in database ========//
+router.get("/", async (req, res) => {
+  const reviews = await Review.findAll();
+  res.json(reviews);
+});
