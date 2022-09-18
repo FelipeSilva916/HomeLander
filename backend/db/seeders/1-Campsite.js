@@ -14,6 +14,7 @@ module.exports = {
         description: "Description for Little Lakes Valley"
       },
       {
+        //campsite 2
         userId: 1,
         latitude: 37.1665,
         longitude: -118.6356,
@@ -23,6 +24,7 @@ module.exports = {
         description: "Description for Moonlight Falls"
       },
       {
+        //campsite 3
         userId: 1,
         latitude: -50.9353,
         longitude: -72.9079,
@@ -32,6 +34,7 @@ module.exports = {
         description: "Description for Torres De Paine"
       },
       {
+        //campsite 4
         userId: 2,
         latitude: 43.70916,
         longitude: 110.5893,
@@ -41,6 +44,7 @@ module.exports = {
         description: "Description for Grand Teton National Park"
       },
       {
+        //campsite 5
         userId: 2,
         latitude: 36.6374,
         longitude: -117.5739,
