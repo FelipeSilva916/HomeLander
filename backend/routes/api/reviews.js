@@ -1,25 +1,11 @@
 const express = require("express");
 const router = express.Router();
-const { Campsite, Review, CampsiteImage } = require("../../db/models");
+const { Review } = require("../../db/models");
 const { requireAuth } = require("../../utils/auth");
 const {
-  validateCampsite,
   validateReview,
   validateReviewUnique
 } = require("../../utils/validation");
-
-// ======== GET /api/reviews/:sitId - Get all reviews for a campsite ========//
-router.get("/:siteId", async (req, res) => {
-  const campsiteId = req.params.siteId;
-  const reviews = await Review.findAll({
-    where: {
-      campsiteId
-    }
-  });
-  res.json(reviews);
-});
-
-module.exports = router;
 
 // ======== POST /api/reviews/:siteId - Create a new review for a specific campsite ========//
 router.post(
@@ -84,8 +70,21 @@ router.put("/:siteId", requireAuth, async (req, res) => {
   }
 });
 
+// ======== GET /api/reviews/:sitId - Get all reviews for a campsite ========//
+router.get("/:siteId", async (req, res) => {
+  const campsiteId = req.params.siteId;
+  const reviews = await Review.findAll({
+    where: {
+      campsiteId
+    }
+  });
+  res.json(reviews);
+});
+
 // ======== GET /api/reviews - Get all reviews in database ========//
 router.get("/", async (req, res) => {
   const reviews = await Review.findAll();
   res.json(reviews);
 });
+
+module.exports = router;
