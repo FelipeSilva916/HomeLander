@@ -4,21 +4,19 @@ import { csrfFetch } from "./csrf";
 const SET_USER = "session/setUser";
 const REMOVE_USER = "session/removeUser";
 
-
 // actions
 const setUser = (user) => {
   return {
     type: SET_USER,
-    payload: user,
+    payload: user
   };
 };
 
 const removeUser = () => {
   return {
-    type: REMOVE_USER,
+    type: REMOVE_USER
   };
 };
-
 
 // thunks
 export const login = (user) => async (dispatch) => {
@@ -27,13 +25,9 @@ export const login = (user) => async (dispatch) => {
     method: "POST",
     body: JSON.stringify({
       credential,
-      password,
-    }),
+      password
+    })
   });
-
-  // if (!response.ok) {
-  //   return null;
-  // }
 
   const data = await response.json();
   dispatch(setUser(data));
@@ -42,7 +36,7 @@ export const login = (user) => async (dispatch) => {
 
 export const logout = () => async (dispatch) => {
   const response = await csrfFetch("/api/session/logout", {
-    method: "DELETE",
+    method: "DELETE"
   });
   dispatch(removeUser());
   return response;
@@ -52,10 +46,6 @@ export const restoreUser = () => async (dispatch) => {
   const response = await csrfFetch("/api/session");
   const data = await response.json();
   dispatch(setUser(data.user));
-
-  // if (data.id) {
-  //   dispatch(setUser(data));
-  // }
 
   return response;
 };
@@ -70,8 +60,8 @@ export const signup = (user) => async (dispatch) => {
       username,
       email,
       password,
-      profileImage,
-    }),
+      profileImage
+    })
   });
   const data = await response.json();
   dispatch(setUser(data.user));
