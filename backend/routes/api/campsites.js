@@ -48,9 +48,19 @@ router.get("/:id", async (req, res) => {
     throw error;
   }
 
-  const averageRating = campsite.Reviews.reduce((acc, review) => {
-    return acc + review.rating;
-  }, 0);
+  if (campsite) {
+    const reviews = await Review.findAll({
+      where: {
+        campsiteId: campsite.id
+      }
+    });
+    let sum = 0;
+    reviews.forEach((review) => {
+      sum += review.rating;
+    });
+    Math.round((campsite.dataValues.averageRating = sum / reviews.length));
+  }
+  return res.json(campsite);
 });
 
 //========= PUT /api/campsites/:id - Update a single campsite =========//
