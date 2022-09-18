@@ -47,27 +47,24 @@ router.delete("/:siteId", requireAuth, async (req, res) => {
   res.json({ message: "Review deleted", statusCode: 200 });
 });
 
-// ======== PUT /api/reviews/:id - Update a review ========//
+// ======== PUT /api/reviews/:id - Update a review from current user ========//
 router.put("/:siteId", requireAuth, async (req, res) => {
   const { user } = req;
   const { rating, body } = req.body;
-  const reviewId = req.params.siteId;
-  const review = await Review.findByPk(reviewId);
-
+  const campsiteId = req.params.siteId;
+  const review = await Review.findOne({
+    where: {
+      userId: user.id,
+      campsiteId
+    }
+  });
   if (!review) {
     const error = new Error("Review couldn't be found");
     error.status = 404;
     throw error;
   }
-
-  if (review.userId === user.id) {
-    await review.update({ rating, body });
-    res.json(review);
-  } else {
-    const error = new Error("Unauthorized");
-    error.status = 401;
-    throw error;
-  }
+  await review.update({ rating, body });
+  res.json({ message: "Review updated", statusCode: 200 });
 });
 
 // ======== GET /api/reviews/:sitId - Get all reviews for a campsite ========//
