@@ -22,11 +22,13 @@ function Navigation({ isLoaded }) {
     );
   } else {
     sessionLinks = (
-      <>
-        <LoginFormModal />
-        <NavLink to="/signup">Sign Up</NavLink>
-        <DemoUser />
-      </>
+      <div className="whole-page">
+        <div className="nav-bar">
+          <LoginFormModal />
+          <NavLink to="/signup">Sign Up</NavLink>
+          <DemoUser />
+        </div>
+      </div>
     );
   }
 
