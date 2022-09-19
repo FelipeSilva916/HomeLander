@@ -19,7 +19,7 @@ const AllCampsites = () => {
         {campsites.map((campsite) => (
           <div className="campsite-card" key={campsite.id}>
             <NavLink to={`/campsites/${campsite.id}`}>
-              <img src={campsite.image} alt={campsite.name} />
+              {/* <img src={campsite.previewImage} alt={campsite.name} /> */}
               <h2>{campsite.name}</h2>
             </NavLink>
           </div>
