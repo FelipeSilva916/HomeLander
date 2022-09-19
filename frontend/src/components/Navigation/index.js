@@ -5,6 +5,7 @@ import ProfileButton from "./ProfileButton";
 import LoginFormModal from "../LoginFormModal";
 import HomeButton from "./HomeButton";
 import DemoUser from "../DemoUser/DemoUser";
+import SignupFormModal from "../SignupModal";
 import "./Navigation.css";
 
 function Navigation({ isLoaded }) {
@@ -31,7 +32,7 @@ function Navigation({ isLoaded }) {
           <div className="nav-bar-left">⛺️</div>
           <div className="nav-bar-right">
             <LoginFormModal />
-            <NavLink to="/signup">Sign Up</NavLink>
+            <SignupFormModal />
             <DemoUser />
           </div>
         </div>
