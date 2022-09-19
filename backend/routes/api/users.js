@@ -28,6 +28,16 @@ const validateSignup = [
     .isLength({ min: 4 })
     .withMessage("Please provide a username with at least 4 characters."),
   check("username").not().isEmail().withMessage("Username cannot be an email."),
+  check("username") //check if username already exists
+    .custom((value) => {
+      return User.findOne({ where: { username: value } }).then((user) => {
+        if (user) {
+          return Promise.reject(
+            "The provided username is already in use by another account."
+          );
+        }
+      });
+    }),
   check("password")
     .exists({ checkFalsy: true })
     .isLength({ min: 6 })
