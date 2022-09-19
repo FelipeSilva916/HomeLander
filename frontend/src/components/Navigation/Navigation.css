@@ -9,6 +9,36 @@
   box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
 }
 
+.nav-bar a {
+  color: rgb(255, 255, 255);
+  background: linear-gradient(
+    90deg,
+    rgb(0, 0, 0) 0%,
+    rgb(109, 109, 109) 50%,
+    rgba(252, 176, 69, 1) 100%
+  );
+  text-decoration: none;
+  padding: 0.5rem 1rem;
+  border-radius: 0.25rem;
+}
+
+.nav-bar button {
+  color: rgb(255, 255, 255);
+  background: linear-gradient(
+    90deg,
+    rgb(0, 0, 0) 0%,
+    rgb(109, 109, 109) 50%,
+    rgba(252, 176, 69, 1) 100%
+  );
+  text-decoration: none;
+  padding: 0.5rem 1rem;
+  border-radius: 0.25rem;
+}
+
+.active {
+  background-color: chartreuse;
+}
+
 .nav-bar-right {
   display: flex;
   flex-direction: row;
@@ -38,7 +68,14 @@
   cursor: pointer;
   z-index: 1;
   font-weight: 500;
+  background-color: white;
 }
+
+.profile-dropdown li {
+  list-style: none;
+  padding: 0.5rem;
+}
+
 .whole-page {
   background: url(https://homelander.s3.us-west-1.amazonaws.com/ETS_DusyBasin2021-306.jpg)
     no-repeat center center fixed;
