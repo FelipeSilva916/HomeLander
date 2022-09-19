@@ -3,8 +3,6 @@ import { csrfFetch } from "./csrf";
 export const LOAD_CAMPSITES = "campsites/loadCampsites";
 
 //=========================================================
-// This is the action creator for the LOAD_CAMPSITES action
-//=========================================================
 const loadCampsites = (campsites) => {
   return {
     type: LOAD_CAMPSITES,
@@ -13,7 +11,7 @@ const loadCampsites = (campsites) => {
 };
 
 //=========================================================
-// This is the thunk action creator for the LOAD_CAMPSITES action
+// Action Creators
 //=========================================================
 export const getCampsites = () => async (dispatch) => {
   const response = await csrfFetch("/api/campsites");
@@ -25,7 +23,7 @@ export const getCampsites = () => async (dispatch) => {
 };
 
 //=========================================================
-// This is the reducer for the LOAD_CAMPSITES action
+// Reducer
 //=========================================================
 let newState = {};
 

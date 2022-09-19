@@ -5,7 +5,6 @@ const usersRouter = require("./api/users");
 const campsitesRouter = require("./api/campsites");
 //
 router.use("/api", apiRouter);
-router.use("/api/campsites", campsitesRouter);
 router.use(usersRouter);
 
 //
