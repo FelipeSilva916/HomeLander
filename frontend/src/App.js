@@ -19,7 +19,6 @@ function App() {
       <Navigation isLoaded={isLoaded} />
       {isLoaded && (
         <Switch>
-          <Route path="/signup"></Route>
           <Route path="/campsites">
             <AllCampsites />
           </Route>
