@@ -15,8 +15,8 @@ function Navigation({ isLoaded }) {
     sessionLinks = (
       <div className="whole-page">
         <div className="nav-bar">
-          <ProfileButton user={sessionUser} />
           <HomeButton />
+          <ProfileButton user={sessionUser} />
         </div>
       </div>
     );
@@ -30,16 +30,7 @@ function Navigation({ isLoaded }) {
     );
   }
 
-  return (
-    <ul>
-      <li>
-        <NavLink exact to="/">
-          Home
-        </NavLink>
-        {isLoaded && sessionLinks}
-      </li>
-    </ul>
-  );
+  return <>{isLoaded && sessionLinks}</>;
 }
 
 export default Navigation;
