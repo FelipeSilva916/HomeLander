@@ -2,7 +2,6 @@ const express = require("express");
 const router = express.Router();
 const apiRouter = require("./api");
 const usersRouter = require("./api/users");
-const campsitesRouter = require("./api/campsites");
 //
 router.use("/api", apiRouter);
 router.use(usersRouter);
