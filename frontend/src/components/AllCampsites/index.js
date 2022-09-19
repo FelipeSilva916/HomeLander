@@ -3,3 +3,28 @@ import { useDispatch, useSelector } from "react-redux";
 import { getAllCampsites } from "../../store/campsite";
 import { NavLink } from "react-router-dom";
 import "./AllCampsites.css";
+
+export const AllCampsites = () => {
+  const dispatch = useDispatch();
+  const campsites = useSelector((state) => Object.values(state.campsite));
+  console.log(campsites);
+  console.log("-----------------------------");
+  useEffect(() => {
+    dispatch(getAllCampsites());
+  }, [dispatch]);
+  return (
+    <div className="all-campsites">
+      <h1>All Campsites</h1>
+      <div className="all-campsites-container">
+        {campsites.map((campsite) => (
+          <div className="campsite-card" key={campsite.id}>
+            <NavLink to={`/campsites/${campsite.id}`}>
+              <img src={campsite.image} alt={campsite.name} />
+              <h2>{campsite.name}</h2>
+            </NavLink>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+};
