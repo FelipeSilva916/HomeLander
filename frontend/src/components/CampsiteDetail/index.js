@@ -28,7 +28,6 @@ const CampsiteDetail = () => {
           <p>{campsite?.description}</p>
           <p>{campsite?.latitude}</p>
           <p>{campsite?.longitude}</p>
-
           <div className="campsite-detail-info"></div>
         </div>
       </div>
