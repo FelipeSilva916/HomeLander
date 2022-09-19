@@ -5,7 +5,7 @@
   align-items: center;
   padding: 0 1rem;
   height: 4rem;
-  background-color: rgb(99, 224, 153);
+  background-color: #efd29f79;
   box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
 }
 
@@ -38,4 +38,20 @@
   cursor: pointer;
   z-index: 1;
   font-weight: 500;
+}
+.whole-page {
+  background: url(https://homelander.s3.us-west-1.amazonaws.com/ETS_DusyBasin2021-306.jpg)
+    no-repeat center center fixed;
+  background-size: cover;
+  height: 100vh;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  margin: 0;
+  padding: 0;
 }
