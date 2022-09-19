@@ -1,11 +1,11 @@
 import React from "react";
-import { NavLink } from "react-router-dom";
 import { useSelector } from "react-redux";
 import ProfileButton from "./ProfileButton";
 import LoginFormModal from "../LoginFormModal";
 import HomeButton from "./HomeButton";
 import DemoUser from "../DemoUser/DemoUser";
 import SignupFormModal from "../SignupModal";
+import AllCampsitesButton from "./AllCampsitesButton";
 import "./Navigation.css";
 
 function Navigation({ isLoaded }) {
@@ -20,6 +20,7 @@ function Navigation({ isLoaded }) {
             <HomeButton />
           </div>
           <div className="nav-bar-right">
+            <AllCampsitesButton />
             <ProfileButton user={sessionUser} />
           </div>
         </div>
