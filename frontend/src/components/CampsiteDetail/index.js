@@ -12,14 +12,23 @@ const CampsiteDetail = () => {
     dispatch(getOneCampsite(campsiteId));
   }, [dispatch, campsiteId]);
 
-  console.log(campsite);
   return (
     <div className="campsite-detail-wrapper">
       <div className="campsite-detail-container">
-        <div className="campsite-detail-image-container">SITE</div>
+        <div className="campsite-detail-image-container">
+          <img
+            src={campsite.previewImage}
+            alt={campsite.name}
+            className="campsite-detail-preview-image"
+          />
+        </div>
         <div className="campsite-detail-info-container">
           <h1>{campsite?.name}</h1>
+          <p>Uploaded By: {campsite?.userId} </p>
           <p>{campsite?.description}</p>
+          <p>{campsite?.latitude}</p>
+          <p>{campsite?.longitude}</p>
+
           <div className="campsite-detail-info"></div>
         </div>
       </div>
