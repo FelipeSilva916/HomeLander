@@ -8,3 +8,34 @@
   background-color: rgb(99, 224, 153);
   box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
 }
+
+.nav-bar-right {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+}
+
+.nav-bar-right > * {
+  margin: 0 0.5rem;
+}
+
+.profile-dropdown {
+  position: absolute;
+  right: 5%;
+  top: 6%;
+  color: rgb(0, 0, 0);
+  border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: auto;
+  line-height: 1.3;
+  padding: 1em;
+  font-size: 1.2em;
+  cursor: pointer;
+  z-index: 1;
+  font-weight: 500;
+}

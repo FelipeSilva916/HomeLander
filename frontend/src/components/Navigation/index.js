@@ -15,8 +15,12 @@ function Navigation({ isLoaded }) {
     sessionLinks = (
       <div className="whole-page">
         <div className="nav-bar">
-          <HomeButton />
-          <ProfileButton user={sessionUser} />
+          <div className="nav-bar-left">
+            <HomeButton />
+          </div>
+          <div className="nav-bar-right">
+            <ProfileButton user={sessionUser} />
+          </div>
         </div>
       </div>
     );
@@ -24,9 +28,13 @@ function Navigation({ isLoaded }) {
     sessionLinks = (
       <div className="whole-page">
         <div className="nav-bar">
-          <LoginFormModal />
-          <NavLink to="/signup">Sign Up</NavLink>
-          <DemoUser />
+          <div className="nav-bar-left">
+            <LoginFormModal />
+          </div>
+          <div className="nav-bar-right">
+            <NavLink to="/signup">Sign Up</NavLink>
+            <DemoUser />
+          </div>
         </div>
       </div>
     );

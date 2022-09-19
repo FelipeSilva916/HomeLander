@@ -5,7 +5,7 @@ import * as sessionActions from "../../store/session";
 function ProfileButton({ user }) {
   const dispatch = useDispatch();
   const [showMenu, setShowMenu] = useState(false);
-
+  console.log(user.username);
   const openMenu = () => {
     if (showMenu) return;
     setShowMenu(true);
@@ -37,6 +37,7 @@ function ProfileButton({ user }) {
         <ul className="profile-dropdown">
           <li>{user.username}</li>
           <li>{user.email}</li>
+          <li>TEST</li>
           <li>
             <button onClick={logout}>Log Out</button>
           </li>
