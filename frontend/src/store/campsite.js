@@ -13,7 +13,7 @@ const loadCampsites = (campsites) => {
 //=========================================================
 // Action Creators
 //=========================================================
-export const getCampsites = () => async (dispatch) => {
+export const getAllCampsites = () => async (dispatch) => {
   const response = await csrfFetch("/api/campsites");
 
   if (response.ok) {

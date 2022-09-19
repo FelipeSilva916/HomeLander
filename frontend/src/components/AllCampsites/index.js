@@ -4,7 +4,7 @@ import { getAllCampsites } from "../../store/campsite";
 import { NavLink } from "react-router-dom";
 import "./AllCampsites.css";
 
-export const AllCampsites = () => {
+const AllCampsites = () => {
   const dispatch = useDispatch();
   const campsites = useSelector((state) => Object.values(state.campsite));
   console.log(campsites);
@@ -28,3 +28,5 @@ export const AllCampsites = () => {
     </div>
   );
 };
+
+export default AllCampsites;
