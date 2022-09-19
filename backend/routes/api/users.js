@@ -13,6 +13,16 @@ const validateSignup = [
     .exists({ checkFalsy: true })
     .isEmail()
     .withMessage("Please provide a valid email."),
+  check("email") //check if email already exists
+    .custom((value) => {
+      return User.findOne({ where: { email: value } }).then((user) => {
+        if (user) {
+          return Promise.reject(
+            "The provided email address is already in use by another account."
+          );
+        }
+      });
+    }),
   check("username")
     .exists({ checkFalsy: true })
     .isLength({ min: 4 })
@@ -28,8 +38,14 @@ const validateSignup = [
 
 //================== Sign up ==========================//
 router.post("/", validateSignup, async (req, res) => {
-  const { email, password, username } = req.body;
-  const user = await User.signup({ email, username, password });
+  const { firstName, lastName, email, password, username } = req.body;
+  const user = await User.signup({
+    firstName,
+    lastName,
+    email,
+    username,
+    password
+  });
 
   await setTokenCookie(res, user);
 
