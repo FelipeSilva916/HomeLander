@@ -4,6 +4,7 @@ import { Route, Switch } from "react-router-dom";
 import * as sessionActions from "./store/session";
 import Navigation from "./components/Navigation";
 import AllCampsites from "./components/AllCampsites";
+import CampsiteDetail from "./components/CampsiteDetail";
 
 function App() {
   const dispatch = useDispatch();
@@ -17,6 +18,9 @@ function App() {
       <Navigation isLoaded={isLoaded} />
       {isLoaded && (
         <Switch>
+          <Route path="/campsites/:id">
+            <CampsiteDetail />
+          </Route>
           <Route path="/campsites">
             <AllCampsites />
           </Route>
