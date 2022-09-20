@@ -76,7 +76,7 @@
   padding: 0.5rem;
 }
 
-.whole-page {
+/* .whole-page {
   background: url(https://homelander.s3.us-west-1.amazonaws.com/ETS_DusyBasin2021-306.jpg)
     no-repeat center center fixed;
   background-size: cover;
@@ -86,7 +86,7 @@
   -o-background-size: cover;
   margin: 0;
   padding: 0;
-}
+} */
 
 html {
   margin: 0;
