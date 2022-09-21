@@ -27,12 +27,26 @@ const MyFavoriteCampsites = () => {
     return campsiteState[favorite.campsiteId].name;
   });
 
+  const favCampsiteImg = favorites.map((favorite) => {
+    return campsiteState[favorite.campsiteId].previewImage;
+  });
+
+  console.log(favCampsiteImg);
   return (
     <div>
       <h3>My Favorites</h3>
       <div>
         {favCampsiteName?.map((favorite, i) => (
-          <div key={i}>{favorite}</div>
+          <div key={i}>
+            {favCampsiteImg && (
+              <img
+                src={favCampsiteImg[i]}
+                alt="campsite"
+                style={{ width: "100px", height: "100px" }}
+              />
+            )}
+            {favorite}
+          </div>
         ))}
       </div>
     </div>
