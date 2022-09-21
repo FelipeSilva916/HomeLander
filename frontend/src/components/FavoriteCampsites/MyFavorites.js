@@ -8,8 +8,6 @@ import "./favoriteCampsite.css";
 // Render campsites created by the user
 const MyFavoriteCampsites = () => {
   const dispatch = useDispatch();
-  const history = useHistory();
-  const user = useSelector((state) => state.session.user);
   const favorites = Object.values(useSelector((state) => state.favorite));
   const [loaded, setLoaded] = useState(false);
   const campsiteState = useSelector((state) => state.campsite);
@@ -31,7 +29,6 @@ const MyFavoriteCampsites = () => {
     return campsiteState[favorite.campsiteId].previewImage;
   });
 
-  console.log(favCampsiteImg);
   return (
     <div className="favorite-modal-content">
       <h3>My Favorites</h3>

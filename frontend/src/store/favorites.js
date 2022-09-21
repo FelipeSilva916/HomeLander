@@ -38,8 +38,9 @@ const favoriteReducer = (state = {}, action) => {
         newState[favorite.id] = favorite;
       });
       return newState;
+    default:
+      return state;
   }
-  return state;
 };
 
 export default favoriteReducer;
