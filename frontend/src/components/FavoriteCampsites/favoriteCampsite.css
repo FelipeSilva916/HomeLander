@@ -15,7 +15,7 @@
 }
 
 .favorite-site-card-item:hover {
-  background-color: #a34949;
+  background-color: #d4bf88;
   border-radius: 2rem;
 }
 
@@ -25,6 +25,7 @@
   align-items: center;
   justify-content: center;
   margin-bottom: 20px;
+  padding: 1rem;
 }
 
 .favorite-campsite-preview {
