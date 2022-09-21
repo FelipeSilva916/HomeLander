@@ -5,7 +5,6 @@ import { getAllFavorites } from "../../store/favorites";
 import { getAllCampsites } from "../../store/campsite";
 import "./favoriteCampsite.css";
 
-// Render campsites created by the user
 const MyFavoriteCampsites = () => {
   const dispatch = useDispatch();
   const favorites = Object.values(useSelector((state) => state.favorite));
