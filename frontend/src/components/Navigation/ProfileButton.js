@@ -12,10 +12,6 @@ function ProfileButton() {
     setShowMenu(true);
   };
 
-  // useEffect(() => {
-  //   dispatch(sessionActions.restoreUser());
-  // }, [dispatch]);
-
   const user = useSelector((state) => state.session.user);
 
   useEffect(() => {
