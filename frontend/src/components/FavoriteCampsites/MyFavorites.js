@@ -29,7 +29,7 @@ const MyFavoriteCampsites = () => {
 
   return (
     <div>
-      <h1>My Campsites</h1>
+      <h3>My Favorites</h3>
       <div>
         {favCampsiteName?.map((favorite, i) => (
           <div key={i}>{favorite}</div>

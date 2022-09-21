@@ -7,7 +7,8 @@ import DemoUser from "../DemoUser/DemoUser";
 import SignupFormModal from "../SignupModal";
 import AllCampsitesButton from "./AllCampsitesButton";
 import "./Navigation.css";
-import MyFavoriteCampsites from "../My/MyFavorites";
+import MyFavoriteCampsites from "../FavoriteCampsites/MyFavorites";
+import FavoriteCampsitesModal from "../FavoriteCampsites";
 
 function Navigation({ isLoaded }) {
   const sessionUser = useSelector((state) => state.session.user);
@@ -22,8 +23,8 @@ function Navigation({ isLoaded }) {
           </div>
           <div className="nav-bar-right">
             <AllCampsitesButton />
+            <FavoriteCampsitesModal />
             <ProfileButton user={sessionUser} />
-            <MyFavoriteCampsites />
           </div>
         </div>
         <h1>test</h1>
