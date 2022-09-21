@@ -24,6 +24,7 @@ function Navigation({ isLoaded }) {
             <ProfileButton user={sessionUser} />
           </div>
         </div>
+        <h1>test</h1>
       </div>
     );
   } else {
