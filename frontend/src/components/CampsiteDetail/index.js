@@ -12,7 +12,7 @@ const CampsiteDetail = () => {
   useEffect(() => {
     dispatch(getOneCampsite(campsiteId));
   }, [dispatch, campsiteId]);
-
+  console.log(campsite);
   return (
     <div className="campsite-detail-wrapper">
       <div className="campsite-detail-container">
@@ -26,6 +26,7 @@ const CampsiteDetail = () => {
         <div className="campsite-detail-info-container">
           <h1>{campsite?.name}</h1>
           <p>Uploaded By: {campsite?.userId} </p>
+          <p>{campsite?.averageRating}</p>
           <p>{campsite?.description}</p>
           <p>{campsite?.latitude}</p>
           <p>{campsite?.longitude}</p>
