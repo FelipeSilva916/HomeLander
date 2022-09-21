@@ -2,6 +2,7 @@ import { getOneCampsite } from "../../store/campsite";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
+import "./campsiteDetail.css";
 
 const CampsiteDetail = () => {
   const { campsiteId } = useParams();
