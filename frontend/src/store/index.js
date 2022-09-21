@@ -2,10 +2,12 @@ import { createStore, combineReducers, applyMiddleware, compose } from "redux";
 import thunk from "redux-thunk";
 import sessionReducer from "./session";
 import campsiteReducer from "./campsite";
+import favoriteReducer from "./favorites";
 
 const rootReducer = combineReducers({
   session: sessionReducer,
-  campsite: campsiteReducer
+  campsite: campsiteReducer,
+  favorite: favoriteReducer
 });
 
 let enhancer;
