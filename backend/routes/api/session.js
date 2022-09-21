@@ -37,15 +37,12 @@ router.post("/login", validateLogin, async (req, res, next) => {
   return res.json(user);
 });
 
-//
-
 // Log out
 router.delete("/logout", (_req, res) => {
   res.clearCookie("token");
   return res.json({ message: "success" });
 });
-//
-//
+
 // Restore session user
 router.get("/", restoreUser, (req, res) => {
   const { user } = req;
@@ -55,6 +52,5 @@ router.get("/", restoreUser, (req, res) => {
     });
   } else return res.json({});
 });
-//
-//
+
 module.exports = router;
