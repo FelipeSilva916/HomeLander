@@ -12,7 +12,6 @@ const CampsiteDetail = () => {
   useEffect(() => {
     dispatch(getOneCampsite(campsiteId));
   }, [dispatch, campsiteId]);
-  console.log(campsite);
   return (
     <div className="campsite-detail-wrapper">
       <div className="campsite-detail-container">
