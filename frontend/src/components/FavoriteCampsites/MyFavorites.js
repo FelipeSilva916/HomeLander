@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import * as sessionActions from "../../store/session";
 import { useHistory } from "react-router-dom";
 import { getAllFavorites } from "../../store/favorites";
 import { getAllCampsites } from "../../store/campsite";
+import "./favoriteCampsite.css";
 
 // Render campsites created by the user
 const MyFavoriteCampsites = () => {
@@ -33,16 +33,16 @@ const MyFavoriteCampsites = () => {
 
   console.log(favCampsiteImg);
   return (
-    <div>
+    <div className="favorite-modal-content">
       <h3>My Favorites</h3>
-      <div>
+      <div className="favorite-site-card">
         {favCampsiteName?.map((favorite, i) => (
-          <div key={i}>
+          <div className="favorite-site-card-item" key={i}>
             {favCampsiteImg && (
               <img
+                className="favorite-campsite-preview"
                 src={favCampsiteImg[i]}
                 alt="campsite"
-                style={{ width: "100px", height: "100px" }}
               />
             )}
             {favorite}
