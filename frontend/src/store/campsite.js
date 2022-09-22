@@ -2,6 +2,7 @@ import { csrfFetch } from "./csrf";
 
 export const LOAD_CAMPSITES = "campsites/loadCampsites";
 export const LOAD_CAMPSITE = "campsites/loadCampsite";
+export const MY_CAMPSITES = "campsites/myCampsites";
 
 //=========================================================
 const loadCampsites = (campsites) => {
@@ -18,6 +19,12 @@ const loadCampsite = (campsite) => {
   };
 };
 
+const loadMyCampsites = (campsites) => {
+  return {
+    type: MY_CAMPSITES,
+    campsites
+  };
+};
 //=========================================================
 // Action Creators
 //=========================================================
@@ -39,6 +46,15 @@ export const getOneCampsite = (id) => async (dispatch) => {
   }
 };
 
+export const getMyCampsites = () => async (dispatch) => {
+  const response = await csrfFetch("/api/my/campsites");
+
+  if (response.ok) {
+    const campsites = await response.json();
+    dispatch(loadMyCampsites(campsites));
+  }
+};
+
 //=========================================================
 // Reducer
 //=========================================================
@@ -56,6 +72,13 @@ const campsiteReducer = (state = {}, action) => {
     case LOAD_CAMPSITE:
       newState = { ...state };
       newState[action.campsite.id] = action.campsite;
+      return newState;
+
+    case MY_CAMPSITES:
+      newState = { ...state };
+      action.campsites.forEach((campsite) => {
+        newState[campsite.id] = campsite;
+      });
       return newState;
 
     default:
