@@ -5,9 +5,9 @@ import { useParams } from "react-router-dom";
 
 const MyCampsites = () => {
   const dispatch = useDispatch();
-  const campsites = useSelector((state) => state.campsite);
   const user = useSelector((state) => state.session.user);
-  //   console.log(campsites, user);
+  const campsites = useSelector((state) => state.campsite);
+  console.log(campsites);
 
   useEffect(() => {
     dispatch(getMyCampsites());
@@ -25,7 +25,8 @@ const MyCampsites = () => {
         {Object.values(myCampsites).map((campsite) => (
           <div key={campsite.id}>
             <h3>{campsite.name}</h3>
-            <img src={campsite.previewImage} alt="campsite" />
+
+            {/* <img src={campsite.previewImage} alt="campsite" /> */}
           </div>
         ))}
       </div>
