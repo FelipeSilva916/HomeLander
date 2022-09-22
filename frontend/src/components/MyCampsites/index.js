@@ -25,7 +25,6 @@ const MyCampsites = () => {
         {Object.values(myCampsites).map((campsite) => (
           <div key={campsite.id}>
             <h3>{campsite.name}</h3>
-
             {/* <img src={campsite.previewImage} alt="campsite" /> */}
           </div>
         ))}
