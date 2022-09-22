@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useParams, useHistory } from "react-router-dom";
 import {
@@ -16,5 +16,52 @@ const EditCampsiteForm = ({ setShowModal }) => {
   const [description, setDescription] = useState(campsite.description);
   const [errors, setErrors] = useState([]);
 
-  const handleSubmit = async (e) => {};
+  //   useEffect(() => {
+  //     dispatch(getAllCampsites());
+  //     dispatch(getOneCampsite(campsiteId));
+  //   }, [dispatch]);
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setErrors([]);
+
+    await dispatch(
+      editCampsite({
+        id: campsiteId,
+        description
+      })
+    )
+      .then(() => {
+        history.push(`/campsites/${campsiteId}`);
+      })
+      .catch(async (res) => {
+        const data = await res.json();
+        if (data && data.errors) setErrors(data.errors);
+      });
+  };
+
+  return (
+    <div className="edit-form">
+      <h2>Change your description:</h2>
+      <form onSubmit={handleSubmit}>
+        <ul>
+          {errors.map((error, idx) => (
+            <li key={idx}>{error}</li>
+          ))}
+        </ul>
+        <label>
+          Description
+          <textarea
+            type="text"
+            value={description}
+            onChange={(e) => setDescription(e.target.value)}
+            required
+          />
+        </label>
+        <button type="submit">Save</button>
+      </form>
+    </div>
+  );
 };
+
+export default EditCampsiteForm;

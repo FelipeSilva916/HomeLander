@@ -73,9 +73,9 @@ router.delete("/:id/images/:imageId", requireAuth, async (req, res) => {
 router.put("/:id", requireAuth, async (req, res) => {
   const { user } = req;
   const { description } = req.body;
-  const songId = req.params.id;
+  const campsiteId = req.params.id;
 
-  const campsite = await Campsite.findByPk(songId);
+  const campsite = await Campsite.findByPk(campsiteId);
 
   if (!campsite) {
     const error = new Error("Campsite couldn't be found");
