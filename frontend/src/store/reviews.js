@@ -2,6 +2,9 @@ import { csrfFetch } from "./csrf";
 // =========================================================
 const GET_REVIEWS = "reviews/getReviews";
 const GET_REVIEW = "reviews/getReview";
+const EDIT_REVIEW = "reviews/editReview";
+const DELETE_REVIEW = "reviews/deleteReview";
+const POST_REVIEW = "reviews/postReview";
 
 // =========================================================
 const loadReviews = (reviews) => {
@@ -14,6 +17,13 @@ const loadReviews = (reviews) => {
 const loadReview = (review) => {
   return {
     type: GET_REVIEW,
+    review
+  };
+};
+
+const reviewToUpdate = (review) => {
+  return {
+    type: EDIT_REVIEW,
     review
   };
 };
@@ -38,6 +48,17 @@ export const getReview = (siteId) => async (dispatch) => {
     dispatch(loadReview(review));
   }
 };
+
+export const editReview = (review) => async (dispatch) => {
+    const response = await csrfFetch(`/api/reviews/${review.id}`, {
+        method: "PUT",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify(review)
+    });
+
+
 
 // =========================================================
 // Reducer
