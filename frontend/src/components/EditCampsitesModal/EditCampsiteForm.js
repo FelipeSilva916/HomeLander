@@ -21,6 +21,12 @@ const EditCampsiteForm = ({ setShowModal }) => {
     dispatch(getOneCampsite(campsiteId));
   }, [dispatch]);
 
+  useEffect(() => {
+    if (campsite) {
+      setDescription(campsite.description);
+    }
+  }, [campsite]);
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     setErrors([]);
@@ -32,6 +38,7 @@ const EditCampsiteForm = ({ setShowModal }) => {
       })
     )
       .then(() => {
+        setShowModal(false);
         history.push(`/campsites/${campsiteId}`);
       })
       .catch(async (res) => {

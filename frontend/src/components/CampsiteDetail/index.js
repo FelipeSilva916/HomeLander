@@ -3,15 +3,30 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import "./campsiteDetail.css";
+import EditCampsiteForm from "../EditCampsitesModal/EditCampsiteForm";
+import EditCampsiteModal from "../EditCampsitesModal";
 
-const CampsiteDetail = () => {
+const CampsiteDetail = ({ setShowModal }) => {
   const { campsiteId } = useParams();
   const dispatch = useDispatch();
   const campsite = useSelector((state) => state.campsite[campsiteId]);
+  const user = useSelector((state) => state.session.user);
 
   useEffect(() => {
     dispatch(getOneCampsite(campsiteId));
   }, [dispatch, campsiteId]);
+
+  let userManipulationBtn;
+  if (campsite) {
+    if (campsite.userId === user.id) {
+      userManipulationBtn = (
+        <div>
+          <EditCampsiteModal />
+          <button>Delete</button>
+        </div>
+      );
+    }
+  }
 
   return (
     <div className="campsite-detail-wrapper">
@@ -30,8 +45,9 @@ const CampsiteDetail = () => {
           <p>{campsite?.description}</p>
           <p>{campsite?.latitude}</p>
           <p>{campsite?.longitude}</p>
-          <div className="campsite-detail-info"></div>
+          <p>{userManipulationBtn}</p>
         </div>
+        <div className="campsite-detail-info"></div>
       </div>
     </div>
   );
