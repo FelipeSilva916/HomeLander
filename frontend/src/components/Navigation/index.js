@@ -9,6 +9,7 @@ import AllCampsitesButton from "./AllCampsitesButton";
 import "./Navigation.css";
 import MyFavoriteCampsites from "../FavoriteCampsites/MyFavorites";
 import FavoriteCampsitesModal from "../FavoriteCampsites";
+import CreateCampsiteModal from "../CreateCampsiteModal";
 
 function Navigation({ isLoaded }) {
   const sessionUser = useSelector((state) => state.session.user);
@@ -27,6 +28,8 @@ function Navigation({ isLoaded }) {
             <ProfileButton user={sessionUser} />
           </div>
         </div>
+        <h3>Create a site</h3>
+        <CreateCampsiteModal />
       </div>
     );
   } else {

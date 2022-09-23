@@ -5,6 +5,7 @@ export const LOAD_CAMPSITE = "campsites/loadCampsite";
 export const MY_CAMPSITES = "campsites/myCampsites";
 export const EDIT_CAMPSITE = "campsites/editCampsite";
 export const DELETE_CAMPSITE = "campsites/deleteCampsite";
+export const CREATE_CAMPSITE = "campsites/createCampsite";
 
 //=========================================================
 const loadCampsites = (campsites) => {
@@ -32,6 +33,13 @@ const deleteCampsite = (campsite) => {
   return {
     type: DELETE_CAMPSITE,
     campsite
+  };
+};
+
+const generateCampsites = (campsites) => {
+  return {
+    type: LOAD_CAMPSITES,
+    campsites
   };
 };
 //=========================================================
@@ -90,6 +98,20 @@ export const deleteCampsiteThunk = (id) => async (dispatch) => {
   }
 };
 
+export const createCampsite = (campsite) => async (dispatch) => {
+  const response = await csrfFetch("/api/campsites", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify(campsite)
+  });
+
+  if (response.ok) {
+    const campsite = await response.json();
+    dispatch(loadCampsite(campsite));
+  }
+};
 //=========================================================
 // Reducer
 //=========================================================
@@ -124,6 +146,11 @@ const campsiteReducer = (state = {}, action) => {
     case DELETE_CAMPSITE:
       newState = { ...state };
       delete newState[action.campsite.id];
+      return newState;
+
+    case CREATE_CAMPSITE:
+      newState = { ...state };
+      newState[action.campsite.id] = action.campsite;
       return newState;
 
     default:
