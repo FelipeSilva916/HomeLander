@@ -13,13 +13,13 @@ const EditCampsiteForm = ({ setShowModal }) => {
   const history = useHistory();
   const sessionUser = useSelector((state) => state.session.user);
   const campsite = useSelector((state) => state.campsite[`${campsiteId}`]);
-  const [description, setDescription] = useState(campsite.description);
+  const [description, setDescription] = useState(null);
   const [errors, setErrors] = useState([]);
 
-  //   useEffect(() => {
-  //     dispatch(getAllCampsites());
-  //     dispatch(getOneCampsite(campsiteId));
-  //   }, [dispatch]);
+  useEffect(() => {
+    // dispatch(getAllCampsites());
+    dispatch(getOneCampsite(campsiteId));
+  }, [dispatch]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();

@@ -7,6 +7,7 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import EditCampsiteForm from "../EditCampsitesModal/EditCampsiteForm";
+import EditCampsiteModal from "../EditCampsitesModal";
 
 const MyCampsites = () => {
   const dispatch = useDispatch();
@@ -31,7 +32,7 @@ const MyCampsites = () => {
           <div key={campsite.id}>
             <h3>{campsite.name}</h3>
             {/* <img src={campsite.previewImage} alt="campsite" /> */}
-            <EditCampsiteForm />
+            <EditCampsiteModal />
           </div>
         ))}
       </div>
