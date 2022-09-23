@@ -6,20 +6,23 @@ import "./campsiteDetail.css";
 import EditCampsiteForm from "../EditCampsitesModal/EditCampsiteForm";
 import EditCampsiteModal from "../EditCampsitesModal";
 import DeleteCampsiteButton from "../DeleteCampsiteButton";
-import { getReview, getReviews } from "../../store/reviews";
+import {
+  getReview,
+  getReviews,
+  getReviewsByCampsiteId
+} from "../../store/reviews";
 
 const CampsiteDetail = ({ setShowModal }) => {
   const { campsiteId } = useParams();
   const dispatch = useDispatch();
   const campsite = useSelector((state) => state.campsite[campsiteId]);
   const user = useSelector((state) => state.session.user);
-  const reviews = useSelector((state) => state.reviews);
-  console.log(reviews);
+  const reviewObj = useSelector((state) => state.review);
+  const reviewsArray = Object.values(reviewObj);
 
   useEffect(() => {
     dispatch(getOneCampsite(campsiteId));
-    // dispatch(getReviews());
-    dispatch(getReview(campsiteId));
+    dispatch(getReviewsByCampsiteId(campsiteId));
   }, [dispatch, campsiteId]);
 
   let userManipulationBtn;
@@ -54,6 +57,15 @@ const CampsiteDetail = ({ setShowModal }) => {
         </div>
         <div>{userManipulationBtn}</div>
         <div className="campsite-detail-info">Footer</div>
+        <div>
+          <h1>Reviews</h1>
+          {reviewsArray.map((review, i) => (
+            <div key={i}>
+              <p>{review.rating}</p>
+              <p>{review.body}</p>
+            </div>
+          ))}
+        </div>
       </div>
     </div>
   );

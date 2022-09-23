@@ -41,13 +41,23 @@ export const getReviews = () => async (dispatch) => {
   }
 };
 
-// One review in the database
+// Get all reviews of a campsite by campsite id
+export const getReviewsByCampsiteId = (campsiteId) => async (dispatch) => {
+  const response = await csrfFetch(`/api/reviews/${campsiteId}`);
+  if (response.ok) {
+    const reviews = await response.json();
+    dispatch(loadReviews(reviews));
+  }
+};
+
+// Get reviews by site ID
 export const getReview = (siteId) => async (dispatch) => {
   const response = await csrfFetch(`/api/reviews/${siteId}`);
 
   if (response.ok) {
     const review = await response.json();
-    dispatch(loadReview(review));
+    dispatch(loadReviews(review));
+    // dispatch(loadReview(review));
   }
 };
 
@@ -74,7 +84,7 @@ let newState = {};
 const reviewsReducer = (state = {}, action) => {
   switch (action.type) {
     case GET_REVIEWS:
-      newState = { ...state };
+      newState = {};
       action.reviews.forEach((review) => {
         newState[review.id] = review;
       });
