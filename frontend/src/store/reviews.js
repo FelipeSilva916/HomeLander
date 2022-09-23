@@ -50,15 +50,18 @@ export const getReview = (siteId) => async (dispatch) => {
 };
 
 export const editReview = (review) => async (dispatch) => {
-    const response = await csrfFetch(`/api/reviews/${review.id}`, {
-        method: "PUT",
-        headers: {
-            "Content-Type": "application/json"
-        },
-        body: JSON.stringify(review)
-    });
-
-
+  const response = await csrfFetch(`/api/reviews/${review.id}`, {
+    method: "PUT",
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify(review)
+  });
+  if (response.ok) {
+    const review = await response.json();
+    dispatch(reviewToUpdate(review));
+  }
+};
 
 // =========================================================
 // Reducer
@@ -76,6 +79,11 @@ const reviewsReducer = (state = {}, action) => {
       return newState;
 
     case GET_REVIEW:
+      newState = { ...state };
+      newState[action.review.id] = action.review;
+      return newState;
+
+    case EDIT_REVIEW:
       newState = { ...state };
       newState[action.review.id] = action.review;
       return newState;
