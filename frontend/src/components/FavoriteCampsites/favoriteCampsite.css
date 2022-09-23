@@ -5,17 +5,16 @@
   justify-content: center;
   background-color: #fff;
   margin: 1rem;
-  background-color: aqua;
 }
 
 .favorite-site-card {
   justify-content: center;
-  background-color: chartreuse;
 }
 
 .favorite-site-card-item:hover {
-  background-color: #d4bf88;
+  background-color: #4b6b3c;
   border-radius: 2rem;
+  color: #fff;
 }
 
 .favorite-site-card-item {
@@ -23,10 +22,9 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  margin-bottom: 20px;
+  margin-bottom: 1rem;
   padding: 1rem;
-  gap: 0.5rem;
-  background-color: orange;
+  gap: 0.3rem;
 }
 
 .favorite-campsite-preview {
