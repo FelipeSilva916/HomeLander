@@ -31,6 +31,7 @@ const reviewToUpdate = (review) => {
 // =========================================================
 // Action Creators
 // =========================================================
+// Reviews in the database
 export const getReviews = () => async (dispatch) => {
   const response = await csrfFetch("/api/reviews");
 
@@ -40,6 +41,7 @@ export const getReviews = () => async (dispatch) => {
   }
 };
 
+// One review in the database
 export const getReview = (siteId) => async (dispatch) => {
   const response = await csrfFetch(`/api/reviews/${siteId}`);
 

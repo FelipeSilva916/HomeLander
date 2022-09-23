@@ -6,15 +6,18 @@ import "./campsiteDetail.css";
 import EditCampsiteForm from "../EditCampsitesModal/EditCampsiteForm";
 import EditCampsiteModal from "../EditCampsitesModal";
 import DeleteCampsiteButton from "../DeleteCampsiteButton";
+import { getReview, getReviews } from "../../store/reviews";
 
 const CampsiteDetail = ({ setShowModal }) => {
   const { campsiteId } = useParams();
   const dispatch = useDispatch();
   const campsite = useSelector((state) => state.campsite[campsiteId]);
   const user = useSelector((state) => state.session.user);
+  const reviews = useSelector((state) => state.reviews);
 
   useEffect(() => {
     dispatch(getOneCampsite(campsiteId));
+    dispatch(getReviews());
   }, [dispatch, campsiteId]);
 
   let userManipulationBtn;
