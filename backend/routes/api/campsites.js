@@ -109,7 +109,7 @@ router.delete("/:id", requireAuth, async (req, res) => {
 
   if (campsite.userId === user.id) {
     await campsite.destroy();
-    res.json({ message: "Campsite deleted", statusCode: 200 });
+    res.json({ message: "Campsite deleted", statusCode: 200, id: campsiteId });
   } else {
     const error = new Error("Unauthorized");
     error.status = 403;

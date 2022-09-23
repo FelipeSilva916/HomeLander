@@ -5,6 +5,7 @@ import { useParams } from "react-router-dom";
 import "./campsiteDetail.css";
 import EditCampsiteForm from "../EditCampsitesModal/EditCampsiteForm";
 import EditCampsiteModal from "../EditCampsitesModal";
+import DeleteCampsiteButton from "../DeleteCampsiteButton";
 
 const CampsiteDetail = ({ setShowModal }) => {
   const { campsiteId } = useParams();
@@ -22,7 +23,7 @@ const CampsiteDetail = ({ setShowModal }) => {
       userManipulationBtn = (
         <div>
           <EditCampsiteModal />
-          <button>Delete</button>
+          <DeleteCampsiteButton campsiteId={campsiteId} />
         </div>
       );
     }
