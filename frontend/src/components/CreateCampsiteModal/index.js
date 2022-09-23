@@ -8,7 +8,9 @@ const CreateCampsiteModal = () => {
   const [showModal, setShowModal] = useState(false);
   const [name, setName] = useState("");
   const [description, setDescription] = useState("");
-  const [previewImage, setPreviewImage] = useState("");
+  const [previewImage, setPreviewImage] = useState(
+    "https://homelander.s3.us-west-1.amazonaws.com/homeLanderLogo.png"
+  );
   const [latitude, setLatitude] = useState("");
   const [longitude, setLongitude] = useState("");
   const [errors, setErrors] = useState([]);
