@@ -55,7 +55,7 @@ const CampsiteDetail = ({ setShowModal }) => {
         </div>
         <div className="campsite-detail-info-container">
           <div className="campsite-detail-info">
-            <h1>{campsite?.name}</h1>
+            <h1 className="campsite-name">{campsite?.name}</h1>
             <p>Uploaded By: {campsite?.userId} </p>
             <p>{campsite?.averageRating}</p>
             <p>{campsite?.description}</p>
