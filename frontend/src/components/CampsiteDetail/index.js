@@ -61,7 +61,7 @@ const CampsiteDetail = ({ setShowModal }) => {
         <div>
           <CreateReviewModal />
         </div>
-        <div>
+        <div className="reviews-table">
           <h1>Reviews</h1>
           {reviewsArray.map((review, i) => (
             <div key={i}>

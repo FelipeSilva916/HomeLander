@@ -22,3 +22,10 @@
   height: 400px;
   object-fit: cover;
 }
+
+.reviews-table {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
