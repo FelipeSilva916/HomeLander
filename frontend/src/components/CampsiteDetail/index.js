@@ -12,6 +12,7 @@ import {
   getReviewsByCampsiteId
 } from "../../store/reviews";
 import CreateReviewModal from "../CreateReviewModal";
+import { NavLink } from "react-router-dom";
 
 const CampsiteDetail = ({ setShowModal }) => {
   const { campsiteId } = useParams();
@@ -20,6 +21,9 @@ const CampsiteDetail = ({ setShowModal }) => {
   const user = useSelector((state) => state.session.user);
   const reviewObj = useSelector((state) => state.review);
   const reviewsArray = Object.values(reviewObj);
+  const reviews = reviewsArray.filter(
+    (review) => review.campsiteId === +campsiteId
+  );
 
   useEffect(() => {
     dispatch(getOneCampsite(+campsiteId));
@@ -36,6 +40,15 @@ const CampsiteDetail = ({ setShowModal }) => {
         </div>
       );
     }
+  }
+
+  let userEditReviewBtn;
+  if (reviews) {
+    userEditReviewBtn = (
+      <NavLink to={`/reviews/`}>
+        <button>Edit Review</button>
+      </NavLink>
+    );
   }
 
   return (
@@ -68,6 +81,7 @@ const CampsiteDetail = ({ setShowModal }) => {
               <p>{review?.User?.username}</p>
               <p>{review?.rating}</p>
               <p>{review?.body}</p>
+              {review.User.id === user.id && userEditReviewBtn}
             </div>
           ))}
         </div>
