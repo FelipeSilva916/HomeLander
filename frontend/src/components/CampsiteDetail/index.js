@@ -21,8 +21,8 @@ const CampsiteDetail = ({ setShowModal }) => {
   const reviewsArray = Object.values(reviewObj);
 
   useEffect(() => {
-    dispatch(getOneCampsite(campsiteId));
-    dispatch(getReviewsByCampsiteId(campsiteId));
+    dispatch(getOneCampsite(+campsiteId));
+    dispatch(getReviewsByCampsiteId(+campsiteId));
   }, [dispatch, campsiteId]);
 
   let userManipulationBtn;
@@ -61,8 +61,9 @@ const CampsiteDetail = ({ setShowModal }) => {
           <h1>Reviews</h1>
           {reviewsArray.map((review, i) => (
             <div key={i}>
-              <p>{review.rating}</p>
-              <p>{review.body}</p>
+              <p>{review?.User?.username}</p>
+              <p>{review?.rating}</p>
+              <p>{review?.body}</p>
             </div>
           ))}
         </div>
