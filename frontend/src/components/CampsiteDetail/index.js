@@ -11,6 +11,7 @@ import {
   getReviews,
   getReviewsByCampsiteId
 } from "../../store/reviews";
+import CreateReviewModal from "../CreateReviewModal";
 
 const CampsiteDetail = ({ setShowModal }) => {
   const { campsiteId } = useParams();
@@ -57,6 +58,9 @@ const CampsiteDetail = ({ setShowModal }) => {
         </div>
         <div>{userManipulationBtn}</div>
         <div className="campsite-detail-info">Footer</div>
+        <div>
+          <CreateReviewModal />
+        </div>
         <div>
           <h1>Reviews</h1>
           {reviewsArray.map((review, i) => (
