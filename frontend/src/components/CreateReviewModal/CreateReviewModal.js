@@ -10,6 +10,7 @@ const CreateReviewForm = () => {
   const [rating, setRating] = useState(0);
   const [body, setBody] = useState("");
   const user = useSelector((state) => state.session.user);
+  const [errors, setErrors] = useState([]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -19,14 +20,26 @@ const CreateReviewForm = () => {
       userId: user.id,
       campsiteId: +campsiteId
     };
-    const postedReview = await dispatch(postReview(review));
-    if (postedReview) {
-      history.push(`/campsites/${campsiteId}`);
-    }
+    const postedReview = await dispatch(postReview(review))
+      .then(() => {
+        history.push(`/campsites/${campsiteId}`);
+        setErrors([]);
+      })
+      .catch(async (res) => {
+        const data = await res.json();
+        if (data && data.errors) setErrors(data.errors);
+      });
   };
 
   return (
     <div className="create-review-modal">
+      <div className="review-errors">
+        <ul>
+          {errors.map((error, idx) => (
+            <li key={idx}>{error}</li>
+          ))}
+        </ul>
+      </div>
       <form onSubmit={handleSubmit}>
         <div className="create-review-modal__rating">
           <label htmlFor="rating">Rating</label>
