@@ -13,6 +13,7 @@
   align-items: center;
   justify-content: center;
   width: 100%;
+  padding-top: 0.5rem;
 }
 
 .create-post-input-wrapper > * {
@@ -21,7 +22,6 @@
 
 .create-post-input-wrapper > *:first-child {
   margin-top: 0;
-  background-color: aqua;
 }
 
 .create-post-input {
@@ -43,5 +43,7 @@
   border: 1px solid black;
   border-radius: 5px;
   background-color: #ff4f00;
-  margin-top: 2rem;
+  margin-top: 1rem;
+  color: white;
+  font-weight: 600;
 }
