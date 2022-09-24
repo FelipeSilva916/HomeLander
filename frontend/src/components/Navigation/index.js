@@ -22,6 +22,7 @@ function Navigation({ isLoaded }) {
           <div className="nav-bar-left">
             <HomeButton />
           </div>
+
           <div className="nav-bar-right">
             <AllCampsitesButton />
             <FavoriteCampsitesModal />
