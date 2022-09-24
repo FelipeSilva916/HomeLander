@@ -3,16 +3,12 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import "./campsiteDetail.css";
-import EditCampsiteForm from "../EditCampsitesModal/EditCampsiteForm";
+
 import EditCampsiteModal from "../EditCampsitesModal";
 import DeleteCampsiteButton from "../DeleteCampsiteButton";
-import {
-  getReview,
-  getReviews,
-  getReviewsByCampsiteId
-} from "../../store/reviews";
+import { getReviewsByCampsiteId } from "../../store/reviews";
 import CreateReviewModal from "../CreateReviewModal";
-import { NavLink } from "react-router-dom";
+import EditReviewModal from "../EditReviewModal";
 
 const CampsiteDetail = ({ setShowModal }) => {
   const { campsiteId } = useParams();
@@ -44,11 +40,7 @@ const CampsiteDetail = ({ setShowModal }) => {
 
   let userEditReviewBtn;
   if (reviews) {
-    userEditReviewBtn = (
-      <NavLink to={`/reviews/`}>
-        <button>Edit Review</button>
-      </NavLink>
-    );
+    userEditReviewBtn = <EditReviewModal campsiteId={campsiteId} />;
   }
 
   return (

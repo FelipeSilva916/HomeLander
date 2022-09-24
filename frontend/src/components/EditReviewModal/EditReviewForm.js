@@ -1,26 +1,21 @@
 import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useParams, useHistory } from "react-router-dom";
-import {
-  editCampsite,
-  getAllCampsites,
-  getOneCampsite
-} from "../../store/campsite";
-import { editReview, getReview } from "../../store/review";
+import { getOneCampsite } from "../../store/campsite";
+import { editReview, getReview } from "../../store/reviews";
 
 const EditReviewForm = ({ setShowModal }) => {
-  const { reviewId } = useParams();
+  const { siteId } = useParams();
   const dispatch = useDispatch();
   const history = useHistory();
-  const sessionUser = useSelector((state) => state.session.user);
-  const review = useSelector((state) => state.review[`${reviewId}`]);
+  const review = useSelector((state) => state.review[`${siteId}`]);
   const [description, setDescription] = useState(null);
   const [errors, setErrors] = useState([]);
 
   useEffect(() => {
-    dispatch(getOneCampsite(reviewId));
-    dispatch(getReview(reviewId));
-  }, [dispatch]);
+    dispatch(getOneCampsite(siteId));
+    dispatch(getReview(siteId));
+  }, [dispatch, siteId]);
 
   useEffect(() => {
     if (review) {
@@ -34,13 +29,13 @@ const EditReviewForm = ({ setShowModal }) => {
 
     await dispatch(
       editReview({
-        id: reviewId,
+        id: siteId,
         description
       })
     )
       .then(() => {
         setShowModal(false);
-        history.push(`/reviews/${reviewId}`);
+        history.push(`/campsites/${siteId}`);
       })
       .catch(async (res) => {
         const data = await res.json();
@@ -71,3 +66,5 @@ const EditReviewForm = ({ setShowModal }) => {
     </div>
   );
 };
+
+export default EditReviewForm;

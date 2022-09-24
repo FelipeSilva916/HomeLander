@@ -1,25 +1,19 @@
 import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useParams, useHistory } from "react-router-dom";
-import {
-  editCampsite,
-  getAllCampsites,
-  getOneCampsite
-} from "../../store/campsite";
+import { editCampsite, getOneCampsite } from "../../store/campsite";
 
 const EditCampsiteForm = ({ setShowModal }) => {
   const { campsiteId } = useParams();
   const dispatch = useDispatch();
   const history = useHistory();
-  const sessionUser = useSelector((state) => state.session.user);
   const campsite = useSelector((state) => state.campsite[`${campsiteId}`]);
   const [description, setDescription] = useState(null);
   const [errors, setErrors] = useState([]);
 
   useEffect(() => {
-    // dispatch(getAllCampsites());
     dispatch(getOneCampsite(campsiteId));
-  }, [dispatch]);
+  }, [dispatch, campsiteId]);
 
   useEffect(() => {
     if (campsite) {
