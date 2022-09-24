@@ -45,7 +45,7 @@ const CampsiteDetail = ({ setShowModal }) => {
 
   return (
     <div className="campsite-detail-wrapper">
-      <div className="campsite-detail-container">
+      <div className="campsite-detail-container-info">
         <div className="campsite-detail-image-container">
           <img
             src={campsite?.previewImage}
@@ -54,13 +54,20 @@ const CampsiteDetail = ({ setShowModal }) => {
           />
         </div>
         <div className="campsite-detail-info-container">
-          <h1>{campsite?.name}</h1>
-          <p>Uploaded By: {campsite?.userId} </p>
-          <p>{campsite?.averageRating}</p>
-          <p>{campsite?.description}</p>
-          <p>{campsite?.latitude}</p>
-          <p>{campsite?.longitude}</p>
+          <div className="campsite-detail-info">
+            <h1>{campsite?.name}</h1>
+            <p>Uploaded By: {campsite?.userId} </p>
+            <p>{campsite?.averageRating}</p>
+            <p>{campsite?.description}</p>
+            <p>{campsite?.latitude}</p>
+            <p>{campsite?.longitude}</p>
+          </div>
+          <div className="campsite-map-container">
+            <h3>Map goes here</h3>
+          </div>
         </div>
+      </div>
+      <div className="campsite-detail-container-reviews">
         <div>{userManipulationBtn}</div>
         <div className="campsite-detail-info">Footer</div>
         <div>
