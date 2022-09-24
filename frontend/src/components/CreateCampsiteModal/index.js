@@ -43,14 +43,13 @@ const CreateCampsiteModal = () => {
       .then(() => {
         setShowModal(false);
         reset();
-        if (newCampsite) {
-          history.push(`/campsites/${newCampsite.id}`);
-        }
+        history.push("/campsites");
       })
       .catch(async (res) => {
         const data = await res.json();
         if (data && data.errors) setErrors(data.errors);
       });
+    reset();
   };
 
   return (
