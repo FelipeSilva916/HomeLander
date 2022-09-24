@@ -2,8 +2,11 @@ import React, { useState } from "react";
 import { Modal } from "../../context/Modal";
 import { useDispatch, useSelector } from "react-redux";
 import { createCampsite } from "../../store/campsite";
+import { useHistory } from "react-router-dom";
+import { restoreCSRF } from "../../store/csrf";
 
 const CreateCampsiteModal = () => {
+  const history = useHistory();
   const dispatch = useDispatch();
   const [showModal, setShowModal] = useState(false);
   const [name, setName] = useState("");
@@ -36,11 +39,18 @@ const CreateCampsiteModal = () => {
       longitude,
       userId: user.id
     };
-    const newCampsite = await dispatch(createCampsite(payload));
-    if (newCampsite) {
-      setShowModal(false);
-    }
-    setShowModal(false);
+    const newCampsite = await dispatch(createCampsite(payload))
+      .then(() => {
+        setShowModal(false);
+        reset();
+        if (newCampsite) {
+          history.push(`/campsites/${newCampsite.id}`);
+        }
+      })
+      .catch(async (res) => {
+        const data = await res.json();
+        if (data && data.errors) setErrors(data.errors);
+      });
   };
 
   return (
