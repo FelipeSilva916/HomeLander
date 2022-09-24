@@ -40,7 +40,6 @@ const CreateCampsiteModal = () => {
     if (newCampsite) {
       setShowModal(false);
     }
-    reset();
     setShowModal(false);
   };
 
@@ -50,6 +49,12 @@ const CreateCampsiteModal = () => {
       {showModal && (
         <Modal onClose={() => setShowModal(false)}>
           <form onSubmit={handleSubmit}>
+            <ul>
+              {errors.map((error, idx) => (
+                <li key={idx}>{error}</li>
+              ))}
+            </ul>
+
             <div>
               <label htmlFor="name">Name</label>
               <input

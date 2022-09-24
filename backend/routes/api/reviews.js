@@ -1,6 +1,6 @@
 const express = require("express");
 const router = express.Router();
-const { Review } = require("../../db/models");
+const { Review, User } = require("../../db/models");
 const { requireAuth } = require("../../utils/auth");
 const {
   validateReview,
@@ -73,6 +73,9 @@ router.get("/:siteId", async (req, res) => {
   const reviews = await Review.findAll({
     where: {
       campsiteId
+    },
+    include: {
+      model: User
     }
   });
   res.json(reviews);
