@@ -10,6 +10,7 @@ import "./Navigation.css";
 import MyFavoriteCampsites from "../FavoriteCampsites/MyFavorites";
 import FavoriteCampsitesModal from "../FavoriteCampsites";
 import CreateCampsiteModal from "../CreateCampsiteModal";
+import MapContainer from "../GoogleMap";
 
 function Navigation({ isLoaded }) {
   const sessionUser = useSelector((state) => state.session.user);
@@ -31,6 +32,7 @@ function Navigation({ isLoaded }) {
         </div>
         <h3>Create a site</h3>
         <CreateCampsiteModal />
+        <MapContainer />
       </div>
     );
   } else {

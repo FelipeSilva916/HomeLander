@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import CampsiteMaps from "./CampsiteMaps";
-import { getCampsites } from "../../store/campsite";
+import { getAllCampsites } from "../../store/campsite";
 
 const MapContainer = () => {
   const dispatch = useDispatch();
@@ -9,7 +9,7 @@ const MapContainer = () => {
   const map = useSelector((state) => state.map);
 
   useEffect(() => {
-    dispatch(getCampsites());
+    dispatch(getAllCampsites());
   }, [dispatch]);
 
   return (
