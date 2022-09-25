@@ -9,7 +9,7 @@ const EditReviewForm = ({ setShowModal, campsiteId }) => {
   const history = useHistory();
   const review = useSelector((state) => state.review[`${campsiteId}`]);
   const reviewId = review?.id;
-  const [description, setDescription] = useState(review?.body || "");
+  const [body, setBody] = useState(review?.body);
   const [errors, setErrors] = useState([]);
 
   // console.log(reviewId);
@@ -21,7 +21,7 @@ const EditReviewForm = ({ setShowModal, campsiteId }) => {
 
   useEffect(() => {
     if (review) {
-      setDescription(review?.body);
+      setBody(body);
     }
   }, [review]);
 
@@ -33,7 +33,7 @@ const EditReviewForm = ({ setShowModal, campsiteId }) => {
       editReview({
         id: reviewId,
         campsiteId,
-        body: description
+        body
       })
     )
       .then(() => {
@@ -59,8 +59,8 @@ const EditReviewForm = ({ setShowModal, campsiteId }) => {
           Description
           <input
             type="text"
-            value={description}
-            onChange={(e) => setDescription(e.target.value)}
+            value={body}
+            onChange={(e) => setBody(e.target.value)}
             required
           />
         </label>
