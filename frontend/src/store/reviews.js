@@ -71,7 +71,6 @@ export const getReview = (siteId) => async (dispatch) => {
   if (response.ok) {
     const review = await response.json();
     dispatch(loadReviews(review));
-    // dispatch(loadReview(review));
   }
 };
 
@@ -90,18 +89,22 @@ export const editReview = (review) => async (dispatch) => {
 };
 
 export const deleteReview = (review) => async (dispatch) => {
-  const response = await csrfFetch(`/api/reviews/${review.id}`, {
+  const response = await csrfFetch(`/api/reviews/${review}`, {
     method: "DELETE",
     headers: {
       "Content-Type": "application/json"
-    },
-    body: JSON.stringify(review)
+    }
   });
   if (response.ok) {
     const review = await response.json();
     dispatch(reviewToDelete(review));
   }
 };
+
+// export const deleteReview = (spotId, reviewId) => async (dispatch) => {
+//   const res = await csrfFetch(`/api/reviews/${reviewId}`, { method: 'DELETE' });
+//   if (res.ok) dispatch(removeReview(spotId, reviewId));
+// };
 
 //create a review for a campsite by ID
 export const postReview = (data) => async (dispatch) => {

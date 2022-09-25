@@ -29,7 +29,7 @@ router.post(
 );
 
 // ======== DELETE /api/reviews/:siteId - Delete a review by campsite ID ========//
-router.delete("/:siteId", requireAuth, async (req, res) => {
+router.delete("/:id", requireAuth, async (req, res) => {
   const { user } = req;
   const campsiteId = req.params.siteId;
   const review = await Review.findOne({
