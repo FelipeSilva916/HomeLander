@@ -6,35 +6,38 @@ import "./campsiteDetail.css";
 import DeleteReviewButton from "../DeleteReviewButton";
 import EditCampsiteModal from "../EditCampsitesModal";
 import DeleteCampsiteButton from "../DeleteCampsiteButton";
-import { getReviewsByCampsiteId } from "../../store/reviews";
+import {
+  deleteReview,
+  getReviews,
+  getReviewsByCampsiteId
+} from "../../store/reviews";
 import CreateReviewModal from "../CreateReviewModal";
 import EditReviewModal from "../EditReviewModal";
 import Map from "../GoogleMap/CampsiteMaps";
+import ReviewsTable from "../ReviewDetails";
 
 const CampsiteDetail = ({ setShowModal }) => {
   const { campsiteId } = useParams();
   const dispatch = useDispatch();
   const campsite = useSelector((state) => state.campsite[campsiteId]);
   const user = useSelector((state) => state.session.user);
-  const reviewObj = useSelector((state) => state.review);
-  const reviewsArray = Object.values(reviewObj);
+  const reviewsArray = Object.values(useSelector((state) => state.review));
   const reviews = reviewsArray.filter(
-    (review) => review.campsiteId === +campsiteId
+    (review) => review?.campsiteId === +campsiteId
   );
 
-  const currentUserReview = reviews.find((review) => review.userId === user.id);
-  console.log("currentUserReview", currentUserReview);
-  const currentReviewId = currentUserReview?.id;
-  console.log("currentReviewId", currentReviewId);
+  // const currentUserReview = reviews.find(
+  //   (review) => review?.userId === user?.id
+  // );
 
   useEffect(() => {
     dispatch(getOneCampsite(+campsiteId));
-    dispatch(getReviewsByCampsiteId(+campsiteId));
+    // dispatch(getReviewsByCampsiteId(+campsiteId));
   }, [dispatch, campsiteId]);
 
   let userManipulationBtn;
   if (campsite) {
-    if (campsite.userId === user.id) {
+    if (campsite?.userId === user?.id) {
       userManipulationBtn = (
         <div className="user-manipulation-button">
           <EditCampsiteModal />
@@ -42,21 +45,6 @@ const CampsiteDetail = ({ setShowModal }) => {
         </div>
       );
     }
-  }
-
-  let userEditReviewBtn;
-  if (reviews) {
-    userEditReviewBtn = <EditReviewModal campsiteId={campsiteId} />;
-  }
-
-  let userDeleteReviewBtn;
-  if (reviews) {
-    userDeleteReviewBtn = (
-      <DeleteReviewButton
-        currentReviewId={currentReviewId}
-        campsiteId={campsiteId}
-      />
-    );
   }
 
   return (
@@ -88,43 +76,7 @@ const CampsiteDetail = ({ setShowModal }) => {
           <CreateReviewModal />
         </div>
         <div className="reviews-table">
-          {/* <h1>Reviews</h1>
-          {reviewsArray.map((review, i) => (
-            <div key={i}>
-              <p>{review?.User?.username}</p>
-              <p>{review?.rating}</p>
-              <p>{review?.body}</p>
-              {review?.User?.id === user?.id && userEditReviewBtn}
-              {review?.User?.id === user?.id && userDeleteReviewBtn}
-            </div>
-          ))} */}
-
-          <table>
-            <thead>
-              <tr>
-                <th>Username</th>
-                <th>Rating</th>
-                <th>Body</th>
-                <th>Edit</th>
-                <th>Delete</th>
-              </tr>
-            </thead>
-            <tbody>
-              {reviewsArray.map((review, i) => (
-                <tr key={i}>
-                  <td>{review?.User?.username}</td>
-                  <td>{review?.rating}</td>
-                  <td>{review?.body}</td>
-                  {review?.User?.id === user?.id && (
-                    <td>{userEditReviewBtn}</td>
-                  )}
-                  {review?.User?.id === user?.id && (
-                    <td>{userDeleteReviewBtn}</td>
-                  )}
-                </tr>
-              ))}
-            </tbody>
-          </table>
+          <ReviewsTable campsiteId={campsiteId} />
         </div>
       </div>
     </div>

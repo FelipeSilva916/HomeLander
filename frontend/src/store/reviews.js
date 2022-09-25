@@ -70,7 +70,7 @@ export const getReview = (siteId) => async (dispatch) => {
 
   if (response.ok) {
     const review = await response.json();
-    dispatch(loadReviews(review));
+    dispatch(loadReview(review));
   }
 };
 
@@ -90,13 +90,9 @@ export const editReview = (review) => async (dispatch) => {
 
 export const deleteReview = (review) => async (dispatch) => {
   const response = await csrfFetch(`/api/reviews/${review}`, {
-    method: "DELETE",
-    headers: {
-      "Content-Type": "application/json"
-    }
+    method: "DELETE"
   });
   if (response.ok) {
-    const review = await response.json();
     dispatch(reviewToDelete(review));
   }
 };

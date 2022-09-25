@@ -31,13 +31,9 @@ router.post(
 // ======== DELETE /api/reviews/:siteId - Delete a review by campsite ID ========//
 router.delete("/:id", requireAuth, async (req, res) => {
   const { user } = req;
-  const campsiteId = req.params.siteId;
-  const review = await Review.findOne({
-    where: {
-      userId: user.id,
-      campsiteId
-    }
-  });
+  const reviewId = req.params.id;
+  const review = await Review.findByPk(reviewId);
+
   if (!review) {
     const error = new Error("Review couldn't be found");
     error.status = 404;
