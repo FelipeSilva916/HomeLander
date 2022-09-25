@@ -69,7 +69,6 @@ const CampsiteDetail = ({ setShowModal }) => {
         </div>
       </div>
       <div className="campsite-detail-container-reviews">
-        <div className="campsite-detail-info">Footer</div>
         <div>
           <CreateReviewModal />
         </div>
