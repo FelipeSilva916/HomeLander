@@ -13,8 +13,6 @@ const EditReviewForm = ({ setShowModal, campsiteId }) => {
   const [errors, setErrors] = useState([]);
   const [rating, setRating] = useState(review?.rating);
 
-  // console.log(reviewId);
-
   useEffect(() => {
     dispatch(getOneCampsite(campsiteId));
     dispatch(getReview(+campsiteId));

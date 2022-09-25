@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { NavLink, useHistory, useParams } from "react-router-dom";
 import { postReview } from "../../store/reviews";
 
-const CreateReviewForm = () => {
+const CreateReviewForm = ({ setShowModal }) => {
   const dispatch = useDispatch();
   const history = useHistory();
   const { campsiteId } = useParams();
@@ -22,6 +22,7 @@ const CreateReviewForm = () => {
     };
     const postedReview = await dispatch(postReview(review))
       .then(() => {
+        setShowModal(false);
         history.push(`/campsites/${campsiteId}`);
         setErrors([]);
       })

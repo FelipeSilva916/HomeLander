@@ -32,7 +32,7 @@ const CampsiteDetail = ({ setShowModal }) => {
   if (campsite) {
     if (campsite.userId === user.id) {
       userManipulationBtn = (
-        <div>
+        <div className="user-manipulation-button">
           <EditCampsiteModal />
           <DeleteCampsiteButton campsiteId={campsiteId} />
         </div>
@@ -50,7 +50,6 @@ const CampsiteDetail = ({ setShowModal }) => {
     userDeleteReviewBtn = <DeleteReviewButton campsiteId={campsiteId} />;
   }
 
-  console.log(reviewsArray);
   return (
     <div className="campsite-detail-wrapper">
       <div className="campsite-detail-container-info">
@@ -65,13 +64,10 @@ const CampsiteDetail = ({ setShowModal }) => {
           <div className="campsite-detail-info">
             <h1 className="campsite-name">{campsite?.name}</h1>
             <p>Uploaded By: {campsite?.userId} </p>
-            <p>{campsite?.averageRating}</p>
-            <p>{campsite?.description}</p>
-            <p>{campsite?.latitude}</p>
-            <p>{campsite?.longitude}</p>
-            <div className="user-manipulation-button">
-              {userManipulationBtn}
-            </div>
+            <p>Rating: {campsite?.averageRating}</p>
+            <p>Description: {campsite?.description}</p>
+
+            <div>{userManipulationBtn}</div>
           </div>
           <div className="campsite-map-container">
             <Map lat={campsite?.latitude} lng={campsite?.longitude} />
