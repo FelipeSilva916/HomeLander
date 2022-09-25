@@ -10,7 +10,6 @@ import "./Navigation.css";
 import MyFavoriteCampsites from "../FavoriteCampsites/MyFavorites";
 import FavoriteCampsitesModal from "../FavoriteCampsites";
 import CreateCampsiteModal from "../CreateCampsiteModal";
-import MapContainer from "../GoogleMap";
 
 function Navigation({ isLoaded }) {
   const sessionUser = useSelector((state) => state.session.user);

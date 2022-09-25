@@ -1,40 +1,28 @@
 import React from "react";
-import { GoogleMap, Circle, useJsApiLoader } from "@react-google-maps/api";
+import { GoogleMap, LoadScript, Marker } from "@react-google-maps/api";
 
-const containerStyle = {
-  width: "100%",
-  height: "100%"
-};
+const Map = ({ lat, lng }) => {
+  // const googleApiKey = process.env.REACT_APP_GOOGLE_MAPS_API;
 
-const center = {
-  lat: 47.444,
-  lng: -122.176
-};
+  const mapStyles = {
+    height: "300px",
+    width: "300px",
+    padding: "1rem",
+    margin: "1rem"
+  };
 
-const CampsiteMaps = ({ campsites, map }) => {
-  const { isLoaded } = useJsApiLoader({
-    id: "google-map-script",
-    googleMapsApiKey: process.env.REACT_APP_GOOGLE_MAPS_API_KEY
-  });
+  const center = {
+    lat: parseFloat(lat),
+    lng: parseFloat(lng)
+  };
 
   return (
-    <>
-      {isLoaded && (
-        <GoogleMap mapContainerStyle={containerStyle} center={center} zoom={10}>
-          {campsites.map((campsite) => (
-            <Circle
-              key={campsite.id}
-              center={{
-                lat: campsite.latitude,
-                lng: campsite.longitude
-              }}
-              radius={map.radius}
-            />
-          ))}
-        </GoogleMap>
-      )}
-    </>
+    <LoadScript googleMapsApiKey="AIzaSyDYELTx5aJJ9cwL9nzevICoo1CD5ILMaSI">
+      <GoogleMap mapContainerStyle={mapStyles} zoom={14} center={center}>
+        <Marker position={center} />
+      </GoogleMap>
+    </LoadScript>
   );
 };
 
-export default CampsiteMaps;
+export default Map;

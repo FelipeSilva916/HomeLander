@@ -10,7 +10,6 @@
 }
 
 .campsite-detail-info {
-  background-color: aqua;
   padding: 1rem;
   margin: 0.5rem;
   width: 300px;
@@ -35,8 +34,8 @@
   padding: 0 20px;
   box-sizing: border-box;
   background-color: #e6deb9;
-  width: 50%;
-  min-width: 300px;
+  width: 75%;
+  min-width: 400px;
   flex-wrap: wrap;
   padding: 25px;
   border-radius: 2rem;

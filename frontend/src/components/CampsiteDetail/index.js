@@ -9,6 +9,7 @@ import DeleteCampsiteButton from "../DeleteCampsiteButton";
 import { getReviewsByCampsiteId } from "../../store/reviews";
 import CreateReviewModal from "../CreateReviewModal";
 import EditReviewModal from "../EditReviewModal";
+import Map from "../GoogleMap/CampsiteMaps";
 
 const CampsiteDetail = ({ setShowModal }) => {
   const { campsiteId } = useParams();
@@ -73,7 +74,7 @@ const CampsiteDetail = ({ setShowModal }) => {
             </div>
           </div>
           <div className="campsite-map-container">
-            <h3>Map goes here</h3>
+            <Map lat={campsite?.latitude} lng={campsite?.longitude} />
           </div>
         </div>
       </div>
