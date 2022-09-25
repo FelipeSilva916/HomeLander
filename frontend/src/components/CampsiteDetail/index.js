@@ -65,10 +65,10 @@ const CampsiteDetail = ({ setShowModal }) => {
           <div className="campsite-map-container">
             <h3>Map goes here</h3>
           </div>
+          <div className="user-manipulation-button">{userManipulationBtn}</div>
         </div>
       </div>
       <div className="campsite-detail-container-reviews">
-        <div>{userManipulationBtn}</div>
         <div className="campsite-detail-info">Footer</div>
         <div>
           <CreateReviewModal />
