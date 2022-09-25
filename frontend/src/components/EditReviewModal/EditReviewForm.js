@@ -11,6 +11,7 @@ const EditReviewForm = ({ setShowModal, campsiteId }) => {
   const reviewId = review?.id;
   const [body, setBody] = useState(review?.body);
   const [errors, setErrors] = useState([]);
+  const [rating, setRating] = useState(review?.rating);
 
   // console.log(reviewId);
 
@@ -33,7 +34,8 @@ const EditReviewForm = ({ setShowModal, campsiteId }) => {
       editReview({
         id: reviewId,
         campsiteId,
-        body
+        body,
+        rating
       })
     )
       .then(() => {
@@ -55,6 +57,17 @@ const EditReviewForm = ({ setShowModal, campsiteId }) => {
             <li key={idx}>{error}</li>
           ))}
         </ul>
+        <label>
+          Rating
+          <input
+            type="number"
+            min="1"
+            max="5"
+            value={rating}
+            onChange={(e) => setRating(e.target.value)}
+            required
+          />
+        </label>
         <label>
           Description
           <input
