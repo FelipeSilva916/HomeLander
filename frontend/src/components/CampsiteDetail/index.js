@@ -3,7 +3,7 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import "./campsiteDetail.css";
-
+import DeleteReviewButton from "../DeleteReviewButton";
 import EditCampsiteModal from "../EditCampsitesModal";
 import DeleteCampsiteButton from "../DeleteCampsiteButton";
 import { getReviewsByCampsiteId } from "../../store/reviews";
@@ -42,6 +42,11 @@ const CampsiteDetail = ({ setShowModal }) => {
   let userEditReviewBtn;
   if (reviews) {
     userEditReviewBtn = <EditReviewModal campsiteId={campsiteId} />;
+  }
+
+  let userDeleteReviewBtn;
+  if (reviews) {
+    userDeleteReviewBtn = <DeleteReviewButton campsiteId={campsiteId} />;
   }
 
   console.log(reviewsArray);
@@ -84,6 +89,7 @@ const CampsiteDetail = ({ setShowModal }) => {
               <p>{review?.rating}</p>
               <p>{review?.body}</p>
               {review?.User?.id === user?.id && userEditReviewBtn}
+              {review?.User?.id === user?.id && userDeleteReviewBtn}
             </div>
           ))}
         </div>
