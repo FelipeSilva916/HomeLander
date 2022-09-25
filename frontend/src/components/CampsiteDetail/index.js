@@ -61,11 +61,13 @@ const CampsiteDetail = ({ setShowModal }) => {
             <p>{campsite?.description}</p>
             <p>{campsite?.latitude}</p>
             <p>{campsite?.longitude}</p>
+            <div className="user-manipulation-button">
+              {userManipulationBtn}
+            </div>
           </div>
           <div className="campsite-map-container">
             <h3>Map goes here</h3>
           </div>
-          <div className="user-manipulation-button">{userManipulationBtn}</div>
         </div>
       </div>
       <div className="campsite-detail-container-reviews">
