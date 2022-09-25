@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Modal } from "../../context/Modal";
 import EditReviewForm from "./EditReviewForm";
 
-function EditReviewModal() {
+function EditReviewModal({ campsiteId }) {
   const [showModal, setShowModal] = useState(false);
 
   return (
@@ -10,7 +10,7 @@ function EditReviewModal() {
       <button onClick={() => setShowModal(true)}>Edit Review</button>
       {showModal && (
         <Modal onClose={() => setShowModal(false)}>
-          <EditReviewForm />
+          <EditReviewForm campsiteId={campsiteId} setShowModal={setShowModal} />
         </Modal>
       )}
     </>

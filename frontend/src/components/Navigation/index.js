@@ -32,7 +32,6 @@ function Navigation({ isLoaded }) {
         </div>
         <h3>Create a site</h3>
         <CreateCampsiteModal />
-        <MapContainer />
       </div>
     );
   } else {

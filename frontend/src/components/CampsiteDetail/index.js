@@ -21,6 +21,7 @@ const CampsiteDetail = ({ setShowModal }) => {
     (review) => review.campsiteId === +campsiteId
   );
 
+  console.log();
   useEffect(() => {
     dispatch(getOneCampsite(+campsiteId));
     dispatch(getReviewsByCampsiteId(+campsiteId));
@@ -43,6 +44,7 @@ const CampsiteDetail = ({ setShowModal }) => {
     userEditReviewBtn = <EditReviewModal campsiteId={campsiteId} />;
   }
 
+  console.log(reviewsArray);
   return (
     <div className="campsite-detail-wrapper">
       <div className="campsite-detail-container-info">
@@ -81,7 +83,7 @@ const CampsiteDetail = ({ setShowModal }) => {
               <p>{review?.User?.username}</p>
               <p>{review?.rating}</p>
               <p>{review?.body}</p>
-              {review.User.id === user.id && userEditReviewBtn}
+              {review?.User?.id === user?.id && userEditReviewBtn}
             </div>
           ))}
         </div>

@@ -4,38 +4,41 @@ import { useParams, useHistory } from "react-router-dom";
 import { getOneCampsite } from "../../store/campsite";
 import { editReview, getReview } from "../../store/reviews";
 
-const EditReviewForm = ({ setShowModal }) => {
-  const { siteId } = useParams();
+const EditReviewForm = ({ setShowModal, campsiteId }) => {
   const dispatch = useDispatch();
   const history = useHistory();
-  const review = useSelector((state) => state.review[`${siteId}`]);
-  const [description, setDescription] = useState(null);
+  const review = useSelector((state) => state.review[`${campsiteId}`]);
+  const reviewId = review?.id;
+  const [description, setDescription] = useState(review?.body || "");
   const [errors, setErrors] = useState([]);
 
+  // console.log(reviewId);
+
   useEffect(() => {
-    dispatch(getOneCampsite(siteId));
-    dispatch(getReview(siteId));
-  }, [dispatch, siteId]);
+    dispatch(getOneCampsite(campsiteId));
+    dispatch(getReview(+campsiteId));
+  }, [dispatch, campsiteId]);
 
   useEffect(() => {
     if (review) {
-      setDescription(review.description);
+      setDescription(review?.body);
     }
   }, [review]);
 
   const handleSubmit = async (e) => {
-    e.preventDefault();
+    // e.preventDefault();
     setErrors([]);
 
     await dispatch(
       editReview({
-        id: siteId,
-        description
+        id: reviewId,
+        campsiteId,
+        body: description
       })
     )
       .then(() => {
         setShowModal(false);
-        history.push(`/campsites/${siteId}`);
+        // history.push(`/campsites/${campsiteId}`);
       })
       .catch(async (res) => {
         const data = await res.json();
@@ -54,7 +57,7 @@ const EditReviewForm = ({ setShowModal }) => {
         </ul>
         <label>
           Description
-          <textarea
+          <input
             type="text"
             value={description}
             onChange={(e) => setDescription(e.target.value)}
