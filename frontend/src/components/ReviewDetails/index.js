@@ -21,12 +21,7 @@ const ReviewsTable = ({ campsiteId }) => {
   let userEditReviewBtn;
   if (reviews) {
     // if (currentUserReview?.userId === user?.id) {
-    userEditReviewBtn = (
-      <EditReviewModal
-        campsiteId={campsiteId}
-        currentUserReview={currentUserReview}
-      />
-    );
+    userEditReviewBtn = <EditReviewModal campsiteId={campsiteId} />;
   }
 
   return (

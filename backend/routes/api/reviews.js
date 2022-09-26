@@ -44,23 +44,27 @@ router.delete("/:id", requireAuth, async (req, res) => {
 });
 
 // ======== PUT /api/reviews/:siteId - Update a review from current user ========//
-router.put("/:siteId", requireAuth, async (req, res) => {
+router.put("/:reviewId", requireAuth, async (req, res) => {
   const { user } = req;
+  const { reviewId } = req.params;
   const { rating, body } = req.body;
-  const campsiteId = req.params.siteId;
-  const review = await Review.findOne({
-    where: {
-      userId: user.id,
-      campsiteId
-    }
-  });
+  const review = await Review.findByPK(reviewId);
+
+  console.log("-------------", reviewId);
+
   if (!review) {
     const error = new Error("Review couldn't be found");
     error.status = 404;
     throw error;
   }
-  await review.update({ rating, body });
-  res.json({ message: "Review updated", statusCode: 200 });
+  if (user.id == review.userId) {
+    await review.update({ rating, body });
+    res.json({ message: "Review updated", statusCode: 200 });
+  } else {
+    const error = new Error("You can't update this review");
+    error.status = 403;
+    throw error;
+  }
 });
 
 // ======== GET /api/reviews/:sitId - Get all reviews for a campsite ========//
