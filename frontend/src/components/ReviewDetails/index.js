@@ -6,23 +6,11 @@ import EditReviewModal from "../EditReviewModal";
 const ReviewsTable = ({ campsiteId }) => {
   const dispatch = useDispatch();
   const reviewsArray = Object.values(useSelector((state) => state.review));
-  const reviews = reviewsArray.filter(
-    (review) => review?.campsiteId === +campsiteId
-  );
   const user = useSelector((state) => state.session.user);
-  const currentUserReview = reviews.find(
-    (review) => review?.userId === user?.id
-  );
-
+  console.log(reviewsArray);
   useEffect(() => {
     dispatch(getReviewsByCampsiteId(+campsiteId));
   }, [dispatch, campsiteId]);
-
-  let userEditReviewBtn;
-  if (reviews) {
-    // if (currentUserReview?.userId === user?.id) {
-    userEditReviewBtn = <EditReviewModal campsiteId={campsiteId} />;
-  }
 
   return (
     <div className="reviews-table">
@@ -33,7 +21,9 @@ const ReviewsTable = ({ campsiteId }) => {
           <p>{review?.rating}</p>
           <p>{review?.body}</p>
 
-          {review?.User?.id === user?.id && userEditReviewBtn}
+          {review?.User?.id === user?.id && (
+            <EditReviewModal campsiteId={campsiteId} />
+          )}
         </div>
       ))}
     </div>

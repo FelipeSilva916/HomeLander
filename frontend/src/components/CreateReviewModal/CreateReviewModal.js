@@ -20,16 +20,12 @@ const CreateReviewForm = ({ setShowModal }) => {
       userId: user.id,
       campsiteId: +campsiteId
     };
-    const postedReview = await dispatch(postReview(review))
-      .then(() => {
-        setShowModal(false);
-        history.push(`/campsites/${campsiteId}`);
-        setErrors([]);
-      })
-      .catch(async (res) => {
-        const data = await res.json();
-        if (data && data.errors) setErrors(data.errors);
-      });
+    const postedReview = await dispatch(postReview(review));
+    if (postedReview.errors) {
+      setErrors(postedReview.errors);
+    } else {
+      setShowModal(false);
+    }
   };
 
   return (

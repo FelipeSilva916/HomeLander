@@ -21,10 +21,8 @@ const EditReviewForm = ({ setShowModal, campsiteId }) => {
 
   const handleDelete = () => {
     dispatch(deleteReview(reviewId?.id));
-    history.push(`/campsites/${campsiteId}`);
+    history.go(`/campsites/${campsiteId}`);
   };
-
-  console.log(reviewId?.id);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -40,7 +38,7 @@ const EditReviewForm = ({ setShowModal, campsiteId }) => {
     )
       .then(() => {
         setShowModal(false);
-        // history.push(`/campsites/${campsiteId}`);
+        history.push(`/campsites/${campsiteId}`);
       })
       .catch(async (res) => {
         const data = await res.json();
@@ -78,8 +76,8 @@ const EditReviewForm = ({ setShowModal, campsiteId }) => {
           />
         </label>
         <button type="submit">Submit</button>
-        <button onClick={handleDelete}>Delete</button>
       </form>
+      <button onClick={handleDelete}>Delete</button>
     </div>
   );
 };

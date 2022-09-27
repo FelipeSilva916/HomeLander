@@ -23,7 +23,15 @@ router.post(
       rating,
       body
     });
-    res.json(newReview);
+    const fetchReview = await Review.findOne({
+      where: {
+        id: newReview.id
+      },
+      include: {
+        model: User
+      }
+    });
+    res.json(fetchReview);
     res.status(201);
   }
 );

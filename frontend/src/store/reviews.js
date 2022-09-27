@@ -114,7 +114,11 @@ export const postReview = (data) => async (dispatch) => {
   });
   if (response.ok) {
     const review = await response.json();
-    dispatch(reviewToPost(data));
+    dispatch(reviewToPost(review));
+    return review;
+  } else {
+    const data = await response.json();
+    if (data && data.errors) return data;
   }
 };
 
