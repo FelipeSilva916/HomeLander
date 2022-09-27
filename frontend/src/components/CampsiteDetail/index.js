@@ -68,6 +68,7 @@ const CampsiteDetail = ({ setShowModal }) => {
           </div>
           <div className="campsite-map-container">
             <Map lat={campsite?.latitude} lng={campsite?.longitude} />
+            <h1>hello</h1>
           </div>
         </div>
       </div>

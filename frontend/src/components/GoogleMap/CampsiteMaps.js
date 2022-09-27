@@ -1,8 +1,10 @@
 import React from "react";
-import { GoogleMap, LoadScript, Marker } from "@react-google-maps/api";
+import { GoogleMap, Marker, useLoadScript } from "@react-google-maps/api";
 
 const Map = ({ lat, lng }) => {
-  // const googleApiKey = process.env.REACT_APP_GOOGLE_MAPS_API;
+  const { isLoaded } = useLoadScript({
+    googleMapsApiKey: process.env.REACT_APP_NEXT_PUBLIC_GOOGLE_MAPS_API_KEY
+  });
 
   const mapStyles = {
     height: "300px",
@@ -15,20 +17,19 @@ const Map = ({ lat, lng }) => {
     lat: parseFloat(lat),
     lng: parseFloat(lng)
   };
+  console.log(center);
+  if (!isLoaded) return <div>Loading...</div>;
 
   return (
-    <LoadScript googleMapsApiKey="AIzaSyDYELTx5aJJ9cwL9nzevICoo1CD5ILMaSI">
-      <GoogleMap mapContainerStyle={mapStyles} zoom={14} center={center}>
-        <Marker
-          position={center}
-          // icon={{
-          //   url: "https://homelander.s3.us-west-1.amazonaws.com/mappin.svg",
-          //   scaledSize: new window.google.maps.Size(40, 50),
-          //   anchor: new window.google.maps.Point(15, 15)
-          // }}
-        />
-      </GoogleMap>
-    </LoadScript>
+    <GoogleMap mapContainerStyle={mapStyles} zoom={14} center={center}>
+      <Marker
+        position={center}
+        icon={{
+          url: "https://homelander.s3.us-west-1.amazonaws.com/mappin.svg",
+          scaledSize: new window.google.maps.Size(50, 60)
+        }}
+      />
+    </GoogleMap>
   );
 };
 
