@@ -15,8 +15,6 @@ const MyFavoriteCampsites = () => {
     (favorite) => favorite?.userId == sessionUser?.id
   );
 
-  console.log("favoriteId", favoriteId);
-
   useEffect(() => {
     dispatch(getAllFavorites()).then(() => setLoaded(true));
     dispatch(getAllCampsites());
@@ -26,10 +24,14 @@ const MyFavoriteCampsites = () => {
     return null;
   }
 
-  const handleDelete = (e) => {
-    e.preventDefault();
-    dispatch(deleteFavorite(favoriteId?.id));
-  };
+  let handleDelete;
+  favoriteId.map((favorite) => {
+    handleDelete = (e) => {
+      e.preventDefault();
+      dispatch(deleteFavorite(favorite?.id));
+    };
+  });
+
   const favCampsiteName = favorites.map((favorite) => {
     return campsiteState[favorite.campsiteId].name;
   });
