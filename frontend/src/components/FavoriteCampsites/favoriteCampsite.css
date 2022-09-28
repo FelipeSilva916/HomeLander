@@ -58,6 +58,15 @@
   cursor: pointer;
 }
 
+.my-favorite-title {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin: 0;
+  padding: 0;
+}
 .delete-favorite-button :hover {
   color: rgb(0, 0, 0);
 }
