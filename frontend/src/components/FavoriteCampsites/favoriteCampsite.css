@@ -17,6 +17,10 @@
   color: #fff;
 }
 
+.favorite-button-navbar {
+  font-size: 16px;
+}
+
 .favorite-site-card-item {
   display: flex;
   flex-direction: column;

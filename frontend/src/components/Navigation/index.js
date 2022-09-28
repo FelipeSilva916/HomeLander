@@ -20,6 +20,7 @@ function Navigation({ isLoaded }) {
         <div className="nav-bar">
           <div className="nav-bar-left">
             <HomeButton />
+            <CreateCampsiteModal />
           </div>
 
           <div className="nav-bar-right">
@@ -28,8 +29,6 @@ function Navigation({ isLoaded }) {
             <ProfileButton user={sessionUser} />
           </div>
         </div>
-        <h3>Create a site</h3>
-        <CreateCampsiteModal />
       </div>
     );
   } else {

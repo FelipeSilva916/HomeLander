@@ -11,7 +11,7 @@
 
 .nav-bar a {
   color: rgb(255, 255, 255);
-  font-weight: 400;
+  font-weight: 500;
   background: linear-gradient(
     145deg,
     rgb(144, 122, 72) 0%,
@@ -21,6 +21,11 @@
   text-decoration: none;
   padding: 0.5rem 1rem;
   border-radius: 0.25rem;
+  font-size: 16px;
+}
+
+.all-campsites-button {
+  padding: 0.5rem 1rem;
 }
 
 .nav-bar a:hover {
@@ -34,6 +39,7 @@
 
 .nav-bar button {
   color: rgb(255, 255, 255);
+  font-size: 16px;
   font-weight: 500;
   background: linear-gradient(
     145deg,
@@ -44,8 +50,12 @@
   text-decoration: none;
   padding: 0.5rem 1rem;
   border-radius: 0.25rem;
-  border-radius: 0.25rem;
   cursor: pointer;
+  border: none;
+}
+
+.nav-bar-left {
+  padding: 0.5rem 1rem;
 }
 
 .nav-bar button:hover {

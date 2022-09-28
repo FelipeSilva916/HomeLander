@@ -6,6 +6,7 @@ import Navigation from "./components/Navigation";
 import AllCampsites from "./components/AllCampsites";
 import CampsiteDetail from "./components/CampsiteDetail";
 import MyCampsites from "./components/MyCampsites";
+import Homepage from "./components/HomePage";
 
 function App() {
   const dispatch = useDispatch();
@@ -27,6 +28,9 @@ function App() {
           </Route>
           <Route path="/my/campsites">
             <MyCampsites />
+          </Route>
+          <Route exact path="/">
+            <Homepage />
           </Route>
         </Switch>
       )}

@@ -7,7 +7,12 @@ function FavoriteCampsitesModal() {
 
   return (
     <>
-      <button onClick={() => setShowModal(true)}>Favorites</button>
+      <button
+        className="favorite-button-navbar"
+        onClick={() => setShowModal(true)}
+      >
+        Favorites
+      </button>
       {showModal && (
         <Modal onClose={() => setShowModal(false)}>
           <MyFavoriteCampsites />
