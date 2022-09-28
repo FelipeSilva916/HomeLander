@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
-import { getAllFavorites } from "../../store/favorites";
+import { getAllFavorites, deleteFavorite } from "../../store/favorites";
 import { getAllCampsites } from "../../store/campsite";
 import "./favoriteCampsite.css";
 
@@ -10,6 +10,12 @@ const MyFavoriteCampsites = () => {
   const favorites = Object.values(useSelector((state) => state.favorite));
   const [loaded, setLoaded] = useState(false);
   const campsiteState = useSelector((state) => state.campsite);
+  const sessionUser = useSelector((state) => state.session.user);
+  const favoriteId = favorites.filter(
+    (favorite) => favorite?.userId == sessionUser?.id
+  );
+
+  console.log("favoriteId", favoriteId);
 
   useEffect(() => {
     dispatch(getAllFavorites()).then(() => setLoaded(true));
@@ -20,6 +26,10 @@ const MyFavoriteCampsites = () => {
     return null;
   }
 
+  const handleDelete = (e) => {
+    e.preventDefault();
+    dispatch(deleteFavorite(favoriteId?.id));
+  };
   const favCampsiteName = favorites.map((favorite) => {
     return campsiteState[favorite.campsiteId].name;
   });
@@ -42,7 +52,7 @@ const MyFavoriteCampsites = () => {
               />
             )}
             {favorite}
-            <button>
+            <button onClick={handleDelete}>
               <i className="fa-solid fa-trash-can" />
             </button>
           </div>

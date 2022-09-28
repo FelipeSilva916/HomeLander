@@ -12,6 +12,13 @@ const loadFavorites = (favorites) => {
   };
 };
 
+const removeFavorite = (favoriteId) => {
+  return {
+    type: REMOVE_FAVORITE,
+    favoriteId
+  };
+};
+
 //=========================================================
 // Action Creators
 //=========================================================
@@ -24,6 +31,14 @@ export const getAllFavorites = () => async (dispatch) => {
   }
 };
 
+export const deleteFavorite = (favoriteId) => async (dispatch) => {
+  const response = await csrfFetch(`/api/favorites/${favoriteId}`, {
+    method: "DELETE"
+  });
+  if (response.ok) {
+    dispatch(removeFavorite(favoriteId));
+  }
+};
 //=========================================================
 // Reducer
 //=========================================================
@@ -38,6 +53,12 @@ const favoriteReducer = (state = {}, action) => {
         newState[favorite.id] = favorite;
       });
       return newState;
+
+    case REMOVE_FAVORITE:
+      newState = { ...state };
+      delete newState[action.favoriteId];
+      return newState;
+
     default:
       return state;
   }

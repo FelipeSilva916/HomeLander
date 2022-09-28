@@ -9,7 +9,7 @@ const {
 const { requireAuth } = require("../../utils/auth");
 
 // ======== POST /api/favorites/:siteId - Add current campsite to favorites ========//
-router.post("/:siteId", requireAuth, async (req, res) => {
+router.post("/:", requireAuth, async (req, res) => {
   const { user } = req;
   const campsiteId = req.params.siteId;
 
@@ -27,23 +27,29 @@ router.post("/:siteId", requireAuth, async (req, res) => {
   res.status(201);
 });
 
-// ======== DELETE /api/favorites/:siteId - Delete a favorite by campsite ID ========//
-router.delete("/:siteId", requireAuth, async (req, res) => {
+// ======== DELETE /api/favorites/:favoriteID - Delete a favorite by campsite ID ========//
+
+router.delete("/:favoriteId", requireAuth, async (req, res) => {
   const { user } = req;
-  const campsiteId = req.params.siteId;
-  const favorite = await Favorite.findOne({
-    where: {
-      userId: user.id,
-      campsiteId
-    }
-  });
-  if (!favorite) {
+  const { favoriteId } = req.params;
+
+  if (!favoriteId) {
     const error = new Error("Favorite couldn't be found");
     error.status = 404;
     throw error;
   }
+
+  const favorite = await Favorite.findByPk(favoriteId);
+
+  if (favorite.userId !== user.id) {
+    const error = new Error("Unauthorized");
+    error.status = 401;
+    throw error;
+  }
+
   await favorite.destroy();
-  res.json({ message: "Favorite deleted", statusCode: 200 });
+  res.json(favorite);
+  res.status(201);
 });
 
 // ======== GET /api/favorites/:userId - Get all favorites for a user ========//

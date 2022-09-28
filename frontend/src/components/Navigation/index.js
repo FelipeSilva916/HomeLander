@@ -7,7 +7,6 @@ import DemoUser from "../DemoUser/DemoUser";
 import SignupFormModal from "../SignupModal";
 import AllCampsitesButton from "./AllCampsitesButton";
 import "./Navigation.css";
-import MyFavoriteCampsites from "../FavoriteCampsites/MyFavorites";
 import FavoriteCampsitesModal from "../FavoriteCampsites";
 import CreateCampsiteModal from "../CreateCampsiteModal";
 
