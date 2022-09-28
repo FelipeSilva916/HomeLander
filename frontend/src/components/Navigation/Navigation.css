@@ -56,6 +56,10 @@
 
 .nav-bar-left {
   padding: 0.5rem 1rem;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  gap: 0.5rem;
 }
 
 .nav-bar button:hover {
