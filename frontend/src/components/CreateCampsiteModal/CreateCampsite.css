@@ -7,6 +7,10 @@
   height: 35rem;
 }
 
+.create-campsite-button {
+  /* width: 2rem; */
+}
+
 .create-post-input-wrapper {
   display: flex;
   flex-direction: column;

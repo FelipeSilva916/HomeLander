@@ -54,7 +54,10 @@ const CreateCampsiteModal = () => {
 
   return (
     <>
-      <button onClick={() => setShowModal(true)}>
+      <button
+        onClick={() => setShowModal(true)}
+        className="create-campsite-button"
+      >
         <i className="fa-solid fa-location-plus"></i>
       </button>
       {showModal && (
