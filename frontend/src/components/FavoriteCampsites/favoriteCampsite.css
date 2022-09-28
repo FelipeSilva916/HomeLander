@@ -21,14 +21,45 @@
   font-size: 16px;
 }
 
+.favorite-site-card-content {
+  display: flex;
+  flex-direction: column;
+}
+
+.favorite-site-info-erase {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  margin: 0%;
+  padding: 0;
+}
+
 .favorite-site-card-item {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  margin-bottom: 1rem;
   padding: 1rem;
   gap: 0.3rem;
+}
+
+.favorite-site-name {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.delete-favorite-button {
+  background-color: #fff;
+  border: none;
+  color: #ff0707;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.delete-favorite-button :hover {
+  color: rgb(0, 0, 0);
 }
 
 .favorite-campsite-preview {

@@ -45,18 +45,22 @@ const MyFavoriteCampsites = () => {
       <h3>My Favorites</h3>
       <div className="favorite-site-card">
         {favCampsiteName?.map((favorite, i) => (
-          <div className="favorite-site-card-item" key={i}>
-            {favCampsiteImg && (
-              <img
-                className="favorite-campsite-preview"
-                src={favCampsiteImg[i]}
-                alt="campsite"
-              />
-            )}
-            {favorite}
-            <button onClick={handleDelete}>
-              <i className="fa-solid fa-trash-can" />
-            </button>
+          <div className="favorite-site-card-content">
+            <div className="favorite-site-card-item" key={i}>
+              {favCampsiteImg && (
+                <img
+                  className="favorite-campsite-preview"
+                  src={favCampsiteImg[i]}
+                  alt="campsite"
+                />
+              )}
+            </div>
+            <div className="favorite-site-info-erase">
+              <div className="favorite-site-name">{favorite}</div>
+              <button onClick={handleDelete} className="delete-favorite-button">
+                <i className="fa-solid fa-trash-xmark" />
+              </button>
+            </div>
           </div>
         ))}
       </div>
