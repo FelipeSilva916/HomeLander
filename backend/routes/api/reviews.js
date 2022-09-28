@@ -51,14 +51,12 @@ router.delete("/:id", requireAuth, async (req, res) => {
   res.json({ message: "Review deleted", statusCode: 200 });
 });
 
-// ======== PUT /api/reviews/:siteId - Update a review from current user ========//
+// ======== PUT /api/reviews/:reviewID - Update a review from current user ========//
 router.put("/:reviewId", requireAuth, async (req, res) => {
   const { user } = req;
   const { reviewId } = req.params;
   const { rating, body } = req.body;
-  const review = await Review.findByPK(reviewId);
-
-  console.log("-------------", reviewId);
+  const review = await Review.findByPk(reviewId);
 
   if (!review) {
     const error = new Error("Review couldn't be found");
@@ -67,7 +65,7 @@ router.put("/:reviewId", requireAuth, async (req, res) => {
   }
   if (user.id == review.userId) {
     await review.update({ rating, body });
-    res.json({ message: "Review updated", statusCode: 200 });
+    res.json(review);
   } else {
     const error = new Error("You can't update this review");
     error.status = 403;

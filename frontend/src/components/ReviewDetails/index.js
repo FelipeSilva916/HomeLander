@@ -7,6 +7,8 @@ const ReviewsTable = ({ campsiteId }) => {
   const dispatch = useDispatch();
   const reviewsArray = Object.values(useSelector((state) => state.review));
   const user = useSelector((state) => state.session.user);
+  const reviews = useSelector((state) => state.review);
+  console.log(reviews);
   console.log(reviewsArray);
   useEffect(() => {
     dispatch(getReviewsByCampsiteId(+campsiteId));
@@ -21,7 +23,7 @@ const ReviewsTable = ({ campsiteId }) => {
           <p>{review?.rating}</p>
           <p>{review?.body}</p>
 
-          {review?.User?.id === user?.id && (
+          {review?.userId === user?.id && (
             <EditReviewModal campsiteId={campsiteId} />
           )}
         </div>

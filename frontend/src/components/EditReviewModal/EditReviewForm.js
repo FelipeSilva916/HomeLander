@@ -2,7 +2,13 @@ import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useParams, useHistory } from "react-router-dom";
 import { getOneCampsite } from "../../store/campsite";
-import { editReview, getReview, deleteReview } from "../../store/reviews";
+import {
+  editReview,
+  getReview,
+  deleteReview,
+  getReviews,
+  getReviewsByCampsiteId
+} from "../../store/reviews";
 
 const EditReviewForm = ({ setShowModal, campsiteId }) => {
   const dispatch = useDispatch();
@@ -16,12 +22,15 @@ const EditReviewForm = ({ setShowModal, campsiteId }) => {
 
   useEffect(() => {
     dispatch(getOneCampsite(campsiteId));
+    dispatch(getReviewsByCampsiteId(campsiteId));
     dispatch(getReview(reviewId?.id));
   }, [dispatch, campsiteId]);
 
-  const handleDelete = () => {
-    dispatch(deleteReview(reviewId?.id));
-    history.go(`/campsites/${campsiteId}`);
+  const handleDelete = async () => {
+    await dispatch(deleteReview(reviewId?.id));
+    setShowModal(false);
+    // history.push(`/campsites/${campsiteId}`);
+    history.push(`/campsites/${campsiteId}`);
   };
 
   const handleSubmit = (e) => {
@@ -30,8 +39,8 @@ const EditReviewForm = ({ setShowModal, campsiteId }) => {
 
     dispatch(
       editReview({
+        userId: user?.id,
         id: reviewId?.id,
-        campsiteId,
         body,
         rating
       })
