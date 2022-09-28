@@ -42,9 +42,13 @@ const MyFavoriteCampsites = () => {
               />
             )}
             {favorite}
+            <button>
+              <i className="fa-solid fa-trash-can" />
+            </button>
           </div>
         ))}
       </div>
+      <div></div>
     </div>
   );
 };
