@@ -13,12 +13,13 @@
   flex-wrap: wrap;
   align-items: center;
   justify-content: center;
+  gap: 1rem;
 }
 
 .campsite-card {
   display: flex;
-  width: 30rem;
-
+  width: 400px;
+  border: #ff4f00 solid 2px;
   flex-direction: column;
   align-items: center;
   justify-content: center;
