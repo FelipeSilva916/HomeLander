@@ -20,11 +20,11 @@ function Navigation({ isLoaded }) {
         <div className="nav-bar">
           <div className="nav-bar-left">
             <HomeButton />
-            <CreateCampsiteModal />
+            <AllCampsitesButton />
           </div>
 
           <div className="nav-bar-right">
-            <AllCampsitesButton />
+            <CreateCampsiteModal />
             <FavoriteCampsitesModal />
             <ProfileButton user={sessionUser} />
           </div>
