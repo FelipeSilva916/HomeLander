@@ -35,7 +35,12 @@ function Navigation({ isLoaded }) {
     sessionLinks = (
       <div className="whole-page">
         <div className="nav-bar">
-          <div className="nav-bar-left">⛺️</div>
+          <div className="nav-bar-left">
+            <i
+              className="fa-light fa-campground"
+              style={{ color: "white", fontSize: "2rem" }}
+            ></i>
+          </div>
           <div className="nav-bar-right">
             <LoginFormModal />
             <SignupFormModal />

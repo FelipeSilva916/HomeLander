@@ -58,7 +58,7 @@ const CreateCampsiteModal = () => {
         onClick={() => setShowModal(true)}
         className="create-campsite-button"
       >
-        <i className="fa-solid fa-location-plus"></i>
+        <i className="fa-solid fa-location-plus fa-flip"></i>
       </button>
       {showModal && (
         <Modal onClose={() => setShowModal(false)}>

@@ -1,13 +1,17 @@
 .signup-btn {
   display: inline-block;
   text-align: center;
-  background-color: #f50;
+  background-color: #4b6b3c;
   color: #fff;
   width: 50%;
   height: 48px;
   font-size: 20px;
   border: 1px solid rgb(0, 0, 0);
   border-radius: 5px;
+}
+
+.signup-btn:hover {
+  background-color: #ff4f00;
 }
 
 form {

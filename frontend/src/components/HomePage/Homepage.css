@@ -21,25 +21,20 @@
   opacity: 0.75;
   width: 30rem;
   border-radius: 10px;
+  padding: 1rem;
 }
 
 .homepage-title {
   display: flex;
   align-items: center;
   justify-content: center;
-  flex-direction: column;
+  flex-direction: row;
   flex-wrap: wrap;
-}
-.homepage-title h2 {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background-color: crimson;
 }
 
 @media screen and (max-width: 768px) {
   .homepage__contents {
-    width: 40%;
-    background-color: aqua;
+    width: 22rem;
+    padding: 2rem;
   }
 }

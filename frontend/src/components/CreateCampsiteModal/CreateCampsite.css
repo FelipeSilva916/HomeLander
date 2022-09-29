@@ -46,8 +46,13 @@
   height: 2rem;
   border: 1px solid black;
   border-radius: 5px;
-  background-color: #ff4f00;
+  background-color: #4b6b3c;
   margin-top: 1rem;
   color: white;
   font-weight: 600;
+  font-size: 16px;
+}
+
+.create-submit:hover {
+  background-color: #ff4f00;
 }

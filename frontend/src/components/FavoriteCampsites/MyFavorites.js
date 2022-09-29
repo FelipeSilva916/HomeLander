@@ -58,7 +58,7 @@ const MyFavoriteCampsites = () => {
             <div className="favorite-site-info-erase">
               <div className="favorite-site-name">{favorite}</div>
               <button onClick={handleDelete} className="delete-favorite-button">
-                <i className="fa-solid fa-trash-xmark fa-shake" />
+                <i className="fa-solid fa-trash-xmark" />
               </button>
             </div>
           </div>
