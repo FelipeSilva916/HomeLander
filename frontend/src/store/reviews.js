@@ -99,7 +99,6 @@ export const deleteReview = (review) => async (dispatch) => {
 
 //create a review for a campsite by ID
 export const postReview = (data) => async (dispatch) => {
-  console.log(data);
   const response = await csrfFetch(`/api/reviews/${data.campsiteId}`, {
     method: "POST",
     headers: {

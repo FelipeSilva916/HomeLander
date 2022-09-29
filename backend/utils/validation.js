@@ -63,7 +63,6 @@ const validateReview = [
 const validateReviewUnique = async (req, res, next) => {
   const { user } = req;
   const { siteId } = req.params;
-  console.log(siteId);
   const review = await Review.findOne({
     where: {
       userId: user.id,

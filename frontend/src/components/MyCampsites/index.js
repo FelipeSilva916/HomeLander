@@ -7,7 +7,6 @@ const MyCampsites = () => {
   const dispatch = useDispatch();
   const user = useSelector((state) => state.session.user);
   const campsites = useSelector((state) => state.campsite);
-  console.log(campsites);
 
   useEffect(() => {
     dispatch(getMyCampsites());

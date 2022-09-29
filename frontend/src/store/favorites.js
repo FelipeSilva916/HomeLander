@@ -77,11 +77,13 @@ const favoriteReducer = (state = {}, action) => {
       return newState;
 
     case REMOVE_FAVORITE:
+      console.log("REMOVE_FAVORITE", action);
       newState = { ...state };
       delete newState[action.favoriteId];
       return newState;
 
     case ADD_FAVORITE:
+      console.log("ADD_FAVORITE", action);
       newState = { ...state };
       newState[action.favorite.id] = action.favorite;
       return newState;

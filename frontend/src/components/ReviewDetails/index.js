@@ -8,8 +8,7 @@ const ReviewsTable = ({ campsiteId }) => {
   const reviewsArray = Object.values(useSelector((state) => state.review));
   const user = useSelector((state) => state.session.user);
   const reviews = useSelector((state) => state.review);
-  console.log(reviews);
-  console.log(reviewsArray);
+
   useEffect(() => {
     dispatch(getReviewsByCampsiteId(+campsiteId));
   }, [dispatch, campsiteId]);

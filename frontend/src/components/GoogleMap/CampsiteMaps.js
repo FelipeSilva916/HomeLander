@@ -17,7 +17,6 @@ const Map = ({ lat, lng }) => {
     lat: parseFloat(lat),
     lng: parseFloat(lng)
   };
-  console.log(center);
   if (!isLoaded) return <div>Loading...</div>;
 
   return (
