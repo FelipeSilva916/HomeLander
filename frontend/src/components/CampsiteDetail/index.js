@@ -33,7 +33,6 @@ const CampsiteDetail = ({ setShowModal }) => {
     }
   }
 
-  console.log(campsite);
   return (
     <div className="campsite-detail-wrapper">
       <div className="campsite-detail-container-info">
