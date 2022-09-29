@@ -34,7 +34,7 @@ module.exports = {
         //campsite 4
         userId: 2,
         latitude: 43.70916,
-        longitude: 110.5893,
+        longitude: -110.5893,
         name: "Grand Teton National Park",
         previewImage: "https://u.cubeupload.com/felipe916/DSC0767HDREdit.jpg",
         description: "Description for Grand Teton National Park"
