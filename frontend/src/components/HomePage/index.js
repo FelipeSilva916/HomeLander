@@ -2,9 +2,11 @@ import "./Homepage.css";
 
 const Homepage = () => {
   return (
-    <div className="homepage">
-      <h2>⛺️ Welcome to CampLife!</h2>
-      <p>Find your next adventure!</p>
+    <div className="homepage__container">
+      <div className="homepage__contents">
+        <h2>⛺️ Welcome to HomeLander!</h2>
+        <p>Find your next adventure!</p>
+      </div>
     </div>
   );
 };
