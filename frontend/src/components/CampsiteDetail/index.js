@@ -33,6 +33,7 @@ const CampsiteDetail = ({ setShowModal }) => {
     }
   }
 
+  console.log(campsite);
   return (
     <div className="campsite-detail-wrapper">
       <div className="campsite-detail-container-info">
@@ -49,14 +50,13 @@ const CampsiteDetail = ({ setShowModal }) => {
             <p>Uploaded By: {campsite?.userId} </p>
             <p>Rating: {campsite?.averageRating}</p>
             <p>Description: {campsite?.description}</p>
-            <AddFavoriteButton campsiteId={campsiteId} />
 
             <div>{userManipulationBtn}</div>
           </div>
           <div className="campsite-map-container">
             <Map lat={campsite?.latitude} lng={campsite?.longitude} />
-            <h1>hello</h1>
           </div>
+          <AddFavoriteButton campsiteId={campsiteId} />
         </div>
       </div>
       <div className="campsite-detail-container-reviews">
