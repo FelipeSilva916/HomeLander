@@ -5,25 +5,41 @@
   justify-content: center;
   height: 100vh;
   width: 100vw;
-  background-color: chartreuse;
   background-image: url("https://u.cubeupload.com/felipe916/TLC1393Edit.jpg");
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
   background-attachment: fixed;
-  padding: 50px;
 }
 
 .homepage__contents {
   display: flex;
-  flex-direction: column;
   align-items: center;
   justify-content: center;
-  flex-wrap: wrap;
-  height: 100vh;
+  flex-direction: column;
   background-color: white;
-  opacity: 0.8;
-  height: 25%;
-  width: 50%;
+  opacity: 0.75;
+  width: 30rem;
   border-radius: 10px;
+}
+
+.homepage-title {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  flex-wrap: wrap;
+}
+.homepage-title h2 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: crimson;
+}
+
+@media screen and (max-width: 768px) {
+  .homepage__contents {
+    width: 40%;
+    background-color: aqua;
+  }
 }
