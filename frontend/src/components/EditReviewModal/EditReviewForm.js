@@ -1,12 +1,11 @@
 import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { useParams, useHistory } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import { getOneCampsite } from "../../store/campsite";
 import {
   editReview,
   getReview,
   deleteReview,
-  getReviews,
   getReviewsByCampsiteId
 } from "../../store/reviews";
 
@@ -24,7 +23,7 @@ const EditReviewForm = ({ setShowModal, campsiteId }) => {
     dispatch(getOneCampsite(campsiteId));
     dispatch(getReviewsByCampsiteId(campsiteId));
     dispatch(getReview(reviewId?.id));
-  }, [dispatch, campsiteId]);
+  }, [dispatch, campsiteId, reviewId?.id]);
 
   const handleDelete = async () => {
     await dispatch(deleteReview(reviewId?.id));

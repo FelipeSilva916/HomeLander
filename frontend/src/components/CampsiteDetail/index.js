@@ -3,16 +3,10 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import "./campsiteDetail.css";
-import DeleteReviewButton from "../DeleteReviewButton";
 import EditCampsiteModal from "../EditCampsitesModal";
 import DeleteCampsiteButton from "../DeleteCampsiteButton";
-import {
-  deleteReview,
-  getReviews,
-  getReviewsByCampsiteId
-} from "../../store/reviews";
+
 import CreateReviewModal from "../CreateReviewModal";
-import EditReviewModal from "../EditReviewModal";
 import Map from "../GoogleMap/CampsiteMaps";
 import ReviewsTable from "../ReviewDetails";
 
@@ -21,18 +15,9 @@ const CampsiteDetail = ({ setShowModal }) => {
   const dispatch = useDispatch();
   const campsite = useSelector((state) => state.campsite[campsiteId]);
   const user = useSelector((state) => state.session.user);
-  const reviewsArray = Object.values(useSelector((state) => state.review));
-  const reviews = reviewsArray.filter(
-    (review) => review?.campsiteId === +campsiteId
-  );
-
-  // const currentUserReview = reviews.find(
-  //   (review) => review?.userId === user?.id
-  // );
 
   useEffect(() => {
     dispatch(getOneCampsite(+campsiteId));
-    // dispatch(getReviewsByCampsiteId(+campsiteId));
   }, [dispatch, campsiteId]);
 
   let userManipulationBtn;
