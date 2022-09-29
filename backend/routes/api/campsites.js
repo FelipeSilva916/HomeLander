@@ -26,6 +26,7 @@ router.post("/:id/images", requireAuth, async (req, res) => {
   const { id } = req.params;
   const { imageUrl } = req.body;
   const campsite = await Campsite.findByPk(id);
+
   if (!campsite) {
     res.status(404);
     res.json({ error: "Campsite not found" });
@@ -38,6 +39,7 @@ router.post("/:id/images", requireAuth, async (req, res) => {
       imageUrl,
       userId: user.id
     });
+
     res.json(newCampsiteImage);
     res.status(201);
   }
