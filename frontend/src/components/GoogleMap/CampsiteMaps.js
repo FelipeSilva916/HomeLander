@@ -24,8 +24,8 @@ const Map = ({ lat, lng }) => {
       <Marker
         position={center}
         icon={{
-          url: "https://homelander.s3.us-west-1.amazonaws.com/mappin.svg",
-          scaledSize: new window.google.maps.Size(50, 60)
+          url: "https://u.cubeupload.com/felipe916/vectorstock28985084.png",
+          scaledSize: new window.google.maps.Size(50, 50)
         }}
       />
     </GoogleMap>

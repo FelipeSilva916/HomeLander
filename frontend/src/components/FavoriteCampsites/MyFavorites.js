@@ -44,7 +44,7 @@ const MyFavoriteCampsites = () => {
       <h3 className="my-favorite-title">My Favorites</h3>
       <div className="favorite-site-card">
         {favCampsiteName?.map((favorite, i) => (
-          <div className="favorite-site-card-content">
+          <div className="favorite-site-card-content" key={i}>
             <div className="favorite-site-card-item" key={i}>
               {favCampsiteImg && (
                 <img

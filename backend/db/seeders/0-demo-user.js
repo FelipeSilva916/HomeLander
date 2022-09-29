@@ -19,7 +19,7 @@ module.exports = {
       {
         //userIdx: 3
         email: "princess@user.io",
-        username: "InfluencerPrincess",
+        username: "PreppyInfluencer",
         hashedPassword: bcrypt.hashSync("password3")
       }
     ]);
@@ -32,7 +32,7 @@ module.exports = {
       "Users",
       {
         username: {
-          [Op.in]: ["Demo-lition", "Felipe", "InfluencerPrincess"]
+          [Op.in]: ["Demo-lition", "Felipe", "PreppyInfluencer"]
         }
       },
       {}

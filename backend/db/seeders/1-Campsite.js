@@ -9,8 +9,7 @@ module.exports = {
         latitude: 37.4003,
         longitude: -118.7531,
         name: "Little Lakes Valley",
-        previewImage:
-          "https://homelander.s3.us-west-1.amazonaws.com/littleLakes3.jpg",
+        previewImage: "https://u.cubeupload.com/felipe916/TLC7312HDRPano.jpg",
         description: "Description for Little Lakes Valley"
       },
       {
@@ -19,8 +18,7 @@ module.exports = {
         latitude: 37.1665,
         longitude: -118.6356,
         name: "Moonlight Falls",
-        previewImage:
-          "https://homelander.s3.us-west-1.amazonaws.com/moonLitFalls1.jpg",
+        previewImage: "https://u.cubeupload.com/felipe916/TLC5373Edit.jpg",
         description: "Description for Moonlight Falls"
       },
       {
@@ -28,9 +26,8 @@ module.exports = {
         userId: 1,
         latitude: -50.9353,
         longitude: -72.9079,
-        name: "Torres De Paine",
-        previewImage:
-          "https://homelander.s3.us-west-1.amazonaws.com/patagonia1.jpg",
+        name: "Torres Del Paine",
+        previewImage: "https://u.cubeupload.com/felipe916/DSC5130Edit.jpg",
         description: "Description for Torres De Paine"
       },
       {
@@ -39,8 +36,7 @@ module.exports = {
         latitude: 43.70916,
         longitude: 110.5893,
         name: "Grand Teton National Park",
-        previewImage:
-          "https://homelander.s3.us-west-1.amazonaws.com/teton1.jpg",
+        previewImage: "https://u.cubeupload.com/felipe916/DSC0767HDREdit.jpg",
         description: "Description for Grand Teton National Park"
       },
       {
@@ -49,8 +45,7 @@ module.exports = {
         latitude: 36.6374,
         longitude: -117.5739,
         name: "Death Valley",
-        previewImage:
-          "https://homelander.s3.us-west-1.amazonaws.com/deathValley3.jpg",
+        previewImage: "https://u.cubeupload.com/felipe916/DSC8569Edit.jpg",
         description: "Description for Death Valley"
       }
     ]);

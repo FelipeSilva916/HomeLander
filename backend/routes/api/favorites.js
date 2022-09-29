@@ -6,14 +6,14 @@ const { requireAuth } = require("../../utils/auth");
 // ======== POST /api/favorites/:siteId - Add current campsite to favorites ========//
 router.post("/:campsiteId", requireAuth, async (req, res) => {
   const { user } = req;
-  const campsiteId = req.params.campsiteId;
+  const campsiteId = parseInt(req.params.campsiteId);
 
   if (!campsiteId) {
     const error = new Error("Campsite couldn't be found");
     error.status = 404;
     throw error;
   }
-
+  //add custom validator for adding a string
   const newFavorite = await Favorite.create({
     userId: user.id,
     campsiteId
