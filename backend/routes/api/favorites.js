@@ -1,17 +1,12 @@
 const express = require("express");
 const router = express.Router();
-const {
-  Campsite,
-  Review,
-  CampsiteImage,
-  Favorite
-} = require("../../db/models");
+const { Favorite } = require("../../db/models");
 const { requireAuth } = require("../../utils/auth");
 
 // ======== POST /api/favorites/:siteId - Add current campsite to favorites ========//
-router.post("/:", requireAuth, async (req, res) => {
+router.post("/:campsiteId", requireAuth, async (req, res) => {
   const { user } = req;
-  const campsiteId = req.params.siteId;
+  const campsiteId = req.params.campsiteId;
 
   if (!campsiteId) {
     const error = new Error("Campsite couldn't be found");

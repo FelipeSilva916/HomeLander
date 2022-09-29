@@ -19,6 +19,13 @@ const removeFavorite = (favoriteId) => {
   };
 };
 
+const addToFavorites = (favorite) => {
+  return {
+    type: ADD_FAVORITE,
+    favorite
+  };
+};
+
 //=========================================================
 // Action Creators
 //=========================================================
@@ -39,6 +46,21 @@ export const deleteFavorite = (favoriteId) => async (dispatch) => {
     dispatch(removeFavorite(favoriteId));
   }
 };
+
+export const addFavorite = (campsiteId) => async (dispatch) => {
+  const response = await csrfFetch(`/api/favorites/${campsiteId.id}`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify({ campsiteId })
+  });
+
+  if (response.ok) {
+    const favorite = await response.json();
+    dispatch(addToFavorites(favorite));
+  }
+};
 //=========================================================
 // Reducer
 //=========================================================
@@ -57,6 +79,11 @@ const favoriteReducer = (state = {}, action) => {
     case REMOVE_FAVORITE:
       newState = { ...state };
       delete newState[action.favoriteId];
+      return newState;
+
+    case ADD_FAVORITE:
+      newState = { ...state };
+      newState[action.favorite.id] = action.favorite;
       return newState;
 
     default:

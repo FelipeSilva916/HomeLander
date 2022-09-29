@@ -9,6 +9,7 @@ import DeleteCampsiteButton from "../DeleteCampsiteButton";
 import CreateReviewModal from "../CreateReviewModal";
 import Map from "../GoogleMap/CampsiteMaps";
 import ReviewsTable from "../ReviewDetails";
+import AddFavoriteButton from "../AddFavoriteButton";
 
 const CampsiteDetail = ({ setShowModal }) => {
   const { campsiteId } = useParams();
@@ -48,6 +49,7 @@ const CampsiteDetail = ({ setShowModal }) => {
             <p>Uploaded By: {campsite?.userId} </p>
             <p>Rating: {campsite?.averageRating}</p>
             <p>Description: {campsite?.description}</p>
+            <AddFavoriteButton campsiteId={campsiteId} />
 
             <div>{userManipulationBtn}</div>
           </div>
