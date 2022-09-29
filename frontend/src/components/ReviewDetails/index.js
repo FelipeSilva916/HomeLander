@@ -18,15 +18,20 @@ const ReviewsTable = ({ campsiteId }) => {
       <h1>Reviews</h1>
       {reviewsArray.map((review, i) => (
         <div key={i}>
-          <div>
+          <div className="review-username">
             <p>{review?.User?.username}</p>
           </div>
-          <p>{review?.rating}</p>
-          <p>{review?.body}</p>
-
-          {review?.userId === user?.id && (
-            <EditReviewModal campsiteId={campsiteId} />
-          )}
+          <div className="review-rating">
+            <p>{review?.rating}</p>
+          </div>
+          <div className="review-content">
+            <p>{review?.body}</p>
+          </div>
+          <div className="review-edit">
+            {review?.userId === user?.id && (
+              <EditReviewModal campsiteId={campsiteId} />
+            )}
+          </div>
         </div>
       ))}
     </div>

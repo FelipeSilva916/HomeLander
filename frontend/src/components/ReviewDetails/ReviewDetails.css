@@ -1,5 +1,54 @@
 .reviews-table {
-  background-color: blueviolet;
   width: 100%;
   margin: 1rem 0;
+}
+
+.review-username {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin: 0;
+  padding: 0;
+  text-align: center;
+  color: #907a48;
+}
+
+.review-rating {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin: 0;
+  padding: 0;
+  text-align: center;
+  color: #907a48;
+}
+
+.review-content {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin: 0;
+  padding: 0;
+  text-align: center;
+  color: #907a48;
+}
+
+.review-edit {
+  margin: 0 1rem;
+  padding: 0.5rem;
+  color: #907a48;
+  border-radius: 0.5rem;
+  font-size: 1rem;
+  text-align: center;
+}
+
+.review-edit button {
+  margin: 0 1rem;
+  padding: 0.5rem;
+  color: #907a48;
+  background-color: #3a4928;
+  border-radius: 0.5rem;
+  font-size: 1rem;
+}
+
+.review-edit button:hover {
+  background-color: #907a48;
+  color: #3a4928;
 }
