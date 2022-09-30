@@ -1,7 +1,10 @@
 .campsite-images-box {
   height: 300px;
-  width: 100%;
+  /* width: 100%; */
   background-color: chartreuse;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .campsite-images-image {
@@ -13,6 +16,9 @@
 
 .campsite-images {
   display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
   height: 100%;
   width: 100%;
   background-color: red;
