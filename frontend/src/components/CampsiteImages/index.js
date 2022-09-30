@@ -11,6 +11,22 @@ const CampsiteImages = ({ campsiteId }) => {
   const [currentImage, setCurrentImage] = useState(allImages[0]);
   console.log(currentImage);
 
+  const handleSwipeRight = () => {
+    const currentIndex = allImages.indexOf(currentImage);
+    const nextImage = allImages[currentIndex + 1];
+    if (nextImage) {
+      setCurrentImage(nextImage);
+    }
+  };
+
+  const handleSwipeLeft = () => {
+    const currentIndex = allImages.indexOf(currentImage);
+    const prevImage = allImages[currentIndex - 1];
+    if (prevImage) {
+      setCurrentImage(prevImage);
+    }
+  };
+
   useEffect(() => {
     dispatch(getImages(+campsiteId));
   }, [dispatch, campsiteId]);
@@ -18,16 +34,14 @@ const CampsiteImages = ({ campsiteId }) => {
   return (
     <>
       <h1>Campsite Gallery</h1>
-      <div className="campsite-images">
-        {allImages.map((image, i) => (
-          <div className="campsite-images-box" key={i}>
-            <img
-              className="campsite-images-image"
-              src={image?.imageUrl}
-              alt={image?.imageUrl}
-            />
-          </div>
-        ))}
+      <div className="image-container">
+        <div className="image">
+          <img src={currentImage?.imageUrl} alt="campsite" />
+        </div>
+        <div className="image-buttons">
+          <button onClick={handleSwipeLeft}>{"<"}</button>
+          <button onClick={handleSwipeRight}>{">"}</button>
+        </div>
       </div>
     </>
   );
