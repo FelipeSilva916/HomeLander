@@ -62,6 +62,7 @@ const CampsiteDetail = ({ setShowModal }) => {
       <div>
         <AddCampsiteImage />
       </div>
+      <h1>Campsite Images</h1>
       <div className="campsite-detail-container-reviews">
         <div>
           <CreateReviewModal />

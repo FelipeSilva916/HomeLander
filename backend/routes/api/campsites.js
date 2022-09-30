@@ -155,6 +155,23 @@ router.get("/:id", async (req, res) => {
   return res.json(campsite);
 });
 
+// ======== GET /api/campsites/:campsiteId/images ========//
+
+router.get("/:campsiteId/images", async (req, res) => {
+  const { campsiteId } = req.params;
+  const campsite = await Campsite.findByPk(campsiteId);
+  if (!campsite) {
+    res.status(404);
+    res.json({ error: "Campsite not found" });
+  }
+  const campsiteImages = await CampsiteImage.findAll({
+    where: {
+      campsiteId
+    }
+  });
+  res.json(campsiteImages);
+});
+
 //========= GET /api/campsites - Get all campsites =========//
 router.get("/", async (req, res) => {
   const campsites = await Campsite.findAll();

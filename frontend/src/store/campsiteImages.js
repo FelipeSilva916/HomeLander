@@ -2,9 +2,9 @@ import { csrfFetch } from "./csrf";
 
 export const ADD_IMAGE = "campsites/addImage";
 export const DELETE_IMAGE = "campsites/deleteImage";
+export const LOAD_IMAGES = "campsites/loadImages";
 
 //=========================================================
-
 const addImage = (image) => {
   return {
     type: ADD_IMAGE,
@@ -19,10 +19,15 @@ const deleteImage = (image) => {
   };
 };
 
+const loadImages = (images) => {
+  return {
+    type: LOAD_IMAGES,
+    images
+  };
+};
 //=========================================================
 // Action Creators
 //=========================================================
-
 export const addCampsiteImage = (campsiteId, imageUrl) => async (dispatch) => {
   const response = await csrfFetch(`/api/campsites/${campsiteId}/images`, {
     method: "POST",
@@ -35,6 +40,15 @@ export const addCampsiteImage = (campsiteId, imageUrl) => async (dispatch) => {
   if (response.ok) {
     const image = await response.json();
     dispatch(addImage(image));
+  }
+};
+
+export const getImages = (campsiteId) => async (dispatch) => {
+  const response = await csrfFetch(`/api/campsites/${campsiteId}/images`);
+
+  if (response.ok) {
+    const images = await response.json();
+    dispatch(loadImages(images));
   }
 };
 
