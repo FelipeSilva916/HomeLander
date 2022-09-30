@@ -11,6 +11,7 @@ import Map from "../GoogleMap/CampsiteMaps";
 import ReviewsTable from "../ReviewDetails";
 import AddFavoriteButton from "../AddFavoriteButton";
 import AddCampsiteImage from "../AddCampsiteImage";
+import CampsiteImages from "../CampsiteImages";
 
 const CampsiteDetail = ({ setShowModal }) => {
   const { campsiteId } = useParams();
@@ -60,9 +61,9 @@ const CampsiteDetail = ({ setShowModal }) => {
         </div>
       </div>
       <div>
-        <AddCampsiteImage />
+        <AddCampsiteImage campsiteId={campsiteId} />
       </div>
-      <h1>Campsite Images</h1>
+      <CampsiteImages campsiteId={campsiteId} />
       <div className="campsite-detail-container-reviews">
         <div>
           <CreateReviewModal />

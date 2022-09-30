@@ -95,7 +95,16 @@ const campsiteImageReducer = (state = {}, action) => {
       delete newState[action.image.id];
       return newState;
 
+    case LOAD_IMAGES:
+      newState = { ...state };
+      action.images.forEach((image) => {
+        newState[image.id] = image;
+      });
+      return newState;
+
     default:
       return state;
   }
 };
+
+export default campsiteImageReducer;

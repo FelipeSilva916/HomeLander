@@ -4,12 +4,14 @@ import sessionReducer from "./session";
 import campsiteReducer from "./campsite";
 import favoriteReducer from "./favorites";
 import reviewsReducer from "./reviews";
+import campsiteImageReducer from "./campsiteImages";
 
 const rootReducer = combineReducers({
   session: sessionReducer,
   campsite: campsiteReducer,
   favorite: favoriteReducer,
-  review: reviewsReducer
+  review: reviewsReducer,
+  images: campsiteImageReducer
 });
 
 let enhancer;

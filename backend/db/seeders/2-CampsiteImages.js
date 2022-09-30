@@ -12,12 +12,14 @@ module.exports = {
       {
         userId: 1,
         campsiteId: 1,
-        imageUrl: "image2"
+        imageUrl:
+          "https://homelander.s3.us-west-1.amazonaws.com/littleLakes1.jpg"
       },
       {
         userId: 1,
         campsiteId: 1,
-        imageUrl: "image3"
+        imageUrl:
+          "https://homelander.s3.us-west-1.amazonaws.com/littleLakes1.jpg"
       },
       {
         userId: 1,
