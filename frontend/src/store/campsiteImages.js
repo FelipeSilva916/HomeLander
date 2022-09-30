@@ -97,8 +97,8 @@ const campsiteImageReducer = (state = {}, action) => {
 
     case LOAD_IMAGES:
       newState = { ...state };
-      action.images.forEach((image) => {
-        newState[image.id] = image;
+      action.images.forEach((image, i) => {
+        newState[i] = image;
       });
       return newState;
 

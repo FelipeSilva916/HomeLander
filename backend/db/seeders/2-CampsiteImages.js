@@ -62,17 +62,17 @@ module.exports = {
       {
         userId: 2,
         campsiteId: 4,
-        imageUrl: "https://homelander.s3.us-west-1.amazonaws.com/teton3.jpg"
-      },
-      {
-        userId: 2,
-        campsiteId: 5,
         imageUrl: "https://u.cubeupload.com/felipe916/DSC1736HDR.jpg"
       },
       {
         userId: 2,
         campsiteId: 5,
         imageUrl: "https://u.cubeupload.com/felipe916/deathValley2.jpg"
+      },
+      {
+        userId: 2,
+        campsiteId: 5,
+        imageUrl: "https://u.cubeupload.com/felipe916/DSC8569Edit.jpg"
       },
       {
         userId: 2,

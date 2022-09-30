@@ -5,25 +5,40 @@ import "./CampsiteImages.css";
 
 const CampsiteImages = ({ campsiteId }) => {
   const dispatch = useDispatch();
-  const images = Object.values(useSelector((state) => state.images));
-  const allImages = images.filter((image) => image?.campsiteId === +campsiteId);
-  console.log(allImages);
-  const [currentImage, setCurrentImage] = useState(allImages[0]);
-  console.log(currentImage);
+  const images = Object.values(useSelector((state) => state?.images));
+
+  const allImages = images?.filter(
+    (image) => image?.campsiteId === +campsiteId
+  );
+  // console.log("Current Image", allImages[0]?.imageUrl);
+  // const [currentImage, setCurrentImage] = useState(allImages[1]?.imageUrl);
+  const [index, setIndex] = useState(0);
+  const [showRight, setShowRight] = useState(true);
+  const [showLeft, setShowLeft] = useState(false);
+
+  useEffect(() => {
+    if (index === allImages.length - 1) {
+      setShowRight(false);
+    } else {
+      setShowRight(true);
+    }
+
+    if (index > 0) {
+      setShowLeft(true);
+    } else {
+      setShowLeft(false);
+    }
+  }, [index]);
 
   const handleSwipeRight = () => {
-    const currentIndex = allImages.indexOf(currentImage);
-    const nextImage = allImages[currentIndex + 1];
-    if (nextImage) {
-      setCurrentImage(nextImage);
+    if (index < allImages.length - 1) {
+      setIndex(index + 1);
     }
   };
 
   const handleSwipeLeft = () => {
-    const currentIndex = allImages.indexOf(currentImage);
-    const prevImage = allImages[currentIndex - 1];
-    if (prevImage) {
-      setCurrentImage(prevImage);
+    if (index > 0) {
+      setIndex(index - 1);
     }
   };
 
@@ -36,11 +51,11 @@ const CampsiteImages = ({ campsiteId }) => {
       <h1>Campsite Gallery</h1>
       <div className="image-container">
         <div className="image">
-          <img src={currentImage?.imageUrl} alt="campsite" />
+          <img src={allImages[index]?.imageUrl} alt="campsite" />
         </div>
         <div className="image-buttons">
-          <button onClick={handleSwipeLeft}>{"<"}</button>
-          <button onClick={handleSwipeRight}>{">"}</button>
+          {showLeft && <button onClick={handleSwipeLeft}>{"<"}</button>}
+          {showRight && <button onClick={handleSwipeRight}>{">"}</button>}
         </div>
       </div>
     </>
