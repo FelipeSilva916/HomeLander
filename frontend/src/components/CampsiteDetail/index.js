@@ -60,9 +60,7 @@ const CampsiteDetail = ({ setShowModal }) => {
           <AddFavoriteButton campsiteId={campsiteId} />
         </div>
       </div>
-      <div>
-        <AddCampsiteImage campsiteId={campsiteId} />
-      </div>
+      <div>{/* <AddCampsiteImage campsiteId={campsiteId} /> */}</div>
       <CampsiteImages campsiteId={campsiteId} />
       <div className="campsite-detail-container-reviews">
         <div>

@@ -1,17 +1,22 @@
-import { addCampsiteImage } from "../../store/campsiteImages";
-import { useDispatch } from "react-redux";
-import { useState } from "react";
+import React, { useState } from "react";
+import { Modal } from "../../context/Modal";
+import AddCampsiteImageForm from "./AddCampsiteImageForm";
 
-const AddImg = ({ campsiteId }) => {
-  const dispatch = useDispatch();
-  const [image, setImage] = useState(null);
+function AddCampsiteImageModal({ campsiteId }) {
+  const [showModal, setShowModal] = useState(false);
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    const formData = new FormData();
-    formData.append("image", image);
-    dispatch(addCampsiteImage(campsiteId, formData));
-  };
-};
-
-export default AddImg;
+  return (
+    <>
+      <button onClick={() => setShowModal(true)}>Add Image</button>
+      {showModal && (
+        <Modal onClose={() => setShowModal(false)}>
+          <AddCampsiteImageForm
+            campsiteId={campsiteId}
+            setShowModal={setShowModal}
+          />
+        </Modal>
+      )}
+    </>
+  );
+}
+export default AddCampsiteImageModal;

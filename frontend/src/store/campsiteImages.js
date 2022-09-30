@@ -28,13 +28,15 @@ const loadImages = (images) => {
 //=========================================================
 // Action Creators
 //=========================================================
-export const addCampsiteImage = (campsiteId, imageUrl) => async (dispatch) => {
+export const addCampsiteImage = (campsiteData) => async (dispatch) => {
+  const { imageUrl, campsiteId } = campsiteData;
+
   const response = await csrfFetch(`/api/campsites/${campsiteId}/images`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json"
     },
-    body: JSON.stringify(imageUrl)
+    body: JSON.stringify({ imageUrl })
   });
 
   if (response.ok) {

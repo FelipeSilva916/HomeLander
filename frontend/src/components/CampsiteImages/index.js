@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getImages } from "../../store/campsiteImages";
 import "./CampsiteImages.css";
-import { addCampsiteImage } from "../../store/campsiteImages";
+import AddCampsiteImageModal from "../AddCampsiteImage";
 
 const CampsiteImages = ({ campsiteId }) => {
   const dispatch = useDispatch();
@@ -61,7 +61,7 @@ const CampsiteImages = ({ campsiteId }) => {
           {showRight && <button onClick={handleSwipeRight}>{">"}</button>}
         </div>
       </div>
-      <h2>Add Image Here</h2>
+      <AddCampsiteImageModal campsiteId={campsiteId} />
     </>
   );
 };
