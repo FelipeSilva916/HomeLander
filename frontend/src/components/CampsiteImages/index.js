@@ -8,6 +8,8 @@ const CampsiteImages = ({ campsiteId }) => {
   const images = Object.values(useSelector((state) => state.images));
   const allImages = images.filter((image) => image?.campsiteId === +campsiteId);
   console.log(allImages);
+  const [currentImage, setCurrentImage] = useState(allImages[0]);
+  console.log(currentImage);
 
   useEffect(() => {
     dispatch(getImages(+campsiteId));
