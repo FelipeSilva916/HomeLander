@@ -6,26 +6,22 @@ module.exports = {
       {
         userId: 1,
         campsiteId: 1,
-        imageUrl:
-          "https://homelander.s3.us-west-1.amazonaws.com/littleLakes1.jpg"
+        imageUrl: "https://u.cubeupload.com/felipe916/DSC3823edit.jpg"
       },
       {
         userId: 1,
         campsiteId: 1,
-        imageUrl:
-          "https://homelander.s3.us-west-1.amazonaws.com/littleLakes2.jpg"
+        imageUrl: "https://u.cubeupload.com/felipe916/DSC4000Edit.jpg"
       },
       {
         userId: 1,
         campsiteId: 1,
-        imageUrl:
-          "https://homelander.s3.us-west-1.amazonaws.com/littleLakes3.jpg"
+        imageUrl: "https://u.cubeupload.com/felipe916/littleLakes3.jpg"
       },
       {
         userId: 1,
         campsiteId: 2,
-        imageUrl:
-          "https://homelander.s3.us-west-1.amazonaws.com/moonLitFalls1.jpg"
+        imageUrl: "https://u.cubeupload.com/felipe916/TLC5549Editcopy.jpg"
       },
       {
         userId: 1,
@@ -35,13 +31,12 @@ module.exports = {
       {
         userId: 1,
         campsiteId: 2,
-        imageUrl:
-          "https://www.fs.usda.gov/Internet/FSE_MEDIA/stelprdb5350485.jpg"
+        imageUrl: "https://u.cubeupload.com/felipe916/MoonlightFalls.jpg"
       },
       {
         userId: 1,
         campsiteId: 3,
-        imageUrl: "https://homelander.s3.us-west-1.amazonaws.com/elChalten1.jpg"
+        imageUrl: "https://u.cubeupload.com/felipe916/DSC1928Edit.jpg"
       },
       {
         userId: 1,
@@ -52,18 +47,17 @@ module.exports = {
       {
         userId: 1,
         campsiteId: 3,
-        imageUrl:
-          "https://i.natgeofe.com/n/528dc615-a30a-496f-b005-154995111cb3/torres-del-paine-national-park-patagonia_16x9.jpg?w=1200"
+        imageUrl: "https://u.cubeupload.com/felipe916/DSC2025HDR.jpg"
       },
       {
         userId: 2,
         campsiteId: 4,
-        imageUrl: "https://homelander.s3.us-west-1.amazonaws.com/teton1.jpg"
+        imageUrl: "https://u.cubeupload.com/felipe916/DSC0767HDREdit.jpg"
       },
       {
         userId: 2,
         campsiteId: 4,
-        imageUrl: "https://homelander.s3.us-west-1.amazonaws.com/teton2.jpg"
+        imageUrl: "https://u.cubeupload.com/felipe916/ALI3656Edit.jpg"
       },
       {
         userId: 2,
@@ -73,20 +67,17 @@ module.exports = {
       {
         userId: 2,
         campsiteId: 5,
-        imageUrl:
-          "https://homelander.s3.us-west-1.amazonaws.com/deathValley1.jpg"
+        imageUrl: "https://u.cubeupload.com/felipe916/DSC1736HDR.jpg"
       },
       {
         userId: 2,
         campsiteId: 5,
-        imageUrl:
-          "https://homelander.s3.us-west-1.amazonaws.com/deathValley2.jpg"
+        imageUrl: "https://u.cubeupload.com/felipe916/deathValley2.jpg"
       },
       {
         userId: 2,
         campsiteId: 5,
-        imageUrl:
-          "https://homelander.s3.us-west-1.amazonaws.com/deathValley3.jpg"
+        imageUrl: "https://u.cubeupload.com/felipe916/DSC0892Edit.jpg"
       }
     ]);
   },
