@@ -1,9 +1,19 @@
 .campsite-images-box {
   height: 300px;
   width: 100%;
+  background-color: chartreuse;
 }
 
 .campsite-images-image {
+  display: flex;
   height: 200px;
   width: 200px;
+  background-color: blue;
+}
+
+.campsite-images {
+  display: flex;
+  height: 100%;
+  width: 100%;
+  background-color: red;
 }

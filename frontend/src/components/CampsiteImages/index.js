@@ -14,17 +14,20 @@ const CampsiteImages = ({ campsiteId }) => {
   }, [dispatch, campsiteId]);
 
   return (
-    <div className="campsite-images">
-      {allImages.map((image, i) => (
-        <div className="campsite-images-box" key={i}>
-          <img
-            className="campsite-images-image"
-            src={image?.imageUrl}
-            alt={image?.imageUrl}
-          />
-        </div>
-      ))}
-    </div>
+    <>
+      <h1>Campsite Gallery</h1>
+      <div className="campsite-images">
+        {allImages.map((image, i) => (
+          <div className="campsite-images-box" key={i}>
+            <img
+              className="campsite-images-image"
+              src={image?.imageUrl}
+              alt={image?.imageUrl}
+            />
+          </div>
+        ))}
+      </div>
+    </>
   );
 };
 
