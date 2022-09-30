@@ -34,21 +34,12 @@ export const addCampsiteImage = (campsiteId, imageUrl) => async (dispatch) => {
     headers: {
       "Content-Type": "application/json"
     },
-    body: JSON.stringify({ imageUrl })
+    body: JSON.stringify(imageUrl)
   });
 
   if (response.ok) {
     const image = await response.json();
     dispatch(addImage(image));
-  }
-};
-
-export const getImages = (campsiteId) => async (dispatch) => {
-  const response = await csrfFetch(`/api/campsites/${campsiteId}/images`);
-
-  if (response.ok) {
-    const images = await response.json();
-    dispatch(loadImages(images));
   }
 };
 
@@ -63,6 +54,15 @@ export const getImages = (campsiteId) => async (dispatch) => {
 //     dispatch(addImage(image));
 //   }
 // };
+
+export const getImages = (campsiteId) => async (dispatch) => {
+  const response = await csrfFetch(`/api/campsites/${campsiteId}/images`);
+
+  if (response.ok) {
+    const images = await response.json();
+    dispatch(loadImages(images));
+  }
+};
 
 export const deleteCampsiteImage =
   (campsiteId, imageId) => async (dispatch) => {
