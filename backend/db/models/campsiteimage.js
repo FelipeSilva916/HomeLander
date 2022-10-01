@@ -27,7 +27,7 @@ module.exports = (sequelize, DataTypes) => {
       },
       userId: DataTypes.INTEGER,
       campsiteId: DataTypes.INTEGER,
-      imageUrl: DataTypes.STRING
+      imageUrl: DataTypes.TEXT
     },
     {
       sequelize,
