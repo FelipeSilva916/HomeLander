@@ -7,9 +7,5 @@
     "sequelize": "npm run --prefix backend sequelize",
     "sequelize-cli": "npm run --prefix backend sequelize-cli",
     "start": "npm start --prefix backend"
-  },
-  "engines": {
-    "node": "16.14.2",
-    "npm": "8.5.0"
   }
 }
