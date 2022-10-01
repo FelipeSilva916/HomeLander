@@ -7,12 +7,10 @@ import AddCampsiteImageModal from "../AddCampsiteImage";
 const CampsiteImages = ({ campsiteId }) => {
   const dispatch = useDispatch();
   const images = Object.values(useSelector((state) => state?.images));
-
+  const campsite = useSelector((state) => state.campsite[campsiteId]);
   const allImages = images?.filter(
     (image) => image?.campsiteId === +campsiteId
   );
-  // console.log("Current Image", allImages[0]?.imageUrl);
-  // const [currentImage, setCurrentImage] = useState(allImages[1]?.imageUrl);
   const [index, setIndex] = useState(0);
   const [showRight, setShowRight] = useState(true);
   const [showLeft, setShowLeft] = useState(false);
@@ -45,7 +43,7 @@ const CampsiteImages = ({ campsiteId }) => {
 
   useEffect(() => {
     dispatch(getImages(+campsiteId));
-  }, [dispatch, campsiteId]);
+  }, [dispatch, campsiteId, campsite]);
 
   const handleImageUpload = async (e) => {};
 

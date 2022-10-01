@@ -20,6 +20,7 @@ router.post("/", requireAuth, validateCampsite, async (req, res) => {
   res.status(201);
 });
 
+//Create custom validators
 // ======== POST /api/campsites/:id/images - Add an image to a campsite ========//
 router.post("/:id/images", requireAuth, async (req, res) => {
   const { user } = req;
@@ -27,22 +28,39 @@ router.post("/:id/images", requireAuth, async (req, res) => {
   const { imageUrl } = req.body;
   const campsite = await Campsite.findByPk(id);
 
-  if (!campsite) {
-    res.status(404);
-    res.json({ error: "Campsite not found" });
-  } else if (campsite.userId !== user.id) {
-    res.status(401);
-    res.json({ error: "Unauthorized" });
-  } else {
-    const newCampsiteImage = await CampsiteImage.create({
-      campsiteId: id,
-      imageUrl,
-      userId: user.id
-    });
+  // if (!campsite) {
+  //   res.status(404);
+  //   res.json({ error: "Campsite not found" });
+  // } else if (campsite.userId !== user.id) {
+  //   res.status(401);
+  //   res.json({ error: "Unauthorized" });
+  // } else {
+  //   const newCampsiteImage = await CampsiteImage.create({
+  //     campsiteId: id,
+  //     imageUrl,
+  //     userId: user.id
+  //   });
 
-    res.json(newCampsiteImage);
-    res.status(201);
-  }
+  //   res.json(newCampsiteImage);
+  //   res.status(201);
+  // }
+
+  const newCampsiteImage = await CampsiteImage.create({
+    campsiteId: id,
+    imageUrl,
+    userId: user.id
+  });
+
+  const fetchCampsiteImage = await CampsiteImage.findOne({
+    where: {
+      id: newCampsiteImage.id
+    },
+    include: {
+      model: Campsite
+    }
+  });
+  res.json(fetchCampsiteImage);
+  res.status(201);
 });
 
 // ======== DELETE /api/campsites/:id/images/:imageId - Delete an image from a campsite ========//

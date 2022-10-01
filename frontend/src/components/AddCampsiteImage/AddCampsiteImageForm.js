@@ -10,11 +10,6 @@ const AddCampsiteImageForm = ({ campsiteId, setShowModal }) => {
   const sessionUser = useSelector((state) => state.session.user);
   const history = useHistory();
   campsiteId = parseInt(campsiteId);
-  // const allCampsites = Object.values(useSelector((state) => state.campsite));
-  // const campsite = allCampsites.find(
-  //   (campsite) => campsite?.id === +campsiteId
-  // );
-  console.log("campsiteId", campsiteId);
 
   useEffect(() => {
     dispatch(getImages(campsiteId));

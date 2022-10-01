@@ -17,6 +17,7 @@ router.post(
     const { user } = req;
     const { rating, body } = req.body;
     const campsiteId = req.params.siteId;
+
     const newReview = await Review.create({
       userId: user.id,
       campsiteId,
