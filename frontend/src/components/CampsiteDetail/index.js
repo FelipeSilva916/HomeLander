@@ -10,9 +10,7 @@ import CreateReviewModal from "../CreateReviewModal";
 import Map from "../GoogleMap/CampsiteMaps";
 import ReviewsTable from "../ReviewDetails";
 import AddFavoriteButton from "../AddFavoriteButton";
-import AddCampsiteImage from "../AddCampsiteImage";
 import CampsiteImages from "../CampsiteImages";
-import DeleteImageButton from "../DeleteImageButton";
 
 const CampsiteDetail = ({ setShowModal }) => {
   const { campsiteId } = useParams();
