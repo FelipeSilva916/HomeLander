@@ -9,12 +9,10 @@
   display: flex;
   object-fit: contain;
   height: 100%;
-  /* width: 600px; */
   justify-content: center;
   position: relative;
   padding: 1rem;
   margin: 2rem;
-  background-color: chartreuse;
 }
 
 .campsite-images {
