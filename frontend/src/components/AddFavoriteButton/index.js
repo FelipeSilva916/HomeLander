@@ -5,6 +5,7 @@ import {
   deleteFavorite,
   getAllFavorites
 } from "../../store/favorites";
+import "./AddFavoriteButton.css";
 
 const AddFavoriteButton = ({ campsiteId }) => {
   const dispatch = useDispatch();
