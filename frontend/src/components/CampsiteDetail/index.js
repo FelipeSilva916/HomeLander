@@ -36,27 +36,29 @@ const CampsiteDetail = ({ setShowModal }) => {
 
   return (
     <div className="campsite-detail-wrapper">
-      <div className="campsite-detail-container-info">
-        <div className="campsite-detail-image-container">
-          <img
-            src={campsite?.previewImage}
-            alt={campsite?.name}
-            className="campsite-detail-preview-image"
-          />
-        </div>
-        <div className="campsite-detail-info-container">
-          <div className="campsite-detail-info">
-            <h1 className="campsite-name">{campsite?.name}</h1>
-            <p>Uploaded By: {campsite?.userId} </p>
-            <p>Rating: {campsite?.averageRating}</p>
-            <p>Description: {campsite?.description}</p>
+      <div id="campsite-image-info">
+        <div className="campsite-detail-container-info">
+          <div className="campsite-detail-image-container">
+            <img
+              src={campsite?.previewImage}
+              alt={campsite?.name}
+              className="campsite-detail-preview-image"
+            />
+          </div>
+          <div className="campsite-detail-info-container">
+            <div className="campsite-detail-info">
+              <h1 className="campsite-name">{campsite?.name}</h1>
+              <p>Uploaded By: {campsite?.userId} </p>
+              <p>Rating: {campsite?.averageRating}</p>
+              <p>Description: {campsite?.description}</p>
 
-            <div>{userManipulationBtn}</div>
+              <div>{userManipulationBtn}</div>
+            </div>
+            <div className="campsite-map-container">
+              <Map lat={campsite?.latitude} lng={campsite?.longitude} />
+            </div>
+            <AddFavoriteButton campsiteId={campsiteId} />
           </div>
-          <div className="campsite-map-container">
-            <Map lat={campsite?.latitude} lng={campsite?.longitude} />
-          </div>
-          <AddFavoriteButton campsiteId={campsiteId} />
         </div>
       </div>
       <div>{/* <AddCampsiteImage campsiteId={campsiteId} /> */}</div>
