@@ -50,7 +50,7 @@ const CampsiteImages = ({ campsiteId }) => {
 
   return (
     <>
-      <h1>Campsite Gallery</h1>
+      <h2>Campsite Gallery</h2>
       <div className="image-container">
         <div className="image">
           <div className="image-buttons-left">

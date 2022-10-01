@@ -61,7 +61,6 @@ const CampsiteDetail = ({ setShowModal }) => {
           </div>
         </div>
       </div>
-      <div>{/* <AddCampsiteImage campsiteId={campsiteId} /> */}</div>
       <CampsiteImages campsiteId={campsiteId} />
       <div className="campsite-detail-container-reviews">
         <div>
