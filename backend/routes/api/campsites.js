@@ -83,8 +83,13 @@ router.delete("/:id/images/:imageId", requireAuth, async (req, res) => {
       res.status(401);
       res.json({ error: "Unauthorized" });
     } else {
+      const campsiteId = campsiteImage.dataValues.id;
       await campsiteImage.destroy();
-      res.json({ message: "Campsite image deleted", statusCode: 200 });
+      res.json({
+        id: campsiteId,
+        message: "Campsite image deleted",
+        statusCode: 200
+      });
     }
   }
 });

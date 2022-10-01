@@ -30,7 +30,7 @@ const CampsiteImages = ({ campsiteId }) => {
     } else {
       setShowLeft(false);
     }
-  }, [index]);
+  }, [index, imageId, images]);
 
   const handleSwipeRight = () => {
     if (index < allImages.length - 1) {
@@ -46,9 +46,7 @@ const CampsiteImages = ({ campsiteId }) => {
 
   useEffect(() => {
     dispatch(getImages(+campsiteId));
-  }, [dispatch, campsiteId, campsite]);
-
-  const handleImageUpload = async (e) => {};
+  }, [dispatch, campsiteId, campsite, imageId]);
 
   return (
     <>
@@ -74,7 +72,11 @@ const CampsiteImages = ({ campsiteId }) => {
       </div>
 
       <AddCampsiteImageModal campsiteId={campsiteId} />
-      <DeleteImageButton campsiteId={+campsiteId} imageId={imageId} />
+      <DeleteImageButton
+        setIndex={setIndex}
+        campsiteId={+campsiteId}
+        imageId={imageId}
+      />
     </>
   );
 };

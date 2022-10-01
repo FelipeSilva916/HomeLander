@@ -2,15 +2,16 @@ const { useDispatch } = require("react-redux");
 const { useHistory } = require("react-router-dom");
 const { deleteCampsiteImage } = require("../../store/campsiteImages");
 
-const DeleteImageButton = ({ imageId, campsiteId }) => {
+const DeleteImageButton = ({ imageId, campsiteId, setIndex }) => {
   const dispatch = useDispatch();
   const history = useHistory();
   campsiteId = +campsiteId;
 
   const handleDelete = async (e) => {
-    // e.preventDefault();
+    e.preventDefault();
     await dispatch(deleteCampsiteImage(imageId, campsiteId));
-    history.push(`/campsites/${campsiteId}`);
+    setIndex(0);
+    // history.push(`/campsites/${campsiteId}`);
   };
 
   return (
