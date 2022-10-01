@@ -11,14 +11,16 @@
 
 #campsite-image-info {
   display: block;
-  width: 100vw;
+  width: 100%;
   flex-wrap: wrap;
 }
 
 .campsite-detail-info {
   padding: 1rem;
   margin: 1rem;
-  width: 300px;
+  width: 100%;
+  border-radius: 2rem;
+
   background-color: #e6deb9;
 }
 
@@ -26,9 +28,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 100%;
-  height: 100%;
-  padding: 0 20px;
+  flex-direction: row;
   box-sizing: border-box;
 }
 
@@ -37,6 +37,7 @@
   display: flex;
   flex-direction: row;
   align-items: center;
+  flex-wrap: wrap;
   justify-content: center;
   box-sizing: border-box;
   background-color: #3a4928;
@@ -69,12 +70,19 @@
   justify-content: space-around;
 }
 .campsite-detail-image-container {
-  /* display: flex;
-  flex-direction: column;
+  width: 100%;
+  display: flex;
+  justify-content: center;
   align-items: center;
-  justify-content: center; */
+  padding: 1rem;
 }
 
+.campsite-map-container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 /* create media query */
 .campsite-detail-image-container img {
   width: 40rem;

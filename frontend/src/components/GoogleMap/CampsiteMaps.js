@@ -7,8 +7,8 @@ const Map = ({ lat, lng }) => {
   });
 
   const mapStyles = {
-    height: "300px",
-    width: "300px",
+    height: "350px",
+    width: "350px",
     padding: "1rem",
     margin: "1rem"
   };
@@ -20,7 +20,7 @@ const Map = ({ lat, lng }) => {
   if (!isLoaded) return <div>Loading...</div>;
 
   return (
-    <GoogleMap mapContainerStyle={mapStyles} zoom={14} center={center}>
+    <GoogleMap mapContainerStyle={mapStyles} zoom={13} center={center}>
       <Marker
         position={center}
         icon={{
