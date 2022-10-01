@@ -13,6 +13,7 @@
   position: relative;
   padding: 1rem;
   margin: 2rem;
+  width: 400px;
 }
 
 .campsite-images {
@@ -30,7 +31,6 @@
   align-items: center;
   width: 500px;
   height: 30rem;
-  background-color: aqua;
   flex-direction: column;
 }
 
