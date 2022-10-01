@@ -46,7 +46,7 @@ const CampsiteImages = ({ campsiteId }) => {
 
   useEffect(() => {
     dispatch(getImages(+campsiteId));
-  }, [dispatch, campsiteId, campsite, imageId]);
+  }, [dispatch, campsiteId, campsite]);
 
   const handleImageUpload = async (e) => {};
 
