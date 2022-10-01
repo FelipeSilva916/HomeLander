@@ -52,11 +52,21 @@ const CampsiteImages = ({ campsiteId }) => {
       <h1>Campsite Gallery</h1>
       <div className="image-container">
         <div className="image">
+          <div className="image-buttons-left">
+            {showLeft && (
+              <button onClick={handleSwipeLeft}>
+                <i className="fa-solid fa-circle-left"></i>
+              </button>
+            )}
+          </div>
           <img src={allImages[index]?.imageUrl} alt="campsite" />
-        </div>
-        <div className="image-buttons">
-          {showLeft && <button onClick={handleSwipeLeft}>{"<"}</button>}
-          {showRight && <button onClick={handleSwipeRight}>{">"}</button>}
+          <div className="image-buttons-right">
+            {showRight && (
+              <button onClick={handleSwipeRight}>
+                <i className="fa-sharp fa-solid fa-circle-right"></i>
+              </button>
+            )}
+          </div>
         </div>
       </div>
       <AddCampsiteImageModal campsiteId={campsiteId} />
