@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { getImages } from "../../store/campsiteImages";
 import "./CampsiteImages.css";
 import AddCampsiteImageModal from "../AddCampsiteImage";
+import DeleteImageButton from "../DeleteImageButton";
 
 const CampsiteImages = ({ campsiteId }) => {
   const dispatch = useDispatch();
@@ -14,6 +15,8 @@ const CampsiteImages = ({ campsiteId }) => {
   const [index, setIndex] = useState(0);
   const [showRight, setShowRight] = useState(true);
   const [showLeft, setShowLeft] = useState(false);
+  const imageId = allImages[index]?.id;
+  console.log("imageId", imageId);
 
   useEffect(() => {
     if (index === allImages.length - 1) {
@@ -27,7 +30,7 @@ const CampsiteImages = ({ campsiteId }) => {
     } else {
       setShowLeft(false);
     }
-  }, [index]);
+  }, [index, imageId, images]);
 
   const handleSwipeRight = () => {
     if (index < allImages.length - 1) {
@@ -43,9 +46,7 @@ const CampsiteImages = ({ campsiteId }) => {
 
   useEffect(() => {
     dispatch(getImages(+campsiteId));
-  }, [dispatch, campsiteId, campsite]);
-
-  const handleImageUpload = async (e) => {};
+  }, [dispatch, campsiteId, campsite, imageId]);
 
   return (
     <>
@@ -69,7 +70,13 @@ const CampsiteImages = ({ campsiteId }) => {
           </div>
         </div>
       </div>
+
       <AddCampsiteImageModal campsiteId={campsiteId} />
+      <DeleteImageButton
+        setIndex={setIndex}
+        campsiteId={+campsiteId}
+        imageId={imageId}
+      />
     </>
   );
 };

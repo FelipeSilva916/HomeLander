@@ -71,21 +71,23 @@ router.delete("/:id/images/:imageId", requireAuth, async (req, res) => {
   if (!campsite) {
     res.status(404);
     res.json({ error: "Campsite not found" });
-  } else if (campsite.userId !== user.id) {
-    res.status(401);
+  }
+
+  const campsiteImage = await CampsiteImage.findByPk(imageId);
+  if (!campsiteImage) {
+    res.status(404);
+    res.json({ error: "Campsite image not found" });
+  } else if (campsiteImage.userId !== user.id) {
+    res.status(403);
     res.json({ error: "Unauthorized" });
   } else {
-    const campsiteImage = await CampsiteImage.findByPk(imageId);
-    if (!campsiteImage) {
-      res.status(404);
-      res.json({ error: "Campsite image not found" });
-    } else if (campsiteImage.campsiteId !== campsite.id) {
-      res.status(401);
-      res.json({ error: "Unauthorized" });
-    } else {
-      await campsiteImage.destroy();
-      res.json({ message: "Campsite image deleted", statusCode: 200 });
-    }
+    const campsiteId = campsiteImage.dataValues.id;
+    await campsiteImage.destroy();
+    res.json({
+      id: campsiteId,
+      message: "Campsite image deleted",
+      statusCode: 200
+    });
   }
 });
 
