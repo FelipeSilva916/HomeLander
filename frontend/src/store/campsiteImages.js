@@ -67,7 +67,7 @@ export const getImages = (campsiteId) => async (dispatch) => {
 };
 
 export const deleteCampsiteImage =
-  (campsiteId, imageId) => async (dispatch) => {
+  (imageId, campsiteId) => async (dispatch) => {
     const response = await csrfFetch(
       `/api/campsites/${campsiteId}/images/${imageId}`,
       {
