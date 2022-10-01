@@ -16,7 +16,7 @@ router.post(
   async (req, res) => {
     const { user } = req;
     const { rating, body } = req.body;
-    const campsiteId = req.params.siteId;
+    const campsiteId = parseInt(req.params.siteId);
 
     const newReview = await Review.create({
       userId: user.id,
@@ -32,8 +32,8 @@ router.post(
         model: User
       }
     });
-    res.json(fetchReview);
     res.status(201);
+    res.json(fetchReview);
   }
 );
 
