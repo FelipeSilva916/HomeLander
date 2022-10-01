@@ -49,24 +49,25 @@ const CampsiteImages = ({ campsiteId }) => {
 
   return (
     <>
-      <h2>Campsite Gallery</h2>
       <div className="image-container">
         <div className="image">
-          <div className="image-buttons-left">
-            {showLeft && (
-              <button onClick={handleSwipeLeft}>
-                <i className="fa-solid fa-circle-left"></i>
-              </button>
-            )}
-          </div>
           <img src={allImages[index]?.imageUrl} alt="campsite" />
-          <div className="image-buttons-right">
-            {showRight && (
-              <button onClick={handleSwipeRight}>
-                <i className="fa-sharp fa-solid fa-circle-right"></i>
-              </button>
-            )}
-          </div>
+        </div>
+      </div>
+      <div className="image-buttons-container">
+        <div className="image-buttons-left">
+          {showLeft && (
+            <button onClick={handleSwipeLeft}>
+              <i className="fa-solid fa-circle-left"></i>
+            </button>
+          )}
+        </div>
+        <div className="image-buttons-right">
+          {showRight && (
+            <button onClick={handleSwipeRight}>
+              <i className="fa-sharp fa-solid fa-circle-right"></i>
+            </button>
+          )}
         </div>
       </div>
 
