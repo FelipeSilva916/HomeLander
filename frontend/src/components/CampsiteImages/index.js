@@ -16,7 +16,6 @@ const CampsiteImages = ({ campsiteId }) => {
   const [showRight, setShowRight] = useState(true);
   const [showLeft, setShowLeft] = useState(false);
   const imageId = allImages[index]?.id;
-  console.log("imageId", imageId);
 
   useEffect(() => {
     if (index === allImages.length - 1) {
@@ -30,7 +29,7 @@ const CampsiteImages = ({ campsiteId }) => {
     } else {
       setShowLeft(false);
     }
-  }, [index, imageId, images]);
+  }, [index, imageId, images, allImages.length]);
 
   const handleSwipeRight = () => {
     if (index < allImages.length - 1) {
@@ -46,7 +45,7 @@ const CampsiteImages = ({ campsiteId }) => {
 
   useEffect(() => {
     dispatch(getImages(+campsiteId));
-  }, [dispatch, campsiteId, campsite, imageId]);
+  }, [dispatch, campsiteId, campsite, imageId, allImages.length]);
 
   return (
     <>
