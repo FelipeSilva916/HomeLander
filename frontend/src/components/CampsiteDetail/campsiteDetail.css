@@ -60,10 +60,20 @@
   margin: 0 1rem;
   padding: 0.5rem;
   color: #907a48;
-  background-color: #3a4928;
   border-radius: 0.5rem;
   font-size: 1rem;
   font-weight: bold;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.user-manipulation-button button {
+  background-color: white;
+  border: none;
+  color: black;
+  font-size: 1rem;
   cursor: pointer;
   display: flex;
   align-items: center;

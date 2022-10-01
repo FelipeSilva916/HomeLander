@@ -2,6 +2,7 @@ import React from "react";
 import { useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
 import { deleteCampsiteThunk } from "../../store/campsite";
+import "./DeleteCampsiteButton.css";
 
 const DeleteCampsiteButton = ({ campsiteId }) => {
   const dispatch = useDispatch();
@@ -15,7 +16,7 @@ const DeleteCampsiteButton = ({ campsiteId }) => {
 
   return (
     <button className="delete-campsite-button" onClick={handleDelete}>
-      Delete
+      <i className="fa-solid fa-trash-xmark"></i>
     </button>
   );
 };

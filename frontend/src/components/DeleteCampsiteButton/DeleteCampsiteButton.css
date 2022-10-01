@@ -1,11 +1,11 @@
-.update-campsite-button {
+.delete-campsite-button {
   background-color: #3a4928;
   color: #907a48;
   border-radius: 0.5rem;
   padding: 0.3rem 0.7rem;
 }
 
-.update-campsite-button:hover {
-  background-color: #907a48;
+.delete-campsite-button:hover {
+  background-color: red;
   color: #ffffff;
 }
