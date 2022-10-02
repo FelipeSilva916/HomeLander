@@ -37,17 +37,18 @@ const EditCampsiteForm = ({ setShowModal }) => {
   };
 
   return (
-    <div className="edit-form">
+    <div className="edit-form-container">
       <h2>Change your description:</h2>
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit} className="edit-form">
         <ul>
           {errors.map((error, idx) => (
             <li key={idx}>{error}</li>
           ))}
         </ul>
-        <label>
-          Description
+        <label className="edit-form-label">
+          Update your description?
           <textarea
+            className="edit-form-label-input"
             type="text"
             value={description}
             onChange={(e) => setDescription(e.target.value)}
