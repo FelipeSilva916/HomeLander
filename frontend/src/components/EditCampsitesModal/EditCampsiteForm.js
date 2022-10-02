@@ -55,7 +55,9 @@ const EditCampsiteForm = ({ setShowModal }) => {
             required
           />
         </label>
-        <button type="submit">Save</button>
+        <button className="edit-form-submit" type="submit">
+          Save
+        </button>
       </form>
     </div>
   );

@@ -49,3 +49,34 @@
   margin: 0;
   padding: 0;
 }
+
+.edit-form-submit {
+  background-image: linear-gradient(
+    to right,
+    #3a4928,
+    #4b6b3c,
+    #d4bf88,
+    #e6deb9
+  );
+  box-shadow: 0 4px 15px 0 #4b6b3cb9;
+  color: white;
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 0.25rem;
+  cursor: pointer;
+  font-size: 12px;
+  background-size: 300% 100%;
+  -o-transition: all 0.4s ease-in-out;
+  -webkit-transition: all 0.4s ease-in-out;
+  transition: all 0.4s ease-in-out;
+}
+
+.edit-form-submit:hover {
+  background-color: black;
+  color: black;
+  background-position: 100% 0;
+  background-size: 200% 100%;
+  -o-transition: all 0.4s ease-in-out;
+  -webkit-transition: all 0.4s ease-in-out;
+  transition: all 0.4s ease-in-out;
+}
