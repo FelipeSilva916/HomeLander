@@ -20,15 +20,22 @@ const Map = ({ lat, lng }) => {
   if (!isLoaded) return <div>Loading...</div>;
 
   return (
-    <GoogleMap mapContainerStyle={mapStyles} zoom={13} center={center}>
-      <Marker
-        position={center}
-        icon={{
-          url: "https://u.cubeupload.com/felipe916/vectorstock28985084.png",
-          scaledSize: new window.google.maps.Size(50, 50)
-        }}
-      />
-    </GoogleMap>
+    <>
+      <script
+        async
+        defer
+        src={`https://maps.googleapis.com/maps/api/js?key=${process.env.REACT_APP_NEXT_PUBLIC_GOOGLE_MAPS_API_KEY}&callback=initMap`}
+      ></script>
+      <GoogleMap mapContainerStyle={mapStyles} zoom={13} center={center}>
+        <Marker
+          position={center}
+          icon={{
+            url: "https://u.cubeupload.com/felipe916/vectorstock28985084.png",
+            scaledSize: new window.google.maps.Size(50, 50)
+          }}
+        />
+      </GoogleMap>
+    </>
   );
 };
 
