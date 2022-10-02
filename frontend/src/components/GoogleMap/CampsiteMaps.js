@@ -38,5 +38,4 @@ const Map = ({ lat, lng }) => {
     </>
   );
 };
-
 export default Map;
