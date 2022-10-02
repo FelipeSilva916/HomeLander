@@ -19,7 +19,6 @@ const Map = ({ lat, lng }) => {
   };
   if (!isLoaded) return <div>Loading...</div>;
 
-  console.log(process.env.REACT_APP_NEXT_PUBLIC_GOOGLE_MAPS_API_KEY);
   return (
     <>
       <script
