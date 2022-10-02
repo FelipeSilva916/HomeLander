@@ -1,6 +1,6 @@
 const express = require("express");
 const router = express.Router();
-const { Campsite, Review, CampsiteImage } = require("../../db/models");
+const { Campsite, Review, CampsiteImage, User } = require("../../db/models");
 const { requireAuth } = require("../../utils/auth");
 const { validateCampsite } = require("../../utils/validation");
 
@@ -97,7 +97,32 @@ router.put("/:id", requireAuth, async (req, res) => {
   const { description } = req.body;
   const campsiteId = req.params.id;
 
-  const campsite = await Campsite.findByPk(campsiteId);
+  const campsite = await Campsite.findByPk(campsiteId, {
+    include: [
+      {
+        model: User
+      },
+      {
+        model: CampsiteImage
+      },
+      {
+        model: Review
+      }
+    ]
+  });
+
+  if (campsite) {
+    const reviews = await Review.findAll({
+      where: {
+        campsiteId: campsite.id
+      }
+    });
+    let sum = 0;
+    reviews.forEach((review) => {
+      sum += review.rating;
+    });
+    Math.round((campsite.dataValues.averageRating = sum / reviews.length));
+  }
 
   if (!campsite) {
     const error = new Error("Campsite couldn't be found");
@@ -150,6 +175,9 @@ router.get("/:id", async (req, res) => {
       },
       {
         model: CampsiteImage
+      },
+      {
+        model: User
       }
     ]
   });

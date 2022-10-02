@@ -8,7 +8,7 @@ const EditCampsiteForm = ({ setShowModal }) => {
   const dispatch = useDispatch();
   const history = useHistory();
   const campsite = useSelector((state) => state.campsite[`${campsiteId}`]);
-  const [description, setDescription] = useState(null);
+  const [description, setDescription] = useState(campsite?.description);
   const [errors, setErrors] = useState([]);
 
   useEffect(() => {
@@ -30,15 +30,14 @@ const EditCampsiteForm = ({ setShowModal }) => {
         id: campsiteId,
         description
       })
-    )
-      .then(() => {
-        setShowModal(false);
-        history.push(`/campsites/${campsiteId}`);
-      })
-      .catch(async (res) => {
-        const data = await res.json();
-        if (data && data.errors) setErrors(data.errors);
-      });
+    ).then(() => {
+      setShowModal(false);
+      history.push(`/campsites/${campsiteId}`);
+    });
+    // .catch(async (res) => {
+    //   const data = await res.json();
+    //   if (data && data.errors) setErrors(data.errors);
+    // });
   };
 
   return (

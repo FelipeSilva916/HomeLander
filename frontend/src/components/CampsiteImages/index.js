@@ -9,6 +9,7 @@ const CampsiteImages = ({ campsiteId }) => {
   const dispatch = useDispatch();
   const images = Object.values(useSelector((state) => state?.images));
   const campsite = useSelector((state) => state.campsite[campsiteId]);
+  const user = useSelector((state) => state.session.user);
   const allImages = images?.filter(
     (image) => image?.campsiteId === +campsiteId
   );
@@ -16,6 +17,7 @@ const CampsiteImages = ({ campsiteId }) => {
   const [showRight, setShowRight] = useState(true);
   const [showLeft, setShowLeft] = useState(false);
   const imageId = allImages[index]?.id;
+  const [showDelete, setShowDelete] = useState(false);
 
   useEffect(() => {
     if (index === allImages.length - 1) {
@@ -42,6 +44,14 @@ const CampsiteImages = ({ campsiteId }) => {
       setIndex(index - 1);
     }
   };
+
+  useEffect(() => {
+    if (user.id === allImages[index]?.userId) {
+      setShowDelete(true);
+    } else {
+      setShowDelete(false);
+    }
+  }, [index]);
 
   useEffect(() => {
     dispatch(getImages(+campsiteId));
@@ -72,11 +82,14 @@ const CampsiteImages = ({ campsiteId }) => {
       </div>
       <div className="images-control-button">
         <AddCampsiteImageModal campsiteId={campsiteId} />
-        <DeleteImageButton
-          setIndex={setIndex}
-          campsiteId={+campsiteId}
-          imageId={imageId}
-        />
+
+        {showDelete && (
+          <DeleteImageButton
+            setIndex={setIndex}
+            campsiteId={+campsiteId}
+            imageId={imageId}
+          />
+        )}
       </div>
     </>
   );

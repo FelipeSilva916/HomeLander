@@ -6,3 +6,27 @@
 .create-review-form {
   gap: 1rem;
 }
+.create-review-modal__submit {
+  background-image: linear-gradient(
+    to left top,
+    #907a48,
+    #a59263,
+    #baab7f,
+    #d0c49b,
+    #e6deb9
+  );
+  color: #fff;
+  border: none;
+  border-radius: 0.5rem;
+  padding: 0.5rem 1rem;
+  font-size: 1rem;
+}
+
+.create-review-modal__submit:hover {
+  background-image: linear-gradient(to left top, #4b6b3c, #3b2e1e);
+  color: #fff;
+  border: none;
+  border-radius: 0.5rem;
+  padding: 0.5rem 1rem;
+  font-size: 1rem;
+}

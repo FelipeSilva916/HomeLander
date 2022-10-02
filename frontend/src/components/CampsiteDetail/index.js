@@ -33,7 +33,7 @@ const CampsiteDetail = ({ setShowModal }) => {
       );
     }
   }
-
+  console.log(campsite?.CampsiteImages?.length === 0);
   return (
     <div className="campsite-detail-wrapper">
       <div id="campsite-image-info">
@@ -48,8 +48,8 @@ const CampsiteDetail = ({ setShowModal }) => {
           <div className="campsite-detail-info-container">
             <div className="campsite-detail-info">
               <h1 className="campsite-name">{campsite?.name}</h1>
-              <p>Uploaded By: {campsite?.userId} </p>
-              <p>Rating: {campsite?.averageRating}</p>
+              <p>Uploaded By: {campsite?.User?.username} </p>
+              <p>Rating: {campsite?.averageRating?.toFixed(1)}</p>
               <p>Description: {campsite?.description}</p>
 
               <div>{userManipulationBtn}</div>
@@ -61,8 +61,10 @@ const CampsiteDetail = ({ setShowModal }) => {
           </div>
         </div>
       </div>
-      <CampsiteImages campsiteId={campsiteId} />
-
+      {campsite?.CampsiteImages?.length !== 0 && (
+        <CampsiteImages campsiteId={campsiteId} />
+      )}
+      {/* ADD IAMGES BUTTON */}
       <div className="reviews-table">
         <ReviewsTable campsiteId={campsiteId} />
       </div>
