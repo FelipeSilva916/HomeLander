@@ -34,10 +34,6 @@ const EditCampsiteForm = ({ setShowModal }) => {
       setShowModal(false);
       history.push(`/campsites/${campsiteId}`);
     });
-    // .catch(async (res) => {
-    //   const data = await res.json();
-    //   if (data && data.errors) setErrors(data.errors);
-    // });
   };
 
   return (

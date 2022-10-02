@@ -3,6 +3,7 @@ import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
 import { addCampsiteImage, getImages } from "../../store/campsiteImages";
+import "./AddCampsiteImage.css";
 
 const AddCampsiteImageForm = ({ campsiteId, setShowModal }) => {
   const [imageUrl, setImage] = useState("");
@@ -30,10 +31,12 @@ const AddCampsiteImageForm = ({ campsiteId, setShowModal }) => {
 
   return (
     <div className="add-image-form">
-      <form onSubmit={handleSubmit}>
+      <h2>Add an image:</h2>
+      <form className="add-image" onSubmit={handleSubmit}>
         <input
           type="text"
           value={imageUrl}
+          required
           onChange={(e) => setImage(e.target.value)}
         />
         <button type="submit">Add Image</button>
