@@ -11,10 +11,8 @@
   height: 100%;
   justify-content: center;
   position: relative;
-  padding: 1rem;
   margin: 2rem;
   width: 400px;
-  background-color: #ff4f00;
 }
 
 .campsite-images {
@@ -34,7 +32,6 @@
   height: 30rem;
   flex-direction: column;
   margin: 1rem;
-  background-color: cyan;
 }
 
 .image-container img {
@@ -73,4 +70,26 @@
 .image-buttons-left:hover {
   cursor: pointer;
   transition: ease-in-out 0.2s;
+}
+
+.delete-image-button {
+  background-color: #fff;
+  border: none;
+  color: black;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.delete-image-button:hover {
+  color: #ff0707;
+}
+
+.add-image-button {
+  background-color: #fff;
+  border: none;
+  color:
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
 }

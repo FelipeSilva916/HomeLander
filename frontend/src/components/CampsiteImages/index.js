@@ -70,13 +70,14 @@ const CampsiteImages = ({ campsiteId }) => {
           )}
         </div>
       </div>
-
-      <AddCampsiteImageModal campsiteId={campsiteId} />
-      <DeleteImageButton
-        setIndex={setIndex}
-        campsiteId={+campsiteId}
-        imageId={imageId}
-      />
+      <div className="images-control-button">
+        <AddCampsiteImageModal campsiteId={campsiteId} />
+        <DeleteImageButton
+          setIndex={setIndex}
+          campsiteId={+campsiteId}
+          imageId={imageId}
+        />
+      </div>
     </>
   );
 };
