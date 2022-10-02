@@ -9,7 +9,7 @@
 }
 
 .favorite-site-card {
-  justify-content: space-evenly;
+  justify-content: space-between;
   align-items: center;
   display: flex;
   flex-direction: row;
