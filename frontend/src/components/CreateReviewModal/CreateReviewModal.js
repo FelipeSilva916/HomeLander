@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { NavLink, useHistory, useParams } from "react-router-dom";
 import { postReview } from "../../store/reviews";
-
+import "./CreateReview.css";
 const CreateReviewForm = ({ setShowModal }) => {
   const dispatch = useDispatch();
   const history = useHistory();
@@ -37,9 +37,9 @@ const CreateReviewForm = ({ setShowModal }) => {
           ))}
         </ul>
       </div>
-      <form onSubmit={handleSubmit}>
+      <form className="create-review-form" onSubmit={handleSubmit}>
         <div className="create-review-modal__rating">
-          <label htmlFor="rating">Rating</label>
+          <label htmlFor="rating">Rating: </label>
           <input
             type="number"
             name="rating"
@@ -52,14 +52,14 @@ const CreateReviewForm = ({ setShowModal }) => {
           />
         </div>
         <div className="create-review-modal__body">
-          <label htmlFor="body">Review</label>
-          <textarea
+          <label htmlFor="body">Review: </label>
+          <input
             name="body"
             id="body"
             value={body}
             onChange={(e) => setBody(e.target.value)}
             required
-          ></textarea>
+          ></input>
         </div>
         <button className="create-review-modal__submit" type="submit">
           Submit
