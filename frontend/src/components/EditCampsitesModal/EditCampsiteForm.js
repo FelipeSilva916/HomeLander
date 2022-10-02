@@ -38,7 +38,7 @@ const EditCampsiteForm = ({ setShowModal }) => {
 
   return (
     <div className="edit-form-container">
-      <h2>Change your description:</h2>
+      <h2 className="edit-title">Change your description:</h2>
       <form onSubmit={handleSubmit} className="edit-form">
         <ul>
           {errors.map((error, idx) => (
