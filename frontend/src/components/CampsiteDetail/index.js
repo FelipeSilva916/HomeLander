@@ -62,13 +62,9 @@ const CampsiteDetail = ({ setShowModal }) => {
         </div>
       </div>
       <CampsiteImages campsiteId={campsiteId} />
-      <div className="campsite-detail-container-reviews">
-        <div className="reviews-table">
-          <ReviewsTable campsiteId={campsiteId} />
-        </div>
-        <div>
-          <CreateReviewModal />
-        </div>
+
+      <div className="reviews-table">
+        <ReviewsTable campsiteId={campsiteId} />
       </div>
     </div>
   );

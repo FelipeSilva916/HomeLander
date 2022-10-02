@@ -1,39 +1,63 @@
 .reviews-table {
-  width: 100%;
+  width: 35rem;
   margin: 1rem 0;
+  background-color: #4b6b3c;
+  border-radius: 0.5rem;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
 }
 
 .review-username {
-  font-size: 1.5rem;
+  /* font-size: 1.5rem; */
   font-weight: bold;
   margin: 0;
   padding: 0;
-  text-align: center;
-  color: #907a48;
+  color: #ff4f00;
 }
 
-.reviews-table-items {
-  background-color: aquamarine;
+.review-table-items {
+  margin: 0%;
+  padding: 0%;
+  display: flex;
+  flex-direction: column;
+  /* border: #3a4928 solid 1px; */
+}
+
+.reviews-table-detail {
+  background-color: white;
 }
 
 .review-rating {
-  font-size: 1.5rem;
-  font-weight: bold;
+  font-size: 1rem;
   margin: 0;
   padding: 0;
   text-align: center;
+  color: black;
+}
+
+.review-content p {
+  font-size: 1.5rem;
+  font-weight: bold;
+  width: 25rem;
+  margin: 0.5rem 1rem;
+  padding: 0.5rem 1rem;
+  text-align: center;
   color: #907a48;
+  background-color: #e6deb9;
+  border-radius: 1rem;
 }
 
 .review-content {
-  font-size: 1.5rem;
-  font-weight: bold;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.review-p {
   margin: 0;
   padding: 0;
-  text-align: center;
-  color: #907a48;
 }
-
 .review-edit {
   margin: 0 1rem;
   padding: 0.5rem;
@@ -43,16 +67,72 @@
   text-align: center;
 }
 
+.review-user-rating {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 1rem;
+  margin: 0;
+}
+
 .review-edit button {
   margin: 0 1rem;
   padding: 0.5rem;
   color: #907a48;
   background-color: #3a4928;
   border-radius: 0.5rem;
-  font-size: 1rem;
 }
 
 .review-edit button:hover {
   background-color: #907a48;
   color: #3a4928;
+}
+
+.create-review-button {
+  display: flex;
+  justify-content: space-between;
+  padding: 0 2rem;
+  align-items: center;
+  margin: 1rem 0;
+}
+
+.campsite-detail-container-reviews {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  line-height: normal;
+}
+
+.review-button {
+  background-image: linear-gradient(
+    to right,
+    #3a4928,
+    #4b6b3c,
+    #d4bf88,
+    #e6deb9
+  );
+  box-shadow: 0 4px 15px 0 #4b6b3cb9;
+  color: white;
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 0.25rem;
+  cursor: pointer;
+  font-size: 12px;
+  background-size: 300% 100%;
+
+  -o-transition: all 0.4s ease-in-out;
+  -webkit-transition: all 0.4s ease-in-out;
+  transition: all 0.4s ease-in-out;
+}
+
+.review-button:hover {
+  background-color: black;
+  color: white;
+  background-position: 100% 0;
+  background-size: 200% 100%;
+  -o-transition: all 0.4s ease-in-out;
+  -webkit-transition: all 0.4s ease-in-out;
+  transition: all 0.4s ease-in-out;
 }

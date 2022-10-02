@@ -1,6 +1,7 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getReviewsByCampsiteId } from "../../store/reviews";
+import CreateReviewModal from "../CreateReviewModal";
 import EditReviewModal from "../EditReviewModal";
 import "./ReviewDetails.css";
 
@@ -14,15 +15,20 @@ const ReviewsTable = ({ campsiteId }) => {
   }, [dispatch, campsiteId]);
 
   return (
-    <div className="reviews-table">
-      <h1>Reviews</h1>
+    <div className="reviews-table-detail">
+      <div className="create-review-button">
+        <h1>Reviews</h1>
+        <CreateReviewModal campsiteId={campsiteId} />
+      </div>
       {reviewsArray.map((review, i) => (
         <div className="review-table-items" key={i}>
-          <div className="review-username">
-            <p>{review?.User?.username}</p>
-          </div>
-          <div className="review-rating">
-            <p>{review?.rating}</p>
+          <div className="review-user-rating">
+            <div className="review-username">
+              <p className="review-p">{review?.User?.username}</p>
+            </div>
+            <div className="review-rating">
+              <p> Rating: {review?.rating}</p>
+            </div>
           </div>
           <div className="review-content">
             <p>{review?.body}</p>
