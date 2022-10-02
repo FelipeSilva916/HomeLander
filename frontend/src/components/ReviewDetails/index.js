@@ -17,7 +17,7 @@ const ReviewsTable = ({ campsiteId }) => {
     <div className="reviews-table">
       <h1>Reviews</h1>
       {reviewsArray.map((review, i) => (
-        <div key={i}>
+        <div className="review-table-items" key={i}>
           <div className="review-username">
             <p>{review?.User?.username}</p>
           </div>

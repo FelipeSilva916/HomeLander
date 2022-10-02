@@ -12,6 +12,10 @@
   color: #907a48;
 }
 
+.reviews-table-items {
+  background-color: aquamarine;
+}
+
 .review-rating {
   font-size: 1.5rem;
   font-weight: bold;
