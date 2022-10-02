@@ -66,7 +66,16 @@ router.put("/:reviewId", requireAuth, async (req, res) => {
   }
   if (user.id == review.userId) {
     await review.update({ rating, body });
-    res.json(review);
+    const campsiteReviews = await Review.findAll({
+      where: {
+        campsiteId: review.campsiteId
+      },
+      include: {
+        model: User
+      }
+    });
+    res.json(campsiteReviews);
+    // res.json(review);
   } else {
     const error = new Error("You can't update this review");
     error.status = 403;

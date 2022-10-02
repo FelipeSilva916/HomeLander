@@ -36,12 +36,15 @@ const EditReviewForm = ({ setShowModal, campsiteId }) => {
     setErrors([]);
 
     dispatch(
-      editReview({
-        userId: user?.id,
-        id: reviewId?.id,
-        body,
-        rating
-      })
+      editReview(
+        {
+          userId: user?.id,
+          id: reviewId?.id,
+          body,
+          rating
+        },
+        campsiteId
+      )
     )
       .then(() => {
         setShowModal(false);

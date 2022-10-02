@@ -74,13 +74,13 @@ export const getReview = (siteId) => async (dispatch) => {
   }
 };
 
-export const editReview = (review) => async (dispatch) => {
+export const editReview = (review, campsiteId) => async (dispatch) => {
   const response = await csrfFetch(`/api/reviews/${review.id}`, {
     method: "PUT",
     headers: {
       "Content-Type": "application/json"
     },
-    body: JSON.stringify(review)
+    body: JSON.stringify(review, campsiteId)
   });
   if (response.ok) {
     const review = await response.json();
@@ -137,8 +137,10 @@ const reviewsReducer = (state = {}, action) => {
       return newState;
 
     case EDIT_REVIEW:
-      newState = { ...state };
-      newState[action.review.id] = action.review;
+      newState = {};
+      action.review.forEach((review) => {
+        newState[review.id] = review;
+      });
       return newState;
 
     case DELETE_REVIEW:
