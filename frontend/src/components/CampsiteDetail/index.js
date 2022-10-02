@@ -33,6 +33,7 @@ const CampsiteDetail = ({ setShowModal }) => {
       );
     }
   }
+  console.log(campsite?.CampsiteImages);
   return (
     <div className="campsite-detail-wrapper">
       <div id="campsite-image-info">
@@ -60,7 +61,7 @@ const CampsiteDetail = ({ setShowModal }) => {
           </div>
         </div>
       </div>
-      {campsite?.CampsiteImages?.length !== 0 && (
+      {campsite?.CampsiteImages?.length > 0 && (
         <CampsiteImages campsiteId={campsiteId} />
       )}
       {/* ADD IAMGES BUTTON */}
