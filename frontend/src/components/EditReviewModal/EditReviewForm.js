@@ -54,16 +54,16 @@ const EditReviewForm = ({ setShowModal, campsiteId }) => {
   };
 
   return (
-    <div className="edit-form">
-      <h2>Change your description:</h2>
-      <form onSubmit={handleSubmit}>
+    <div className="edit-form-container">
+      <h2 className="edit-title">Change your description:</h2>
+      <form id="edit-review-form" onSubmit={handleSubmit}>
         <ul>
           {errors.map((error, idx) => (
             <li key={idx}>{error}</li>
           ))}
         </ul>
         <label>
-          Rating
+          Rating: {""}
           <input
             type="number"
             min="1"
@@ -74,7 +74,7 @@ const EditReviewForm = ({ setShowModal, campsiteId }) => {
           />
         </label>
         <label>
-          Description
+          Description:{" "}
           <input
             type="text"
             value={body}
@@ -82,9 +82,13 @@ const EditReviewForm = ({ setShowModal, campsiteId }) => {
             required
           />
         </label>
-        <button type="submit">Submit</button>
+        <button className="edit-form-submit" type="submit">
+          Submit
+        </button>
       </form>
-      <button onClick={handleDelete}>Delete</button>
+      <button className="delete-review-button" onClick={handleDelete}>
+        <i className="fa-solid fa-trash-xmark"></i>
+      </button>
     </div>
   );
 };
