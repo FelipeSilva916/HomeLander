@@ -11,7 +11,7 @@ const DeleteCampsiteButton = ({ campsiteId }) => {
   const handleDelete = async (e) => {
     e.preventDefault();
     await dispatch(deleteCampsiteThunk(campsiteId));
-    // history.push("/campsites");
+    history.push("/campsites");
   };
 
   return (
