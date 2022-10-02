@@ -90,4 +90,19 @@
   font-weight: 600;
   cursor: pointer;
   background-color: #e6deb9;
+  border-radius: 0.5rem;
+  padding: 0.5rem;
+}
+
+.add-image-button:hover {
+  background-color: #4b6b3c;
+  color: #e6deb9;
+}
+
+.images-control-button {
+  width: 15%;
+  display: inline-flex;
+  justify-content: space-between;
+  margin: 1rem;
+  gap: 10px;
 }
