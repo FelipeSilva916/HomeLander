@@ -41,7 +41,7 @@ const MyFavoriteCampsites = () => {
 
   return (
     <div className="favorite-modal-content">
-      <h3 className="my-favorite-title">My Favorites</h3>
+      {/* <h3 className="my-favorite-title">My Favorites</h3> */}
       <div className="favorite-site-card">
         {favCampsiteName?.map((favorite, i) => (
           <div className="favorite-site-card-content" key={i}>

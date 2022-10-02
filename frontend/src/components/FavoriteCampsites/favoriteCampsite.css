@@ -1,14 +1,19 @@
 .favorite-modal-content {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   align-items: center;
   justify-content: center;
   background-color: #fff;
   margin: 1rem;
+  width: 30em;
 }
 
 .favorite-site-card {
-  justify-content: center;
+  justify-content: space-evenly;
+  align-items: center;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
 }
 
 .favorite-site-card-item:hover {
