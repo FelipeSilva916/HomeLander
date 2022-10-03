@@ -18,29 +18,30 @@ const AddCampsiteImageForm = ({ campsiteId, setShowModal }) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    dispatch(
-      addCampsiteImage({
-        imageUrl,
-        campsiteId: +campsiteId,
-        userId: sessionUser?.id
-      })
-    );
+    const payload = {
+      imageUrl,
+      campsiteId,
+      userId: sessionUser.id
+    };
+    const newCampsiteImage = await dispatch(addCampsiteImage(payload));
+    if (newCampsiteImage) {
+      setShowModal(false);
+    }
+
     history.push(`/campsites/${campsiteId}`);
     setShowModal(false);
   };
 
-  const updateImage = (e) => setImage(e.target.value);
+  const updateImage = (e) => {
+    const imageFile = e.target.files[0];
+    setImage(imageFile);
+  };
 
   return (
     <div className="add-image-form">
       <h2>Add an image:</h2>
       <form className="add-image" onSubmit={handleSubmit}>
-        <input
-          type="file"
-          value={imageUrl}
-          required
-          onChange={(e) => setImage(e.target.files[0])}
-        />
+        <input type="file" required onChange={(e) => updateImage(e)} />
         <button type="submit">Add Image</button>
       </form>
     </div>

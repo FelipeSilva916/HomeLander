@@ -26,11 +26,12 @@ router.post("/", requireAuth, validateCampsite, async (req, res) => {
 router.post(
   "/:campsiteId/images",
   requireAuth,
-  singleMulterUpload("image"),
+  singleMulterUpload("imageUrl"),
   async (req, res) => {
     const { user } = req;
     const campsiteId = parseInt(req.params);
     const campsite = await Campsite.findByPk(campsiteId);
+    const imageUrl = await singlePublicFileUpload(req.file);
 
     if (!campsite) {
       const err = new Error("Campsite not found");
@@ -43,7 +44,7 @@ router.post(
     const campsiteImage = await CampsiteImage.create({
       campsiteId,
       userId: user.id,
-      imageUrl: await singlePublicFileUpload(req.file)
+      imageUrl
     });
     res.json(campsiteImage);
     res.status(201);

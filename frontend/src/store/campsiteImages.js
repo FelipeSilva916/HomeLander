@@ -29,10 +29,12 @@ const loadImages = (images) => {
 // Action Creators
 //=========================================================
 export const addCampsiteImage = (data) => async (dispatch) => {
-  const { campsiteId, imageUrl } = data;
+  const { campsiteId, imageUrl, userId } = data;
+  console.log("data", data);
   const formData = new FormData();
   formData.append("campsiteId", campsiteId);
-  formData.append("imageUrl", imageUrl);
+  formData.append("userId", userId);
+  if (imageUrl) formData.append("imageUrl", imageUrl);
 
   const res = await csrfFetch(`/api/campsites/${campsiteId}/images`, {
     method: "POST",
