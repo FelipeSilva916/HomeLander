@@ -11,7 +11,7 @@ const MyFavoriteCampsites = () => {
   const campsiteState = useSelector((state) => state.campsite);
   const sessionUser = useSelector((state) => state.session.user);
   const favoriteId = favorites.filter(
-    (favorite) => favorite?.userId == sessionUser?.id
+    (favorite) => favorite?.userId === sessionUser?.id
   );
 
   useEffect(() => {

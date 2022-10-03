@@ -6,7 +6,6 @@ import "./campsiteDetail.css";
 import EditCampsiteModal from "../EditCampsitesModal";
 import DeleteCampsiteButton from "../DeleteCampsiteButton";
 
-import CreateReviewModal from "../CreateReviewModal";
 import Map from "../GoogleMap/CampsiteMaps";
 import ReviewsTable from "../ReviewDetails";
 import AddFavoriteButton from "../AddFavoriteButton";

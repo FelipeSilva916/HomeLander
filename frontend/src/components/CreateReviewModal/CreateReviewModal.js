@@ -1,11 +1,10 @@
 import { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { NavLink, useHistory, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { postReview } from "../../store/reviews";
 import "./CreateReview.css";
 const CreateReviewForm = ({ setShowModal }) => {
   const dispatch = useDispatch();
-  const history = useHistory();
   const { campsiteId } = useParams();
   const [rating, setRating] = useState(0);
   const [body, setBody] = useState("");
