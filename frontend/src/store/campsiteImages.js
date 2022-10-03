@@ -28,22 +28,43 @@ const loadImages = (images) => {
 //=========================================================
 // Action Creators
 //=========================================================
-export const addCampsiteImage = (campsiteData) => async (dispatch) => {
-  const { imageUrl, campsiteId } = campsiteData;
+export const addCampsiteImage = (data) => async (dispatch) => {
+  const { campsiteId, imageUrl } = data;
+  const formData = new FormData();
+  formData.append("campsiteId", campsiteId);
+  formData.append("imageUrl", imageUrl);
 
-  const response = await csrfFetch(`/api/campsites/${campsiteId}/images`, {
+  const res = await csrfFetch(`/api/campsites/${campsiteId}/images`, {
     method: "POST",
     headers: {
-      "Content-Type": "application/json"
+      "Content-Type": "multipart/form-data"
     },
-    body: JSON.stringify({ imageUrl })
+    body: formData
   });
 
-  if (response.ok) {
-    const image = await response.json();
+  if (res.ok) {
+    const image = await res.json();
     dispatch(addImage(image));
+    return image;
   }
 };
+
+// export const addCampsiteImage = (campsiteData) => async (dispatch) => {
+//   const { imageUrl, campsiteId } = campsiteData;
+
+//   const response = await csrfFetch(`/api/campsites/${campsiteId}/images`, {
+//     method: "POST",
+//     headers: {
+//       "Content-Type": "application/json"
+//     },
+//     body: JSON.stringify({ imageUrl })
+//   });
+
+//   if (response.ok) {
+//     const image = await response.json();
+//     dispatch(addImage(image));
+//   }
+// };
 
 //   const formData = new FormData();
 //   formData.append("image", image);

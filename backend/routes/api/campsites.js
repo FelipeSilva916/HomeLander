@@ -3,6 +3,7 @@ const router = express.Router();
 const { Campsite, Review, CampsiteImage, User } = require("../../db/models");
 const { requireAuth } = require("../../utils/auth");
 const { validateCampsite } = require("../../utils/validation");
+const { singlePublicFileUpload, singleMulterUpload } = require("../../awsS3");
 
 // ======== POST /api/campsites - Create a new campsite ========//
 router.post("/", requireAuth, validateCampsite, async (req, res) => {
@@ -22,46 +23,73 @@ router.post("/", requireAuth, validateCampsite, async (req, res) => {
 
 //Create custom validators
 // ======== POST /api/campsites/:id/images - Add an image to a campsite ========//
-router.post("/:id/images", requireAuth, async (req, res) => {
-  const { user } = req;
-  const { id } = req.params;
-  const { imageUrl } = req.body;
-  const campsite = await Campsite.findByPk(id);
+router.post(
+  "/:campsiteId/images",
+  requireAuth,
+  singleMulterUpload("image"),
+  async (req, res) => {
+    const { user } = req;
+    const campsiteId = parseInt(req.params);
+    const campsite = await Campsite.findByPk(campsiteId);
 
-  // if (!campsite) {
-  //   res.status(404);
-  //   res.json({ error: "Campsite not found" });
-  // } else if (campsite.userId !== user.id) {
-  //   res.status(401);
-  //   res.json({ error: "Unauthorized" });
-  // } else {
-  //   const newCampsiteImage = await CampsiteImage.create({
-  //     campsiteId: id,
-  //     imageUrl,
-  //     userId: user.id
-  //   });
-
-  //   res.json(newCampsiteImage);
-  //   res.status(201);
-  // }
-
-  const newCampsiteImage = await CampsiteImage.create({
-    campsiteId: id,
-    imageUrl,
-    userId: user.id
-  });
-
-  const fetchCampsiteImage = await CampsiteImage.findOne({
-    where: {
-      id: newCampsiteImage.id
-    },
-    include: {
-      model: Campsite
+    if (!campsite) {
+      const err = new Error("Campsite not found");
+      err.status = 404;
+      err.title = "Campsite not found.";
+      err.errors = ["The requested campsite could not be found."];
+      return next(err);
     }
-  });
-  res.json(fetchCampsiteImage);
-  res.status(201);
-});
+
+    const campsiteImage = await CampsiteImage.create({
+      campsiteId,
+      userId: user.id,
+      imageUrl: await singlePublicFileUpload(req.file)
+    });
+    res.json(campsiteImage);
+    res.status(201);
+  }
+);
+
+// router.post("/:id/images", requireAuth, async (req, res) => {
+//   const { user } = req;
+//   const { id } = req.params;
+//   const { imageUrl } = req.body;
+//   const campsite = await Campsite.findByPk(id);
+
+// if (!campsite) {
+//   res.status(404);
+//   res.json({ error: "Campsite not found" });
+// } else if (campsite.userId !== user.id) {
+//   res.status(401);
+//   res.json({ error: "Unauthorized" });
+// } else {
+//   const newCampsiteImage = await CampsiteImage.create({
+//     campsiteId: id,
+//     imageUrl,
+//     userId: user.id
+//   });
+
+//   res.json(newCampsiteImage);
+//   res.status(201);
+// }
+
+//   const newCampsiteImage = await CampsiteImage.create({
+//     campsiteId: id,
+//     imageUrl,
+//     userId: user.id
+//   });
+
+//   const fetchCampsiteImage = await CampsiteImage.findOne({
+//     where: {
+//       id: newCampsiteImage.id
+//     },
+//     include: {
+//       model: Campsite
+//     }
+//   });
+//   res.json(fetchCampsiteImage);
+//   res.status(201);
+// });
 
 // ======== DELETE /api/campsites/:id/images/:imageId - Delete an image from a campsite ========//
 router.delete("/:id/images/:imageId", requireAuth, async (req, res) => {

@@ -29,15 +29,17 @@ const AddCampsiteImageForm = ({ campsiteId, setShowModal }) => {
     setShowModal(false);
   };
 
+  const updateImage = (e) => setImage(e.target.value);
+
   return (
     <div className="add-image-form">
       <h2>Add an image:</h2>
       <form className="add-image" onSubmit={handleSubmit}>
         <input
-          type="text"
+          type="file"
           value={imageUrl}
           required
-          onChange={(e) => setImage(e.target.value)}
+          onChange={(e) => setImage(e.target.files[0])}
         />
         <button type="submit">Add Image</button>
       </form>
