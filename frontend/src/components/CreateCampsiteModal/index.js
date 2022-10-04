@@ -39,7 +39,6 @@ const CreateCampsiteModal = () => {
       longitude,
       userId: user.id
     };
-    console.log(payload);
     await dispatch(createCampsite(payload))
       .then(() => {
         setShowModal(false);
