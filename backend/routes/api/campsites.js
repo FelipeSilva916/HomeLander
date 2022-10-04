@@ -29,7 +29,8 @@ router.post(
   singleMulterUpload("imageUrl"),
   async (req, res) => {
     const { user } = req;
-    const campsiteId = parseInt(req.params);
+    const { campsiteId } = req.params;
+
     const campsite = await Campsite.findByPk(campsiteId);
     const imageUrl = await singlePublicFileUpload(req.file);
 

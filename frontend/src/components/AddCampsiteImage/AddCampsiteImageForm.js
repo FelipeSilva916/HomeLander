@@ -18,6 +18,7 @@ const AddCampsiteImageForm = ({ campsiteId, setShowModal }) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    console.log("campsiteId", campsiteId);
     const payload = {
       imageUrl,
       campsiteId,
