@@ -91,6 +91,14 @@
   background-color: chartreuse;
 }
 
+.fa-person-hiking {
+  color: #ff4f00;
+}
+
+.fa-campfire {
+  color: #ff4f00;
+}
+
 .nav-bar-right {
   display: flex;
   flex-direction: row;

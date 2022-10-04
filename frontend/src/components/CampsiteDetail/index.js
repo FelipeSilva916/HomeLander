@@ -32,7 +32,6 @@ const CampsiteDetail = ({ setShowModal }) => {
       );
     }
   }
-  console.log(campsite?.CampsiteImages);
   return (
     <div className="campsite-detail-wrapper">
       <div id="campsite-image-info">
