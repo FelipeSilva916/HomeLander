@@ -92,17 +92,27 @@ export const deleteCampsiteThunk = (id) => async (dispatch) => {
 };
 
 export const createCampsite = (campsite) => async (dispatch) => {
+  const { name, description, latitude, longitude, previewImage } = campsite;
+  console.log(campsite);
+  const data = new FormData();
+  data.append("name", name);
+  data.append("description", description);
+  data.append("latitude", latitude);
+  data.append("longitude", longitude);
+  if (previewImage) data.append("previewImage", previewImage);
+
   const response = await csrfFetch("/api/campsites", {
     method: "POST",
     headers: {
-      "Content-Type": "application/json"
+      "Content-Type": "multipart/form-data"
     },
-    body: JSON.stringify(campsite)
+    body: data
   });
 
   if (response.ok) {
     const campsite = await response.json();
     dispatch(loadCampsite(campsite));
+    return campsite;
   }
 };
 //=========================================================

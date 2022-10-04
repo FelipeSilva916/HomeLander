@@ -30,7 +30,6 @@ const loadImages = (images) => {
 //=========================================================
 export const addCampsiteImage = (data) => async (dispatch) => {
   const { campsiteId, imageUrl, userId } = data;
-  console.log("data", data);
   const formData = new FormData();
   formData.append("campsiteId", campsiteId);
   formData.append("userId", userId);

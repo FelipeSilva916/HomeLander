@@ -39,17 +39,24 @@ const CreateCampsiteModal = () => {
       longitude,
       userId: user.id
     };
+    console.log(payload);
     await dispatch(createCampsite(payload))
       .then(() => {
         setShowModal(false);
-        reset();
         history.push("/campsites");
       })
       .catch(async (res) => {
         const data = await res.json();
         if (data && data.errors) setErrors(data.errors);
       });
-    reset();
+    // reset();
+  };
+
+  const updateFile = (e) => {
+    const file = e.target.files[0];
+    if (file) {
+      setPreviewImage(file);
+    }
   };
 
   return (
@@ -95,11 +102,8 @@ const CreateCampsiteModal = () => {
               <label htmlFor="previewImage">Preview Image:</label>
               <input
                 className="create-post-input"
-                type="text"
-                placeholder="https://homelander.s3.us-west-1.amazonaws.com/homeLanderLogo.png"
-                name="previewImage"
-                value={previewImage}
-                onChange={(e) => setPreviewImage(e.target.value)}
+                type="file"
+                onChange={updateFile}
               />
             </div>
             <div className="create-post-input-wrapper">

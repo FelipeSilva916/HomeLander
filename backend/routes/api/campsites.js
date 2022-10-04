@@ -6,20 +6,28 @@ const { validateCampsite } = require("../../utils/validation");
 const { singlePublicFileUpload, singleMulterUpload } = require("../../awsS3");
 
 // ======== POST /api/campsites - Create a new campsite ========//
-router.post("/", requireAuth, validateCampsite, async (req, res) => {
-  const { user } = req;
-  const { latitude, longitude, name, previewImage, description } = req.body;
-  const newCampsite = await Campsite.create({
-    userId: user.id,
-    latitude,
-    longitude,
-    name,
-    previewImage,
-    description
-  });
-  res.json(newCampsite);
-  res.status(201);
-});
+router.post(
+  "/",
+  requireAuth,
+  singleMulterUpload("previewImage"),
+  validateCampsite,
+  async (req, res) => {
+    const { user } = req;
+    const { latitude, longitude, name, description } = req.body;
+    console.log(req.file);
+    const previewImage = await singlePublicFileUpload(req.file);
+    const newCampsite = await Campsite.create({
+      userId: user.id,
+      latitude,
+      longitude,
+      name,
+      description,
+      previewImage
+    });
+    res.json(newCampsite);
+    res.status(201);
+  }
+);
 
 //Create custom validators
 // ======== POST /api/campsites/:id/images - Add an image to a campsite ========//
