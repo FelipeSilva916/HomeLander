@@ -43,12 +43,13 @@ const CreateCampsiteModal = () => {
       .then(() => {
         setShowModal(false);
         history.push("/campsites");
+        reset();
       })
       .catch(async (res) => {
         const data = await res.json();
+        console.log(data.errors);
         if (data && data.errors) setErrors(data.errors);
       });
-    reset();
   };
 
   const updateFile = (e) => {
@@ -58,6 +59,7 @@ const CreateCampsiteModal = () => {
     }
   };
 
+  console.log(errors);
   return (
     <>
       <button
@@ -71,7 +73,7 @@ const CreateCampsiteModal = () => {
           <form onSubmit={handleSubmit} className="create-campsite-form">
             <h2>Create A Campsite⛺️</h2>
             <ul className="error-list">
-              {errors.map((error, idx) => (
+              {errors?.map((error, idx) => (
                 <li key={idx}>{error}</li>
               ))}
             </ul>
