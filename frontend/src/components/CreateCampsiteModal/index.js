@@ -100,7 +100,7 @@ const CreateCampsiteModal = () => {
             <div className="create-post-input-wrapper">
               <label htmlFor="previewImage">Preview Image:</label>
               <input
-                className="create-post-input"
+                className="create-post-input-image"
                 type="file"
                 onChange={updateFile}
               />
