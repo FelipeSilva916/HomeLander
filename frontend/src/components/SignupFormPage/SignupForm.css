@@ -1,17 +1,33 @@
 .signup-btn {
-  display: inline-block;
-  text-align: center;
-  background-color: #4b6b3c;
-  color: #fff;
-  width: 50%;
-  height: 48px;
-  font-size: 20px;
-  border: 1px solid rgb(0, 0, 0);
-  border-radius: 5px;
+  background-image: linear-gradient(
+    to right,
+    #3a4928,
+    #4b6b3c,
+    #d4bf88,
+    #e6deb9
+  );
+  box-shadow: 0 4px 15px 0 #4b6b3cb9;
+  color: white;
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 0.25rem;
+  cursor: pointer;
+  font-size: 12px;
+  background-size: 300% 100%;
+  -o-transition: all 0.4s ease-in-out;
+  -webkit-transition: all 0.4s ease-in-out;
+  transition: all 0.4s ease-in-out;
+  font-size: 18px;
 }
 
 .signup-btn:hover {
-  background-color: #ff4f00;
+  background-color: black;
+  color: black;
+  background-position: 100% 0;
+  background-size: 200% 100%;
+  -o-transition: all 0.4s ease-in-out;
+  -webkit-transition: all 0.4s ease-in-out;
+  transition: all 0.4s ease-in-out;
 }
 
 form {
