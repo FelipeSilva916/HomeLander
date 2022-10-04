@@ -49,7 +49,7 @@ const CreateCampsiteModal = () => {
         const data = await res.json();
         if (data && data.errors) setErrors(data.errors);
       });
-    // reset();
+    reset();
   };
 
   const updateFile = (e) => {
