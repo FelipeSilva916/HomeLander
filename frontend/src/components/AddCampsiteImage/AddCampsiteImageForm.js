@@ -14,7 +14,7 @@ const AddCampsiteImageForm = ({ campsiteId, setShowModal }) => {
 
   useEffect(() => {
     dispatch(getImages(campsiteId));
-  }, [dispatch]);
+  }, [dispatch, campsiteId]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();

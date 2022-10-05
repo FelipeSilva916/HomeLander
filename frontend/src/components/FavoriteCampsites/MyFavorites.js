@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { getAllFavorites, deleteFavorite } from "../../store/favorites";
 import { getAllCampsites } from "../../store/campsite";
 import "./favoriteCampsite.css";
-import { NavLink, useHistory } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 
 const MyFavoriteCampsites = ({ setShowModal }) => {
   const history = useHistory();
@@ -16,6 +16,7 @@ const MyFavoriteCampsites = ({ setShowModal }) => {
     (favorite) => favorite?.userId === sessionUser?.id
   );
 
+  console.log("sessionUser", sessionUser);
   useEffect(() => {
     dispatch(getAllFavorites()).then(() => setLoaded(true));
     dispatch(getAllCampsites());
@@ -27,16 +28,11 @@ const MyFavoriteCampsites = ({ setShowModal }) => {
 
   let handleDelete;
   favoriteId.map((favorite) => {
-    handleDelete = (e) => {
+    return (handleDelete = (e) => {
       e.preventDefault();
       dispatch(deleteFavorite(favorite?.id));
-    };
+    });
   });
-
-  const handleFavorite = (e) => {
-    setShowModal(false);
-    history.push(`/campsites/${e.target.id}`);
-  };
 
   const favCampsiteName = favorites.map((favorite) => {
     return campsiteState[favorite.campsiteId].name;
@@ -47,37 +43,44 @@ const MyFavoriteCampsites = ({ setShowModal }) => {
   });
 
   return (
-    <div className="favorite-modal-content">
-      {/* <h3 className="my-favorite-title">My Favorites</h3> */}
-      <div className="favorite-site-card">
-        {favCampsiteName?.map((favorite, i) => (
-          <div className="favorite-site-card-content" key={i}>
-            <div
-              className="favorite-site-card-item"
-              onClick={() => {
-                history.push(`/campsites/${favoriteId[i].campsiteId}`);
-                setShowModal(false);
-              }}
-              key={i}
-            >
-              {favCampsiteImg && (
-                <img
-                  className="favorite-campsite-preview"
-                  src={favCampsiteImg[i]}
-                  alt="campsite"
-                />
-              )}
+    <>
+      <h2 className="favorite-name">
+        {sessionUser?.username}'s Favorite Places
+      </h2>
+      <div className="favorite-modal-content">
+        <div className="favorite-site-card">
+          {favCampsiteName?.map((favorite, i) => (
+            <div className="favorite-site-card-content" key={i}>
+              <div
+                className="favorite-site-card-item"
+                onClick={() => {
+                  history.push(`/campsites/${favoriteId[i].campsiteId}`);
+                  setShowModal(false);
+                }}
+                key={i}
+              >
+                {favCampsiteImg && (
+                  <img
+                    className="favorite-campsite-preview"
+                    src={favCampsiteImg[i]}
+                    alt="campsite"
+                  />
+                )}
+              </div>
+              <div className="favorite-site-info-erase">
+                <div className="favorite-site-name">{favorite}</div>
+                <button
+                  onClick={handleDelete}
+                  className="delete-favorite-button"
+                >
+                  <i className="fa-solid fa-trash-xmark" />
+                </button>
+              </div>
             </div>
-            <div className="favorite-site-info-erase">
-              <div className="favorite-site-name">{favorite}</div>
-              <button onClick={handleDelete} className="delete-favorite-button">
-                <i className="fa-solid fa-trash-xmark" />
-              </button>
-            </div>
-          </div>
-        ))}
+          ))}
+        </div>
       </div>
-    </div>
+    </>
   );
 };
 
