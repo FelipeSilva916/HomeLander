@@ -16,10 +16,11 @@ const CampsiteDetail = ({ setShowModal }) => {
   const dispatch = useDispatch();
   const campsite = useSelector((state) => state.campsite[campsiteId]);
   const user = useSelector((state) => state.session.user);
+  const reviews = useSelector((state) => state.review);
 
   useEffect(() => {
     dispatch(getOneCampsite(+campsiteId));
-  }, [dispatch, campsiteId]);
+  }, [dispatch, campsiteId, reviews]);
 
   let userManipulationBtn;
   if (campsite) {
