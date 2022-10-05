@@ -27,7 +27,7 @@ const AddFavoriteButton = ({ campsiteId }) => {
   useEffect(() => {
     dispatch(getAllFavorites());
   }, [dispatch]);
-
+  console.log("campsiteId", campsiteId);
   const handleAddFavorite = async (e) => {
     e.preventDefault();
     if (!isFavorite) {

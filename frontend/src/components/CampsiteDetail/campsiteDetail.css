@@ -118,4 +118,6 @@
 /* create media query */
 .campsite-detail-image-container img {
   width: 40rem;
+  max-height: 700px;
+  object-fit: contain;
 }
