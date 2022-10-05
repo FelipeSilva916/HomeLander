@@ -5,7 +5,7 @@
   justify-content: center;
   background-color: #fff;
   margin: 1rem;
-  width: 30em;
+  width: 25rem;
 }
 
 .favorite-site-card {
@@ -17,9 +17,16 @@
 }
 
 .favorite-site-card-item:hover {
-  background-color: #4b6b3c;
   border-radius: 2rem;
   color: #fff;
+  background-image: linear-gradient(
+    to right bottom,
+    #4b6b3c,
+    #5d6f3c,
+    #6e733e,
+    #7f7742,
+    #907a48
+  );
 }
 
 .favorite-button-navbar {
@@ -34,7 +41,7 @@
 .favorite-site-info-erase {
   display: flex;
   flex-direction: row;
-  justify-content: space-around;
+  justify-content: center;
   margin: 0%;
   padding: 0;
 }
