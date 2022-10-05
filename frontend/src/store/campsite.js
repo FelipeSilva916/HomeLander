@@ -100,7 +100,7 @@ export const createCampsite = (campsite) => async (dispatch) => {
   data.append("latitude", latitude);
   data.append("longitude", longitude);
   if (previewImage) data.append("previewImage", previewImage);
-
+  console.log(latitude, longitude);
   const response = await csrfFetch("/api/campsites", {
     method: "POST",
     headers: {

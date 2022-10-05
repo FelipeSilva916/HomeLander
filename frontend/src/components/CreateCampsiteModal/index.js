@@ -3,6 +3,8 @@ import { Modal } from "../../context/Modal";
 import { useDispatch, useSelector } from "react-redux";
 import { createCampsite } from "../../store/campsite";
 import { useHistory } from "react-router-dom";
+import exifr from "exifr";
+
 import "./CreateCampsite.css";
 
 const CreateCampsiteModal = () => {
@@ -11,11 +13,9 @@ const CreateCampsiteModal = () => {
   const [showModal, setShowModal] = useState(false);
   const [name, setName] = useState("");
   const [description, setDescription] = useState("");
-  const [previewImage, setPreviewImage] = useState(
-    "https://homelander.s3.us-west-1.amazonaws.com/homeLanderLogo.png"
-  );
-  const [latitude, setLatitude] = useState("");
-  const [longitude, setLongitude] = useState("");
+  const [previewImage, setPreviewImage] = useState("");
+  const [lat, setLat] = useState("");
+  const [lgn, setLgn] = useState("");
   const [errors, setErrors] = useState([]);
   const [disabled, setDisabled] = useState(false);
   const [buttonText, setButtonText] = useState("Create Campsite");
@@ -26,8 +26,8 @@ const CreateCampsiteModal = () => {
     setName("");
     setDescription("");
     setPreviewImage("");
-    setLatitude("");
-    setLongitude("");
+    setLat("");
+    setLgn("");
     setErrors([]);
     setDisabled(false);
     setButtonText("Create Campsite");
@@ -37,12 +37,13 @@ const CreateCampsiteModal = () => {
     e.preventDefault();
     setDisabled(true);
     setButtonText(<i className="fa-solid fa-spinner fa-spin-pulse"></i>);
+
     const payload = {
       name,
       description,
       previewImage,
-      latitude,
-      longitude,
+      latitude: lat,
+      longitude: lgn,
       userId: user.id
     };
     await dispatch(createCampsite(payload))
@@ -58,10 +59,20 @@ const CreateCampsiteModal = () => {
       });
   };
 
-  const updateFile = (e) => {
+  const updateFile = async (e) => {
     const file = e.target.files[0];
     if (file) {
       setPreviewImage(file);
+      try {
+        let { latitude, longitude } = await exifr.gps(previewImage);
+
+        if (latitude && longitude) {
+          setLat(latitude.toFixed(4));
+          setLgn(longitude.toFixed(4));
+        }
+      } catch (error) {
+        console.log(error);
+      }
     }
   };
 
@@ -119,8 +130,8 @@ const CreateCampsiteModal = () => {
                 placeholder="Latitude"
                 type="text"
                 name="latitude"
-                value={latitude}
-                onChange={(e) => setLatitude(e.target.value)}
+                value={lat}
+                onChange={(e) => setLat(e.target.value)}
               />
             </div>
             <div className="create-post-input-wrapper">
@@ -130,8 +141,8 @@ const CreateCampsiteModal = () => {
                 placeholder="Longitude"
                 type="text"
                 name="longitude"
-                value={longitude}
-                onChange={(e) => setLongitude(e.target.value)}
+                value={lgn}
+                onChange={(e) => setLgn(e.target.value)}
               />
             </div>
             <button className="create-submit" type="submit" disabled={disabled}>
