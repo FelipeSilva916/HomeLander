@@ -7,7 +7,6 @@ import AllCampsites from "./components/AllCampsites";
 import CampsiteDetail from "./components/CampsiteDetail";
 import MyCampsites from "./components/MyCampsites";
 import Homepage from "./components/HomePage";
-
 function App() {
   const dispatch = useDispatch();
   const [isLoaded, setIsLoaded] = useState(false);

@@ -15,7 +15,7 @@ function FavoriteCampsitesModal() {
       </button>
       {showModal && (
         <Modal onClose={() => setShowModal(false)}>
-          <MyFavoriteCampsites />
+          <MyFavoriteCampsites setShowModal={setShowModal} />
         </Modal>
       )}
     </>

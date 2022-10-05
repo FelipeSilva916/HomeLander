@@ -47,7 +47,7 @@ function ProfileButton() {
           </li>
           <li>
             <button onClick={logout}>
-              <i class="fa-duotone fa-right-from-bracket"></i> Log Out
+              <i className="fa-duotone fa-right-from-bracket"></i> Log Out
             </button>
           </li>
         </ul>

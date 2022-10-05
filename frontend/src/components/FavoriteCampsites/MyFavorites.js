@@ -3,8 +3,9 @@ import { useDispatch, useSelector } from "react-redux";
 import { getAllFavorites, deleteFavorite } from "../../store/favorites";
 import { getAllCampsites } from "../../store/campsite";
 import "./favoriteCampsite.css";
+import { NavLink } from "react-router-dom";
 
-const MyFavoriteCampsites = () => {
+const MyFavoriteCampsites = ({ setShowModal }) => {
   const dispatch = useDispatch();
   const favorites = Object.values(useSelector((state) => state.favorite));
   const [loaded, setLoaded] = useState(false);
@@ -31,6 +32,10 @@ const MyFavoriteCampsites = () => {
     };
   });
 
+  const closeModal = () => {
+    setShowModal(false);
+  };
+
   const favCampsiteName = favorites.map((favorite) => {
     return campsiteState[favorite.campsiteId].name;
   });
@@ -45,15 +50,20 @@ const MyFavoriteCampsites = () => {
       <div className="favorite-site-card">
         {favCampsiteName?.map((favorite, i) => (
           <div className="favorite-site-card-content" key={i}>
-            <div className="favorite-site-card-item" key={i}>
-              {favCampsiteImg && (
-                <img
-                  className="favorite-campsite-preview"
-                  src={favCampsiteImg[i]}
-                  alt="campsite"
-                />
-              )}
-            </div>
+            <NavLink
+              // onClick={setShowModal(false)}
+              to={`/campsites/${favoriteId[i].campsiteId}`}
+            >
+              <div className="favorite-site-card-item" key={i}>
+                {favCampsiteImg && (
+                  <img
+                    className="favorite-campsite-preview"
+                    src={favCampsiteImg[i]}
+                    alt="campsite"
+                  />
+                )}
+              </div>
+            </NavLink>
             <div className="favorite-site-info-erase">
               <div className="favorite-site-name">{favorite}</div>
               <button onClick={handleDelete} className="delete-favorite-button">
