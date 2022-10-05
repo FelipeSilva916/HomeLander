@@ -11,7 +11,6 @@ function ProfileButton() {
     if (showMenu) return;
     setShowMenu(true);
   };
-
   const user = useSelector((state) => state.session.user);
 
   useEffect(() => {
@@ -20,9 +19,7 @@ function ProfileButton() {
     const closeMenu = () => {
       setShowMenu(false);
     };
-
     document.addEventListener("click", closeMenu);
-
     return () => document.removeEventListener("click", closeMenu);
   }, [showMenu]);
 

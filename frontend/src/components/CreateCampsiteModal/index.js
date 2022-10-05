@@ -65,7 +65,6 @@ const CreateCampsiteModal = () => {
     }
   };
 
-  console.log(errors);
   return (
     <>
       <button
