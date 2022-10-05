@@ -17,6 +17,8 @@ const CreateCampsiteModal = () => {
   const [latitude, setLatitude] = useState("");
   const [longitude, setLongitude] = useState("");
   const [errors, setErrors] = useState([]);
+  const [disabled, setDisabled] = useState(false);
+  const [buttonText, setButtonText] = useState("Create Campsite");
 
   const user = useSelector((state) => state.session.user);
 
@@ -27,10 +29,14 @@ const CreateCampsiteModal = () => {
     setLatitude("");
     setLongitude("");
     setErrors([]);
+    setDisabled(false);
+    setButtonText("Create Campsite");
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setDisabled(true);
+    setButtonText(<i className="fa-solid fa-spinner fa-spin-pulse"></i>);
     const payload = {
       name,
       description,
@@ -129,8 +135,8 @@ const CreateCampsiteModal = () => {
                 onChange={(e) => setLongitude(e.target.value)}
               />
             </div>
-            <button className="create-submit" type="submit">
-              Create Campsite
+            <button className="create-submit" type="submit" disabled={disabled}>
+              {buttonText}
             </button>
           </form>
         </Modal>
