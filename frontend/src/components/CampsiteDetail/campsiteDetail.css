@@ -21,13 +21,13 @@
   width: 350px;
   border-radius: 2rem;
 
-  background-image: radial-gradient(
-    circle,
-    #e6deb9,
-    #e1d6ad,
-    #ddcfa0,
+  background-image: linear-gradient(
+    to left top,
+    #d4bf88,
     #d8c794,
-    #d4bf88
+    #ddcfa0,
+    #e1d6ad,
+    #e6deb9
   );
 }
 
