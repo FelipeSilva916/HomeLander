@@ -3,9 +3,10 @@ import { useDispatch, useSelector } from "react-redux";
 import { getAllFavorites, deleteFavorite } from "../../store/favorites";
 import { getAllCampsites } from "../../store/campsite";
 import "./favoriteCampsite.css";
-import { NavLink } from "react-router-dom";
+import { NavLink, useHistory } from "react-router-dom";
 
 const MyFavoriteCampsites = ({ setShowModal }) => {
+  const history = useHistory();
   const dispatch = useDispatch();
   const favorites = Object.values(useSelector((state) => state.favorite));
   const [loaded, setLoaded] = useState(false);
@@ -32,8 +33,9 @@ const MyFavoriteCampsites = ({ setShowModal }) => {
     };
   });
 
-  const closeModal = () => {
+  const handleFavorite = (e) => {
     setShowModal(false);
+    history.push(`/campsites/${e.target.id}`);
   };
 
   const favCampsiteName = favorites.map((favorite) => {
@@ -50,20 +52,22 @@ const MyFavoriteCampsites = ({ setShowModal }) => {
       <div className="favorite-site-card">
         {favCampsiteName?.map((favorite, i) => (
           <div className="favorite-site-card-content" key={i}>
-            <NavLink
-              // onClick={setShowModal(false)}
-              to={`/campsites/${favoriteId[i].campsiteId}`}
+            <div
+              className="favorite-site-card-item"
+              onClick={() => {
+                history.push(`/campsites/${favoriteId[i].campsiteId}`);
+                setShowModal(false);
+              }}
+              key={i}
             >
-              <div className="favorite-site-card-item" key={i}>
-                {favCampsiteImg && (
-                  <img
-                    className="favorite-campsite-preview"
-                    src={favCampsiteImg[i]}
-                    alt="campsite"
-                  />
-                )}
-              </div>
-            </NavLink>
+              {favCampsiteImg && (
+                <img
+                  className="favorite-campsite-preview"
+                  src={favCampsiteImg[i]}
+                  alt="campsite"
+                />
+              )}
+            </div>
             <div className="favorite-site-info-erase">
               <div className="favorite-site-name">{favorite}</div>
               <button onClick={handleDelete} className="delete-favorite-button">
