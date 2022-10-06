@@ -14,7 +14,6 @@ const AllCampsites = () => {
   }, [dispatch]);
   return (
     <div>
-      <AllMaps campsites={campsites} />
       <div className="all-campsites-wrapper">
         <h1>All Campsites</h1>
         <div className="all-campsites-container">
@@ -31,6 +30,9 @@ const AllCampsites = () => {
             </div>
           ))}
         </div>
+      </div>
+      <div className="all-campsites-map">
+        <AllMaps campsites={campsites} />
       </div>
     </div>
   );

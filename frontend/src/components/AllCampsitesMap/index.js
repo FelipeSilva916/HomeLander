@@ -5,7 +5,7 @@ const AllMaps = ({ campsites }) => {
   const { isLoaded } = useLoadScript({
     googleMapsApiKey: process.env.REACT_APP_NEXT_PUBLIC_GOOGLE_MAPS_API_KEY
   });
-  console.log(campsites);
+
   const mapStyles = {
     height: "450px",
     width: "750px",
@@ -17,7 +17,12 @@ const AllMaps = ({ campsites }) => {
     lat: parseFloat(campsites[0]?.latitude),
     lng: parseFloat(campsites[0]?.longitude)
   };
-  if (!isLoaded) return <div>Loading...</div>;
+  if (!isLoaded)
+    return (
+      <div>
+        <i className="fa-solid fa-spinner fa-spin-pulse"></i>
+      </div>
+    );
 
   return (
     <>

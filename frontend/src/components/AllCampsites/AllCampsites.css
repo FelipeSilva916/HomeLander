@@ -15,6 +15,12 @@
   gap: 1rem;
 }
 
+.all-campsites-map {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 .campsite-card {
   border-radius: 1rem;
   display: flex;

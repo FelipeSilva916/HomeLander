@@ -17,7 +17,12 @@ const Map = ({ lat, lng }) => {
     lat: parseFloat(lat),
     lng: parseFloat(lng)
   };
-  if (!isLoaded) return <div>Loading...</div>;
+  if (!isLoaded)
+    return (
+      <div>
+        <i className="fa-solid fa-spinner fa-spin-pulse"></i>
+      </div>
+    );
 
   return (
     <>

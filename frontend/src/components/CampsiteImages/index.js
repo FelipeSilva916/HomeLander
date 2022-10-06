@@ -2,7 +2,6 @@ import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getImages } from "../../store/campsiteImages";
 import "./CampsiteImages.css";
-import AddCampsiteImageModal from "../AddCampsiteImage";
 import DeleteImageButton from "../DeleteImageButton";
 
 const CampsiteImages = ({ campsiteId }) => {
