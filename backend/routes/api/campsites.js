@@ -14,7 +14,6 @@ router.post(
   async (req, res) => {
     const { user } = req;
     const { latitude, longitude, name, description } = req.body;
-    console.log(req.file);
     const previewImage = await singlePublicFileUpload(req.file);
     const newCampsite = await Campsite.create({
       userId: user.id,

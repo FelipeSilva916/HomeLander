@@ -71,7 +71,7 @@ const CreateCampsiteModal = () => {
           setLgn(longitude.toFixed(4));
         }
       } catch (error) {
-        console.log(error);
+        // console.log(error);
       }
     }
   };
@@ -118,6 +118,7 @@ const CreateCampsiteModal = () => {
             <div className="create-post-input-wrapper">
               <label htmlFor="previewImage">Preview Image:</label>
               <input
+                required
                 className="create-post-input-image"
                 type="file"
                 onChange={updateFile}

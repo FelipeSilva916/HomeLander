@@ -1,10 +1,13 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { GoogleMap, Marker, useLoadScript } from "@react-google-maps/api";
 
 const AllMaps = ({ campsites }) => {
   const { isLoaded } = useLoadScript({
     googleMapsApiKey: process.env.REACT_APP_NEXT_PUBLIC_GOOGLE_MAPS_API_KEY
   });
+  const lat = parseFloat(campsites[0]?.latitude);
+  const lng = parseFloat(campsites[0]?.longitude);
+  console.log(lat, lng);
 
   const mapStyles = {
     height: "450px",
@@ -13,10 +16,6 @@ const AllMaps = ({ campsites }) => {
     margin: "1rem"
   };
 
-  const center = {
-    lat: parseFloat(campsites[0]?.latitude),
-    lng: parseFloat(campsites[0]?.longitude)
-  };
   if (!isLoaded)
     return (
       <div>
@@ -31,7 +30,14 @@ const AllMaps = ({ campsites }) => {
         defer
         src={`https://maps.googleapis.com/maps/api/js?key=${process.env.REACT_APP_NEXT_PUBLIC_GOOGLE_MAPS_API_KEY}&callback=initMap`}
       ></script>
-      <GoogleMap mapContainerStyle={mapStyles} zoom={5} center={center}>
+      <GoogleMap
+        mapContainerStyle={mapStyles}
+        zoom={5}
+        center={{
+          lat: campsites[0]?.latitude ? campsites[0]?.latitude : 0,
+          lng: campsites[0]?.longitude ? campsites[0]?.longitude : 0
+        }}
+      >
         {campsites.map((campsite) => (
           <Marker
             key={campsite.id}

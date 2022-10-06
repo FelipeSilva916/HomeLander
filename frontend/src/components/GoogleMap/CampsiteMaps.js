@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { GoogleMap, Marker, useLoadScript } from "@react-google-maps/api";
 
 const Map = ({ lat, lng }) => {
@@ -13,10 +13,21 @@ const Map = ({ lat, lng }) => {
     margin: "1rem"
   };
 
-  const center = {
-    lat: parseFloat(lat),
-    lng: parseFloat(lng)
-  };
+  let center;
+  useEffect(() => {
+    if (lat && lng) {
+      center = {
+        lat: parseFloat(lat),
+        lng: parseFloat(lng)
+      };
+    } else {
+      center = {
+        lat: 0,
+        lng: 0
+      };
+    }
+  }, [lat, lng]);
+
   if (!isLoaded)
     return (
       <div>

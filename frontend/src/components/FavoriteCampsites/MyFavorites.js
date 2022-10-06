@@ -16,7 +16,6 @@ const MyFavoriteCampsites = ({ setShowModal }) => {
     (favorite) => favorite?.userId === sessionUser?.id
   );
 
-  console.log("sessionUser", sessionUser);
   useEffect(() => {
     dispatch(getAllFavorites()).then(() => setLoaded(true));
     dispatch(getAllCampsites());
