@@ -15,7 +15,7 @@ const DeleteImageButton = ({ imageId, campsiteId, setIndex }) => {
 
   return (
     <button className="delete-image-button" onClick={handleDelete}>
-      <i className="fa-solid fa-trash-plus"></i>Delete
+      <i className="fa-solid fa-trash-plus"></i>
     </button>
   );
 };

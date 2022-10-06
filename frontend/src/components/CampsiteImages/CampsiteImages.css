@@ -38,30 +38,69 @@
 }
 
 .image-buttons-container {
-  width: 20%;
+  width: 40%;
   height: 100%;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
+  margin-top: 0.5rem;
 }
 
 .image-buttons-left button {
-  margin: 1rem;
-  background-color: transparent;
-  border: none;
-  text-decoration: none;
-  font-size: 36px;
-  color: #ff4f00;
+  width: 60px;
+  height: 60px;
+  background-color: #fff;
+  text-align: center;
+  line-height: 60px;
+  font-size: 35px;
+  margin: 0 10px;
+  display: block;
+  border-radius: 50%;
+  position: relative;
+  overflow: hidden;
+  border: 1px solid #907a48;
+  z-index: 1;
 }
 
+.image-buttons-left button::before,
+.image-buttons-right button::before {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: #4b6b3c;
+  transition: 0.5s;
+  z-index: -1;
+  color: #fff;
+}
+
+.image-buttons-left button:hover::before,
+.image-buttons-right button:hover::before {
+  top: 0;
+}
+
+.fa-circle-left,
+.fa-circle-right {
+  color: #d4bf88;
+  z-index: 2;
+}
 .image-buttons-right button {
-  margin: 1rem;
-  background-color: transparent;
-  border: none;
-  text-decoration: none;
-  font-size: 36px;
-  color: #ff4f00;
+  width: 60px;
+  height: 60px;
+  background-color: #fff;
+  text-align: center;
+  line-height: 60px;
+  font-size: 35px;
+  margin: 0 10px;
+  display: block;
+  border-radius: 50%;
+  position: relative;
+  overflow: hidden;
+  border: 1px solid #907a48;
+  z-index: 1;
 }
 .image-buttons-right:hover,
 .image-buttons-left:hover {
@@ -102,7 +141,7 @@
 .images-control-button {
   width: 15%;
   display: inline-flex;
-  justify-content: space-between;
-  margin: 1rem;
-  gap: 10px;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 1rem;
 }

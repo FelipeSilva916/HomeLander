@@ -80,8 +80,6 @@ const CampsiteImages = ({ campsiteId }) => {
         </div>
       </div>
       <div className="images-control-button">
-        {/* <AddCampsiteImageModal campsiteId={campsiteId} /> */}
-
         {showDelete && (
           <DeleteImageButton
             setIndex={setIndex}
