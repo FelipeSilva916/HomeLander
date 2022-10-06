@@ -13,21 +13,6 @@ const Map = ({ lat, lng }) => {
     margin: "1rem"
   };
 
-  let center;
-  useEffect(() => {
-    if (lat && lng) {
-      center = {
-        lat: parseFloat(lat),
-        lng: parseFloat(lng)
-      };
-    } else {
-      center = {
-        lat: 0,
-        lng: 0
-      };
-    }
-  }, [lat, lng]);
-
   if (!isLoaded)
     return (
       <div>
@@ -42,9 +27,19 @@ const Map = ({ lat, lng }) => {
         defer
         src={`https://maps.googleapis.com/maps/api/js?key=${process.env.REACT_APP_NEXT_PUBLIC_GOOGLE_MAPS_API_KEY}&callback=initMap`}
       ></script>
-      <GoogleMap mapContainerStyle={mapStyles} zoom={13} center={center}>
+      <GoogleMap
+        mapContainerStyle={mapStyles}
+        zoom={13}
+        center={{
+          lat: lat ? lat : 0,
+          lng: lng ? lng : 0
+        }}
+      >
         <Marker
-          position={center}
+          position={{
+            lat: lat ? lat : 0,
+            lng: lng ? lng : 0
+          }}
           icon={{
             url: "https://u.cubeupload.com/felipe916/vectorstock28985084.png",
             scaledSize: new window.google.maps.Size(50, 50)
