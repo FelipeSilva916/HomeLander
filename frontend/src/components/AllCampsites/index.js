@@ -32,6 +32,7 @@ const AllCampsites = () => {
         </div>
       </div>
       <div className="all-campsites-map">
+        <h2>All the places we have gone ⛺️</h2>
         <AllMaps campsites={campsites} />
       </div>
     </div>
