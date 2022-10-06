@@ -7,4 +7,9 @@
   border-radius: 0.25rem;
   cursor: pointer;
   font-size: 16px;
+  transition: all 0.2s ease-in-out;
+}
+
+.add-favorite-button:hover {
+  transform: scale(1.3);
 }
