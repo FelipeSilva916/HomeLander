@@ -7,7 +7,6 @@ const AllMaps = ({ campsites }) => {
   });
   const lat = parseFloat(campsites[0]?.latitude);
   const lng = parseFloat(campsites[0]?.longitude);
-  console.log(lat, lng);
 
   const mapStyles = {
     height: "450px",
