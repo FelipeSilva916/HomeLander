@@ -64,6 +64,7 @@ const CampsiteDetail = ({ setShowModal }) => {
         <CampsiteImages campsiteId={campsiteId} />
       )}
       {/* ADD IAMGES BUTTON */}
+      <h3>--------Add Image--------</h3>
       <div className="reviews-table">
         <ReviewsTable campsiteId={campsiteId} />
       </div>
