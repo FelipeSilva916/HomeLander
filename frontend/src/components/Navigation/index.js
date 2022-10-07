@@ -35,19 +35,36 @@ function Navigation({ isLoaded }) {
     );
   } else {
     sessionLinks = (
-      <div className="whole-page">
-        <div className="nav-bar">
-          <div className="nav-bar-left">
-            <i
-              className="fa-light fa-campground"
-              style={{ color: "white", fontSize: "2rem" }}
-            ></i>
+      <div className="page">
+        <div className="whole-page">
+          <div className="nav-bar">
+            <div className="nav-bar-left">
+              <i
+                className="fa-light fa-campground"
+                style={{ color: "white", fontSize: "2rem" }}
+              ></i>
+            </div>
+            <div className="nav-bar-right">
+              <LoginFormModal />
+              <SignupFormModal />
+              <DemoUser />
+            </div>
           </div>
-          <div className="nav-bar-right">
-            <LoginFormModal />
-            <SignupFormModal />
-            <DemoUser />
-          </div>
+          <footer className="footer">
+            <h2 className="github">
+              <a
+                href="https://github.com/FelipeSilva916"
+                target="_blank"
+                rel="noreferrer"
+              >
+                <i className="fab fa-github"></i>
+                GitHub
+              </a>
+            </h2>
+            <h2 className="linkedIn">
+              <i class="fa-brands fa-linkedin"></i>LinkedIn
+            </h2>
+          </footer>
         </div>
       </div>
     );
