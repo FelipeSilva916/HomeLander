@@ -5,7 +5,6 @@
   align-items: center;
   padding: 0 1rem;
   height: 4rem;
-  width: 100%;
   background-image: linear-gradient(
     to left,
     #4b6b3c,
@@ -170,4 +169,44 @@ html {
   .nav-bar-right > * {
     margin: 0 0.5rem;
   }
+}
+
+.footer {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  height: 4rem;
+  position: absolute;
+  /* padding: 0 3rem; */
+  bottom: 0;
+  width: 100%;
+  background-image: linear-gradient(
+    to left,
+    #4b6b3c,
+    #486438,
+    #455e34,
+    #425731,
+    #3f512d,
+    #3f4c29,
+    #3e4726,
+    #3d4223,
+    #3e3d21,
+    #3e371f,
+    #3d331e,
+    #3b2e1e
+  );
+}
+
+.github {
+  background-color: rgb(255, 255, 255);
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
+}
+
+.linkedIn {
+  background-color: rgb(255, 255, 255);
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
+  color: #0a66c2;
 }
