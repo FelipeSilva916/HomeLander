@@ -11,7 +11,11 @@ function FavoriteCampsitesModal() {
         className="favorite-button-navbar"
         onClick={() => setShowModal(true)}
       >
-        Favorites
+        {window.innerWidth > 768 ? (
+          "Explore"
+        ) : (
+          <i className="fa-solid fa-heart"></i>
+        )}
       </button>
       {showModal && (
         <Modal onClose={() => setShowModal(false)}>

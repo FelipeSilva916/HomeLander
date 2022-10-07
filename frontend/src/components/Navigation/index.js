@@ -9,6 +9,7 @@ import AllCampsitesButton from "./AllCampsitesButton";
 import "./Navigation.css";
 import FavoriteCampsitesModal from "../FavoriteCampsites";
 import CreateCampsiteModal from "../CreateCampsiteModal";
+import "../../index.css";
 
 function Navigation({ isLoaded }) {
   const sessionUser = useSelector((state) => state.session.user);
@@ -20,6 +21,7 @@ function Navigation({ isLoaded }) {
         <div className="nav-bar">
           <div className="nav-bar-left">
             <HomeButton />
+
             <AllCampsitesButton />
           </div>
 
