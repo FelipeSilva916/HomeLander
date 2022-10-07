@@ -1,3 +1,3 @@
 # HomeLander
 
-Capstone project for App Academy
+Capstone project for App Academy.
