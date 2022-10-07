@@ -20,9 +20,10 @@ const AddFavoriteButton = ({ campsiteId }) => {
   const favorite = currentFavorites.find(
     (favorite) => favorite.campsiteId === +campsiteId
   );
-  const [buttonText, setButtonText] = useState(
-    isFavorite ? "Remove Favorite" : "Add Favorite"
-  );
+  const [buttonText, setButtonText] = useState("");
+  useEffect(() => {
+    setButtonText(isFavorite ? "Remove Favorite" : "Add Favorite");
+  }, [isFavorite]);
 
   useEffect(() => {
     dispatch(getAllFavorites());
