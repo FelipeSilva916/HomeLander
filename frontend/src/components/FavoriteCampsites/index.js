@@ -12,7 +12,7 @@ function FavoriteCampsitesModal() {
         onClick={() => setShowModal(true)}
       >
         {window.innerWidth > 768 ? (
-          "Explore"
+          "Favorites"
         ) : (
           <i className="fa-solid fa-heart"></i>
         )}

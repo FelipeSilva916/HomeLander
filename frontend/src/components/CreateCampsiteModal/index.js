@@ -96,6 +96,7 @@ const CreateCampsiteModal = () => {
             <div className="create-post-input-wrapper">
               <label htmlFor="name">Name:</label>
               <input
+                required
                 className="create-post-input"
                 type="text"
                 placeholder="Name"
@@ -107,6 +108,7 @@ const CreateCampsiteModal = () => {
             <div className="create-post-input-wrapper">
               <label htmlFor="description">Description:</label>
               <input
+                required
                 className="create-post-input"
                 type="text"
                 name="description"
@@ -127,6 +129,7 @@ const CreateCampsiteModal = () => {
             <div className="create-post-input-wrapper">
               <label htmlFor="latitude">Latitude:</label>
               <input
+                required
                 className="create-post-input"
                 placeholder="Latitude"
                 type="text"
@@ -138,6 +141,7 @@ const CreateCampsiteModal = () => {
             <div className="create-post-input-wrapper">
               <label htmlFor="longitude">Longitude:</label>
               <input
+                required
                 className="create-post-input"
                 placeholder="Longitude"
                 type="text"
