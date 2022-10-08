@@ -10,9 +10,11 @@ const AllCampsites = () => {
   const campsites = useSelector((state) => Object.values(state.campsite));
   const sessionUser = useSelector((state) => state.session.user);
 
-  if (!sessionUser) {
-    Redirect("/");
-  }
+  useEffect(() => {
+    if (!sessionUser) {
+      Redirect("/");
+    }
+  }, [sessionUser]);
 
   useEffect(() => {
     dispatch(getAllCampsites());

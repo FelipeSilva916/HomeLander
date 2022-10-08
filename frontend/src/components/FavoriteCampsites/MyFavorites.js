@@ -34,11 +34,11 @@ const MyFavoriteCampsites = ({ setShowModal }) => {
   });
 
   const favCampsiteName = favorites.map((favorite) => {
-    return campsiteState[favorite.campsiteId].name;
+    return campsiteState[favorite?.campsiteId]?.name;
   });
 
   const favCampsiteImg = favorites.map((favorite) => {
-    return campsiteState[favorite.campsiteId].previewImage;
+    return campsiteState[favorite?.campsiteId]?.previewImage;
   });
 
   return (
@@ -53,7 +53,7 @@ const MyFavoriteCampsites = ({ setShowModal }) => {
               <div
                 className="favorite-site-card-item"
                 onClick={() => {
-                  history.push(`/campsites/${favoriteId[i].campsiteId}`);
+                  history.push(`/campsites/${favoriteId[i]?.campsiteId}`);
                   setShowModal(false);
                 }}
                 key={i}
