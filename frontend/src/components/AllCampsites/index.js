@@ -1,13 +1,18 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getAllCampsites } from "../../store/campsite";
-import { NavLink } from "react-router-dom";
+import { NavLink, Redirect } from "react-router-dom";
 import "./AllCampsites.css";
 import AllMaps from "../AllCampsitesMap";
 
 const AllCampsites = () => {
   const dispatch = useDispatch();
   const campsites = useSelector((state) => Object.values(state.campsite));
+  const sessionUser = useSelector((state) => state.session.user);
+
+  if (!sessionUser) {
+    Redirect("/");
+  }
 
   useEffect(() => {
     dispatch(getAllCampsites());
