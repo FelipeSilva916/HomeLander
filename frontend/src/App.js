@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { Route, Switch } from "react-router-dom";
 import * as sessionActions from "./store/session";
 import Navigation from "./components/Navigation";
@@ -15,6 +15,7 @@ function App() {
   useEffect(() => {
     dispatch(sessionActions.restoreUser()).then(() => setIsLoaded(true));
   }, [dispatch]);
+  const user = useSelector((state) => state.session.user);
 
   return (
     <>
@@ -24,9 +25,7 @@ function App() {
           <Route path="/campsites/:campsiteId">
             <CampsiteDetail />
           </Route>
-          <Route path="/campsites">
-            <AllCampsites />
-          </Route>
+          <Route path="/campsites">{user && <AllCampsites />}</Route>
           <Route path="/my/campsites">
             <MyCampsites />
           </Route>
