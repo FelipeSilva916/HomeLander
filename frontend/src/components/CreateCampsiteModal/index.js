@@ -71,7 +71,7 @@ const CreateCampsiteModal = () => {
           setLgn(longitude.toFixed(4));
         }
       } catch (error) {
-        // console.log(error);
+        return error.message;
       }
     }
   };

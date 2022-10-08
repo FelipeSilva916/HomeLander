@@ -1,12 +1,11 @@
 import { getOneCampsite } from "../../store/campsite";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import "./campsiteDetail.css";
 import EditCampsiteModal from "../EditCampsitesModal";
 import DeleteCampsiteButton from "../DeleteCampsiteButton";
 import AddCampsiteImageModal from "../AddCampsiteImage";
-import DeleteImageButton from "../DeleteImageButton";
 import Map from "../GoogleMap/CampsiteMaps";
 import ReviewsTable from "../ReviewDetails";
 import AddFavoriteButton from "../AddFavoriteButton";
@@ -20,8 +19,6 @@ const CampsiteDetail = ({ setShowModal }) => {
   const user = useSelector((state) => state.session.user);
   const reviews = useSelector((state) => state.review);
   const images = Object.values(useSelector((state) => state.images));
-  const [showDelete, setShowDelete] = useState(false);
-  // const [index, setIndex] = useState(0);
 
   useEffect(() => {
     dispatch(getOneCampsite(+campsiteId));
