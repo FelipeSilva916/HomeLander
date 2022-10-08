@@ -11,6 +11,7 @@ import Map from "../GoogleMap/CampsiteMaps";
 import ReviewsTable from "../ReviewDetails";
 import AddFavoriteButton from "../AddFavoriteButton";
 import CampsiteImages from "../CampsiteImages";
+import { getImages } from "../../store/campsiteImages";
 
 const CampsiteDetail = ({ setShowModal }) => {
   const { campsiteId } = useParams();
@@ -18,12 +19,17 @@ const CampsiteDetail = ({ setShowModal }) => {
   const campsite = useSelector((state) => state.campsite[campsiteId]);
   const user = useSelector((state) => state.session.user);
   const reviews = useSelector((state) => state.review);
+  const images = Object.values(useSelector((state) => state.images));
   const [showDelete, setShowDelete] = useState(false);
   // const [index, setIndex] = useState(0);
 
   useEffect(() => {
     dispatch(getOneCampsite(+campsiteId));
   }, [dispatch, campsiteId, reviews]);
+
+  useEffect(() => {
+    dispatch(getImages(campsiteId));
+  }, [campsiteId]);
 
   let userManipulationBtn;
   if (campsite) {
@@ -63,9 +69,7 @@ const CampsiteDetail = ({ setShowModal }) => {
           </div>
         </div>
       </div>
-      {campsite?.CampsiteImages?.length > 0 && (
-        <CampsiteImages campsiteId={campsiteId} />
-      )}
+      {images?.length > 0 && <CampsiteImages campsiteId={campsiteId} />}
 
       <AddCampsiteImageModal campsiteId={campsiteId} />
 

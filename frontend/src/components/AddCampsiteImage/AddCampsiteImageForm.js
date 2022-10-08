@@ -11,13 +11,23 @@ const AddCampsiteImageForm = ({ campsiteId, setShowModal }) => {
   const sessionUser = useSelector((state) => state.session.user);
   const history = useHistory();
   campsiteId = parseInt(campsiteId);
+  const [disabled, setDisabled] = useState(false);
+  const [buttonText, setButtonText] = useState("Add Image");
 
   useEffect(() => {
     dispatch(getImages(campsiteId));
   }, [dispatch, campsiteId]);
 
+  const reset = () => {
+    setImage("");
+    setDisabled(false);
+    setButtonText("Add Image");
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setDisabled(true);
+    setButtonText(<i className="fas fa-spinner fa-spin-pulse"></i>);
     const payload = {
       imageUrl,
       campsiteId,
@@ -26,6 +36,7 @@ const AddCampsiteImageForm = ({ campsiteId, setShowModal }) => {
     const newCampsiteImage = await dispatch(addCampsiteImage(payload));
     if (newCampsiteImage) {
       setShowModal(false);
+      reset();
     }
 
     history.push(`/campsites/${campsiteId}`);
@@ -42,7 +53,9 @@ const AddCampsiteImageForm = ({ campsiteId, setShowModal }) => {
       <h2>Add an image:</h2>
       <form className="add-image" onSubmit={handleSubmit}>
         <input type="file" required onChange={(e) => updateImage(e)} />
-        <button type="submit">Add Image</button>
+        <button disabled={disabled} type="submit">
+          {buttonText}
+        </button>
       </form>
     </div>
   );

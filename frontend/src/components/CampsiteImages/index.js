@@ -6,7 +6,7 @@ import DeleteImageButton from "../DeleteImageButton";
 
 const CampsiteImages = ({ campsiteId }) => {
   const dispatch = useDispatch();
-  const images = Object.values(useSelector((state) => state?.images));
+  const images = Object.values(useSelector((state) => state.images));
   const campsite = useSelector((state) => state.campsite[campsiteId]);
   const user = useSelector((state) => state.session.user);
   const allImages = images?.filter(
@@ -50,7 +50,7 @@ const CampsiteImages = ({ campsiteId }) => {
     } else {
       setShowDelete(false);
     }
-  }, [index]);
+  }, [index, images]);
 
   useEffect(() => {
     dispatch(getImages(+campsiteId));
