@@ -7,6 +7,8 @@ import AllCampsites from "./components/AllCampsites";
 import CampsiteDetail from "./components/CampsiteDetail";
 import MyCampsites from "./components/MyCampsites";
 import Homepage from "./components/HomePage";
+import PageNotFound from "./components/PageNotFound";
+
 function App() {
   const dispatch = useDispatch();
   const [isLoaded, setIsLoaded] = useState(false);
@@ -30,6 +32,9 @@ function App() {
           </Route>
           <Route exact path="/">
             <Homepage />
+          </Route>
+          <Route>
+            <PageNotFound />
           </Route>
         </Switch>
       )}
