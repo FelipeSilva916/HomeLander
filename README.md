@@ -37,3 +37,11 @@ If an user uploads an image with location metadata, the form will automatically 
  - Sequelize
  - AWS S3
 
+## Features
+
+ - Signup, login, log out, login as demo user
+ - Create, read, update, and delete campsites
+ - Create, read, update, and delete reviews
+ - Create, read, and delete favorite campsites
+ - Create, read, delete images in a campsite gallery
+ - Campsites coordinates are added to Google Maps in database.
