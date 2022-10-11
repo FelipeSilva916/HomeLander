@@ -1,6 +1,25 @@
 # HomeLander ⛺️
 HomeLander is a location sharing application for creating campsites and sharing them with other users.
 
+## Technologies
+
+ - React
+ - Redux
+ - Express
+ - Csurf.js
+ - Node.js
+ - Sequelize
+ - AWS S3
+
+## Features
+
+ - Signup, login, log out, login as demo user
+ - Create, read, update, and delete campsites
+ - Create, read, update, and delete reviews
+ - Create, read, and delete favorite campsites
+ - Create, read, delete images in a campsite gallery
+ - Campsites coordinates are added to Google Maps in database.
+ 
 ## Home:
 ![Website Landing Page](https://u.cubeupload.com/felipe916/ScreenShot20221008at.png)
 Upon landing on the website, an user can log in, sign up, or login as a demo user.
@@ -26,22 +45,3 @@ User can check their favorites list, and remove a favorite campsite.
 User can create a campsite and add it to the database.
 ![enter image description here](https://u.cubeupload.com/felipe916/23eScreenShot20221008at.png)
 If an user uploads an image with location metadata, the form will automatically fill in the latitude and logitude.
-
-## Technologies
-
- - React
- - Redux
- - Express
- - Csurf.js
- - Node.js
- - Sequelize
- - AWS S3
-
-## Features
-
- - Signup, login, log out, login as demo user
- - Create, read, update, and delete campsites
- - Create, read, update, and delete reviews
- - Create, read, and delete favorite campsites
- - Create, read, delete images in a campsite gallery
- - Campsites coordinates are added to Google Maps in database.
