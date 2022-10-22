@@ -206,3 +206,11 @@ html {
   border-radius: 0.5rem;
   color: #0a66c2;
 }
+
+a {
+  text-decoration: none;
+}
+
+.linkedIn a:visited {
+  color: #0a66c2;
+}

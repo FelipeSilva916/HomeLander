@@ -57,12 +57,17 @@ function Navigation({ isLoaded }) {
                 target="_blank"
                 rel="noreferrer"
               >
-                <i className="fab fa-github"></i>
-                GitHub
+                <i className="fab fa-github"></i> GitHub
               </a>
             </h2>
             <h2 className="linkedIn">
-              <i class="fa-brands fa-linkedin"></i>LinkedIn
+              <a
+                href="https://www.linkedin.com/in/felipesilva916/"
+                target="_blank"
+                rel="noreferrer"
+              >
+                <i class="fa-brands fa-linkedin"></i> LinkedIn
+              </a>
             </h2>
           </footer>
         </div>
