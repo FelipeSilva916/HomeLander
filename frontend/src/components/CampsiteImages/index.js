@@ -36,7 +36,6 @@ const CampsiteImages = ({ campsiteId }) => {
 
   const handleSwipeRight = () => {
     if (index < resArray.length) {
-      console.log(index, "index");
       setIndex(index + 1);
     }
   };

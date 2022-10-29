@@ -148,16 +148,12 @@ const reviewsReducer = (state = {}, action) => {
     case DELETE_REVIEW:
       newState = { ...state };
       delete newState[undefined];
-      console.log(newState);
       delete newState[Number(action.review.id)];
-      console.log(newState);
       return newState;
 
     case POST_REVIEW:
       newState = { ...state };
-      console.log(newState, "newState");
       newState[action.review.id] = action.review;
-      console.log(newState, "New State 2");
       return newState;
 
     default:
