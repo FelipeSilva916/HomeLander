@@ -15,10 +15,11 @@ const CampsiteImages = ({ campsiteId }) => {
   const [index, setIndex] = useState(0);
   const [showRight, setShowRight] = useState(true);
   const [showLeft, setShowLeft] = useState(false);
-  const imageId = allImages[index]?.id;
+  const imageId = allImages[index - 1]?.id;
+
   const [showDelete, setShowDelete] = useState(false);
   const resArray = [{ imageUrl: campsite?.previewImage }, ...allImages];
-  console.log(resArray);
+
   useEffect(() => {
     if (index === resArray.length - 1) {
       setShowRight(false);
@@ -34,7 +35,8 @@ const CampsiteImages = ({ campsiteId }) => {
   }, [index, imageId, images, resArray.length]);
 
   const handleSwipeRight = () => {
-    if (index < resArray.length - 1) {
+    if (index < resArray.length) {
+      console.log(index, "index");
       setIndex(index + 1);
     }
   };
@@ -72,6 +74,15 @@ const CampsiteImages = ({ campsiteId }) => {
             </button>
           )}
         </div>
+        <div className="images-control-button">
+          {showDelete && (
+            <DeleteImageButton
+              setIndex={setIndex}
+              campsiteId={+campsiteId}
+              imageId={imageId}
+            />
+          )}
+        </div>
         <div className="image-buttons-right">
           {showRight && (
             <button onClick={handleSwipeRight}>
@@ -79,15 +90,6 @@ const CampsiteImages = ({ campsiteId }) => {
             </button>
           )}
         </div>
-      </div>
-      <div className="images-control-button">
-        {showDelete && (
-          <DeleteImageButton
-            setIndex={setIndex}
-            campsiteId={+campsiteId}
-            imageId={imageId}
-          />
-        )}
       </div>
     </>
   );

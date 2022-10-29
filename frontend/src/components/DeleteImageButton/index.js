@@ -1,6 +1,5 @@
 import "../CampsiteImages/CampsiteImages.css";
 const { useDispatch } = require("react-redux");
-const { useHistory } = require("react-router-dom");
 const { deleteCampsiteImage } = require("../../store/campsiteImages");
 
 const DeleteImageButton = ({ imageId, campsiteId, setIndex }) => {

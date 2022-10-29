@@ -12,7 +12,8 @@
   justify-content: center;
   position: relative;
   margin: 2rem;
-  width: 400px;
+  width: 600px;
+  height: 500px;
 }
 
 .campsite-images {
@@ -28,13 +29,12 @@
   display: inline-flex;
   justify-content: center;
   align-items: center;
-  width: 100%;
-  height: 30rem;
   flex-direction: column;
 }
 
 .image-container img {
   object-fit: contain;
+  width: 100%;
 }
 
 .image-buttons-container {

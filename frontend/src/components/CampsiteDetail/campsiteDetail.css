@@ -36,7 +36,7 @@
 .campsite-detail-container-info {
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: space-evenly;
   flex-direction: row;
   box-sizing: border-box;
   width: 100%;
