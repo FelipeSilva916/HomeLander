@@ -17,9 +17,10 @@ const CampsiteImages = ({ campsiteId }) => {
   const [showLeft, setShowLeft] = useState(false);
   const imageId = allImages[index]?.id;
   const [showDelete, setShowDelete] = useState(false);
-
+  const resArray = [{ imageUrl: campsite?.previewImage }, ...allImages];
+  console.log(resArray);
   useEffect(() => {
-    if (index === allImages.length - 1) {
+    if (index === resArray.length - 1) {
       setShowRight(false);
     } else {
       setShowRight(true);
@@ -30,10 +31,10 @@ const CampsiteImages = ({ campsiteId }) => {
     } else {
       setShowLeft(false);
     }
-  }, [index, imageId, images, allImages.length]);
+  }, [index, imageId, images, resArray.length]);
 
   const handleSwipeRight = () => {
-    if (index < allImages.length - 1) {
+    if (index < resArray.length - 1) {
       setIndex(index + 1);
     }
   };
@@ -45,7 +46,7 @@ const CampsiteImages = ({ campsiteId }) => {
   };
 
   useEffect(() => {
-    if (user.id === allImages[index]?.userId) {
+    if (user.id === resArray[index]?.userId) {
       setShowDelete(true);
     } else {
       setShowDelete(false);
@@ -54,13 +55,13 @@ const CampsiteImages = ({ campsiteId }) => {
 
   useEffect(() => {
     dispatch(getImages(+campsiteId));
-  }, [dispatch, campsiteId, campsite, imageId, allImages.length]);
+  }, [dispatch, campsiteId, campsite, imageId, resArray.length]);
 
   return (
     <>
       <div className="image-container">
         <div className="image">
-          <img src={allImages[index]?.imageUrl} alt="campsite" />
+          <img src={resArray[index]?.imageUrl} alt="campsite" />
         </div>
       </div>
       <div className="image-buttons-container">

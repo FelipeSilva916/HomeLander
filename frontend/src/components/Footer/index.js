@@ -18,7 +18,7 @@ const Footer = () => {
           target="_blank"
           rel="noreferrer"
         >
-          <i class="fa-brands fa-linkedin"></i> LinkedIn
+          <i className="fa-brands fa-linkedin"></i> LinkedIn
         </a>
       </h2>
     </footer>
