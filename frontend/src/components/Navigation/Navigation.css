@@ -1,4 +1,8 @@
 .nav-bar {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 100;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -173,8 +177,7 @@ html {
   justify-content: space-around;
   align-items: center;
   height: 4rem;
-  position: absolute;
-  /* padding: 0 3rem; */
+  position: fixed;
   bottom: 0;
   width: 100%;
   background-image: linear-gradient(

@@ -8,6 +8,8 @@ import CampsiteDetail from "./components/CampsiteDetail";
 import MyCampsites from "./components/MyCampsites";
 import Homepage from "./components/HomePage";
 import PageNotFound from "./components/PageNotFound";
+import Footer from "./components/Footer";
+import "./index.css";
 
 function App() {
   const dispatch = useDispatch();
@@ -37,6 +39,9 @@ function App() {
           </Route>
         </Switch>
       )}
+      <div>
+        <Footer />
+      </div>
     </>
   );
 }
