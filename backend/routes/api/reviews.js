@@ -49,7 +49,7 @@ router.delete("/:id", requireAuth, async (req, res) => {
     throw error;
   }
   await review.destroy();
-  res.json({ message: "Review deleted", statusCode: 200 });
+  res.json({ id: reviewId, message: "Review deleted", statusCode: 200 });
 });
 
 // ======== PUT /api/reviews/:reviewID - Update a review from current user ========//

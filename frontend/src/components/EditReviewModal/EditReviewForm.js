@@ -28,7 +28,7 @@ const EditReviewForm = ({ setShowModal, campsiteId }) => {
   const handleDelete = async () => {
     await dispatch(deleteReview(reviewId?.id));
     setShowModal(false);
-    history.go(`/campsites/${campsiteId}`);
+    // history.go(`/campsites/${campsiteId}`);
   };
 
   const handleSubmit = (e) => {

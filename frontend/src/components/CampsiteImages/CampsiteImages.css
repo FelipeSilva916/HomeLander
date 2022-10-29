@@ -60,7 +60,7 @@
   position: relative;
   overflow: hidden;
   border: 1px solid #907a48;
-  z-index: 1;
+  z-index: 0;
 }
 
 .image-buttons-left button::before,
@@ -100,7 +100,7 @@
   position: relative;
   overflow: hidden;
   border: 1px solid #907a48;
-  z-index: 1;
+  z-index: 0;
 }
 .image-buttons-right:hover,
 .image-buttons-left:hover {
