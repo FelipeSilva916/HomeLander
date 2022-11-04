@@ -21,8 +21,11 @@ const AllCampsites = () => {
   }, [dispatch]);
   return (
     <div>
+      <div className="all-campsites-map">
+        <h2>All the places we have gone ⛺️</h2>
+        <AllMaps campsites={campsites} />
+      </div>
       <div className="all-campsites-wrapper">
-        <h1>All Campsites</h1>
         <div className="all-campsites-container">
           {campsites.map((campsite) => (
             <div className="campsite-card" key={campsite.id}>
@@ -37,10 +40,6 @@ const AllCampsites = () => {
             </div>
           ))}
         </div>
-      </div>
-      <div className="all-campsites-map">
-        <h2>All the places we have gone ⛺️</h2>
-        <AllMaps campsites={campsites} />
       </div>
     </div>
   );

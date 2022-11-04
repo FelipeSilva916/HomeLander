@@ -10,7 +10,7 @@ const AllMaps = ({ campsites }) => {
 
   const mapStyles = {
     height: "450px",
-    width: "750px",
+    width: "850px",
     padding: "1rem",
     margin: "1rem"
   };
