@@ -1,7 +1,6 @@
 .reviews-table {
   width: 35rem;
   margin: 1rem 0;
-  background-color: #4b6b3c;
   border-radius: 0.5rem;
   padding: 1rem;
   display: flex;
@@ -9,7 +8,6 @@
 }
 
 .review-username {
-  /* font-size: 1.5rem; */
   font-weight: bold;
   margin: 0;
   padding: 0;
@@ -21,7 +19,10 @@
   padding: 0%;
   display: flex;
   flex-direction: column;
-  /* border: #3a4928 solid 1px; */
+  border: #3a4928 solid 1px;
+  border-radius: 0.5rem;
+  padding: 1rem;
+  margin: 1rem 0;
 }
 
 .reviews-table-detail {
@@ -43,8 +44,7 @@
   margin: 0.5rem 1rem;
   padding: 0.5rem 1rem;
   text-align: center;
-  color: #907a48;
-  background-color: #e6deb9;
+
   border-radius: 1rem;
 }
 

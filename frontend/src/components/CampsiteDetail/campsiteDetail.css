@@ -41,10 +41,11 @@
   box-sizing: border-box;
   width: 100%;
   flex-wrap: wrap;
+  margin-top: 2rem;
 }
 
 .campsite-detail-info-container {
-  margin: 2rem;
+  /* margin: 2rem; */
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -78,13 +79,14 @@
   margin: 0;
   padding: 0;
   text-align: center;
-  color: #907a48;
+  color: #3e371f;
 }
 
 .user-manipulation-button {
   margin: 0 1rem;
   padding: 0.5rem;
   color: #907a48;
+
   border-radius: 0.5rem;
   font-size: 1rem;
   font-weight: bold;
