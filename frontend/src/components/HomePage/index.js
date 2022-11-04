@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getAllCampsites } from "../../store/campsite";
-
+import Searchbar from "../Searchbar";
 import "./Homepage.css";
 
 const Homepage = () => {
@@ -16,6 +16,10 @@ const Homepage = () => {
   return (
     <div className="homepage__container">
       <div className="homepage__contents">
+        <div className="homepage__searchbar">
+          <Searchbar />
+        </div>
+
         <h2 className="homepage-title">
           <i
             className="fa-duotone fa-campground"
