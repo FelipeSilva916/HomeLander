@@ -13,22 +13,42 @@ const Homepage = () => {
     dispatch(getAllCampsites());
   }, [dispatch]);
 
-  return (
-    <div className="homepage__container">
-      <div className="homepage__contents">
-        <h2 className="homepage-title">
-          <i
-            className="fa-duotone fa-campground"
-            style={{ color: "#ff4f00" }}
-          ></i>
-          Welcome {user?.username}, to HomeLander!
-        </h2>
-        <p>Find your next adventure!</p>
-      </div>
-      <div className="homepage__searchbar">
-        <Searchbar />
-      </div>
-    </div>
-  );
+  if (user) {
+    return (
+      <>
+        <>
+          <div className="homepage__container">
+            <div className="homepage__contents">
+              <div className="homepage__about"></div>
+              <h2 className="homepage-title">
+                <i
+                  className="fa-duotone fa-campground"
+                  style={{ color: "#ff4f00" }}
+                ></i>
+                Welcome {user?.username}, to HomeLander!
+              </h2>
+              <p>Find your next adventure!</p>
+            </div>
+            <div className="homepage__searchbar">
+              <Searchbar />
+            </div>
+          </div>
+        </>
+      </>
+    );
+  } else {
+    return (
+      <>
+        <h1>HEY</h1>
+        <h1>HEY</h1>
+        <h1>HEY</h1>
+        <h1>HEY</h1>
+        <h1>HEY</h1>
+        <h1>HEY</h1>
+        <h1>HEY</h1>
+        <h1>HEY</h1>
+      </>
+    );
+  }
 };
 export default Homepage;
