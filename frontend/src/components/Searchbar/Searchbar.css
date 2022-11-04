@@ -36,13 +36,21 @@
 }
 
 .search-results {
-  color: black;
-  background: rgb(131, 58, 180);
-  background: linear-gradient(
-    90deg,
-    rgba(131, 58, 180, 1) 0%,
-    rgba(253, 29, 29, 1) 50%,
-    rgba(252, 176, 69, 1) 100%
+  color: white;
+  background-image: linear-gradient(
+    to left,
+    #4b6b3c,
+    #486438,
+    #455e34,
+    #425731,
+    #3f512d,
+    #3f4c29,
+    #3e4726,
+    #3d4223,
+    #3e3d21,
+    #3e371f,
+    #3d331e,
+    #3b2e1e
   );
   top: 50px;
   border-radius: 4px;
@@ -59,13 +67,18 @@
   max-width: 15em;
   color: black;
   z-index: 1;
-  right: 38%;
+  right: 40%;
+  top: 45%;
+  font-weight: 600;
 }
 
+.search-results :visited {
+  color: white;
+}
 .results-active {
   opacity: 1;
   visibility: visible;
-  transform: scale(1);
+  transform: scale(1.1);
 }
 
 .search-result-li {
