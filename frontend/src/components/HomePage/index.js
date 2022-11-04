@@ -16,10 +16,6 @@ const Homepage = () => {
   return (
     <div className="homepage__container">
       <div className="homepage__contents">
-        <div className="homepage__searchbar">
-          <Searchbar />
-        </div>
-
         <h2 className="homepage-title">
           <i
             className="fa-duotone fa-campground"
@@ -28,6 +24,9 @@ const Homepage = () => {
           Welcome {user?.username}, to HomeLander!
         </h2>
         <p>Find your next adventure!</p>
+      </div>
+      <div className="homepage__searchbar">
+        <Searchbar />
       </div>
     </div>
   );
